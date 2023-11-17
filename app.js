@@ -67,9 +67,9 @@ app.get('/http://127.0.0.1:5500/main-menu.html', (req, res) => {
 
 
 // api to load class1 to class 5 student information pages
-app.get('/http://127.0.0.1:5500/page1.html', (req, res) => {
-  res.render('pages/page1', { title: 'Node.js App with HBS' });
-});
+// app.get('/http://127.0.0.1:5500/page1.html', (req, res) => {
+//   res.render('pages/page1', { title: 'Node.js App with HBS' });
+// });
 app.get('/http://127.0.0.1:5500/page2.html', (req, res) => {
   res.render('pages/page2', { title: 'Node.js App with HBS' });
 });
@@ -157,8 +157,7 @@ app.post('/save-student-info', (req, res) => {
 
 
 // similarlarly jokhon distribution entry er form submit korbo tokhon oi data gula save korbo
- app.post('/save-distributed-book-info', (req, res) => {
-    
+ app.post('/save-distributed-book-info', (req, res) => {  
     try {
       // Extract data from req.body
       const { classNo, roll, bangla, english, math, science, social_science, religion, comment } = req.body;
@@ -201,6 +200,7 @@ app.post('/save-bookfrom-ntcb-info', (req, res) => {
   }
 );
 
+
 app.get('/view-student-info', (req, res) => {
   const query = `SELECT * FROM students`;
   db.query(query, (err, result) => {
@@ -215,6 +215,23 @@ app.get('/view-student-info', (req, res) => {
 }
 );
 
+// app.get('/http://127.0.0.1:5500/page1.html', (req, res) => {
+//   const query = `SELECT * FROM students`;
+//   db.query(query, (err, result) => {
+//     if (err) {
+//       console.error('Error fetching student information: ', err);
+//       res.status(500).send('Internal Server Error');
+//     } else {
+//       console.log("hello");
+//      // res.render('allstudentinfo/all-student-info', { title: 'Node.js App with HBS', students: result });
+//       res.render('pages/page1', { title: 'Node.js App with HBS',students: result });
+//     }
+//   });
+// });
+// app.get('/http://127.0.0.1:5500/page1.html', (req, res) => {
+//   res.render('pages/page1', { title: 'Node.js App with HBS' });
+// });
+
 app.get('/view-student-info/:class', (req, res) => {
   const requestedClass = req.params.class;
 
@@ -226,6 +243,21 @@ app.get('/view-student-info/:class', (req, res) => {
       res.status(500).send('Internal Server Error');
     } else {
       res.render('allstudentinfo/all-student-info', { title: 'Node.js App with HBS', students: result });
+    }
+  });
+});
+
+app.get('/http://127.0.0.1:5500/page1.html', (req, res) => {
+  const requestedClass = req.params.class;
+
+  // Using parameterized query to prevent SQL injection
+  const query = 'SELECT * FROM students WHERE class = 1';
+  db.query(query, [requestedClass], (err, result) => {
+    if (err) {
+      console.error('Error fetching student information: ', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.render('pages/page1', { title: 'Node.js App with HBS', students: result });
     }
   });
 });
