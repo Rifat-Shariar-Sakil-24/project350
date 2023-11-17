@@ -232,6 +232,37 @@ app.get('/view-student-info/:class', (req, res) => {
 
 
 
+
+
+
+// check 
+
+// app.get('/std-entry-new', (req, res) => {
+//   res.render('entry/student-entry-new', { title: 'Node.js App with HBS' });
+// });
+// app.post('/save-student-info-new', (req, res) => {
+  
+//   try {
+//     // Extract data from req.body
+//     const { id, class_no, student_name, roll, phone, father_name, mother_name, year, birthdate, religion, address, comment } = req.body;
+
+//     // Perform the query
+//     const query = `INSERT INTO studentsnew (id, class_no, student_name, roll, phone, father_name, mother_name, year, birthdate, religion, address, comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    
+//     db.query(query, [id, class_no, student_name, roll, phone, father_name, mother_name, year, birthdate, religion, address, comment]);
+
+//     res.send('Data saved successfully!');
+//     res.redirect('/std-entry-new'); 
+//   } catch (error) {
+//     console.error('Error saving data to the database:', error);
+//     res.status(500).send('Internal Server Error');
+//   }
+//   console.log(req.body);
+// });
+
+
+
+
 // Start the server
 // app.listen(port, () => {
 //   console.log(`Server is running on http://localhost:${port}`);
