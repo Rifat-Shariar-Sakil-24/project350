@@ -70,20 +70,20 @@ app.get('/http://127.0.0.1:5500/main-menu.html', (req, res) => {
 // app.get('/http://127.0.0.1:5500/page1.html', (req, res) => {
 //   res.render('pages/page1', { title: 'Node.js App with HBS' });
 // });
-app.get('/http://127.0.0.1:5500/page2.html', (req, res) => {
-  res.render('pages/page2', { title: 'Node.js App with HBS' });
-});
-app.get('/http://127.0.0.1:5500/page3.html', (req, res) => {
-  res.render('pages/page3', { title: 'Node.js App with HBS' });
-});
+// app.get('/http://127.0.0.1:5500/page2.html', (req, res) => {
+//   res.render('pages/page2', { title: 'Node.js App with HBS' });
+// });
+// app.get('/http://127.0.0.1:5500/page3.html', (req, res) => {
+//   res.render('pages/page3', { title: 'Node.js App with HBS' });
+// });
 
-app.get('/http://127.0.0.1:5500/page4.html', (req, res) => {
-  res.render('pages/page4', { title: 'Node.js App with HBS' });
-});
+// app.get('/http://127.0.0.1:5500/page4.html', (req, res) => {
+//   res.render('pages/page4', { title: 'Node.js App with HBS' });
+// });
 
-app.get('/http://127.0.0.1:5500/page5.html', (req, res) => {
-  res.render('pages/page5', { title: 'Node.js App with HBS' });
-});
+// app.get('/http://127.0.0.1:5500/page5.html', (req, res) => {
+//   res.render('pages/page5', { title: 'Node.js App with HBS' });
+// });
 
 
 
@@ -247,6 +247,7 @@ app.get('/view-student-info/:class', (req, res) => {
   });
 });
 
+
 app.get('/http://127.0.0.1:5500/page1.html', (req, res) => {
   const requestedClass = req.params.class;
 
@@ -258,6 +259,63 @@ app.get('/http://127.0.0.1:5500/page1.html', (req, res) => {
       res.status(500).send('Internal Server Error');
     } else {
       res.render('pages/page1', { title: 'Node.js App with HBS', students: result });
+    }
+  });
+});
+
+app.get('/http://127.0.0.1:5500/page2.html', (req, res) => {
+  const requestedClass = req.params.class;
+
+  // Using parameterized query to prevent SQL injection
+  const query = 'SELECT * FROM students WHERE class = 2';
+  db.query(query, [requestedClass], (err, result) => {
+    if (err) {
+      console.error('Error fetching student information: ', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.render('pages/page2', { title: 'Node.js App with HBS', students: result });
+    }
+  });
+});
+app.get('/http://127.0.0.1:5500/page3.html', (req, res) => {
+  const requestedClass = req.params.class;
+
+  // Using parameterized query to prevent SQL injection
+  const query = 'SELECT * FROM students WHERE class = 3';
+  db.query(query, [requestedClass], (err, result) => {
+    if (err) {
+      console.error('Error fetching student information: ', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.render('pages/page3', { title: 'Node.js App with HBS', students: result });
+    }
+  });
+});
+app.get('/http://127.0.0.1:5500/page4.html', (req, res) => {
+  const requestedClass = req.params.class;
+
+  // Using parameterized query to prevent SQL injection
+  const query = 'SELECT * FROM students WHERE class = 4';
+  db.query(query, [requestedClass], (err, result) => {
+    if (err) {
+      console.error('Error fetching student information: ', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.render('pages/page4', { title: 'Node.js App with HBS', students: result });
+    }
+  });
+});
+app.get('/http://127.0.0.1:5500/page5.html', (req, res) => {
+  const requestedClass = req.params.class;
+
+  // Using parameterized query to prevent SQL injection
+  const query = 'SELECT * FROM students WHERE class = 5';
+  db.query(query, [requestedClass], (err, result) => {
+    if (err) {
+      console.error('Error fetching student information: ', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.render('pages/page5', { title: 'Node.js App with HBS', students: result });
     }
   });
 });
