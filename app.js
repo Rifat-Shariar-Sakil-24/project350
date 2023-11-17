@@ -99,22 +99,22 @@ app.get('/http://127.0.0.1:5500/login.html', (req, res) => {
 
 //api to load distributed books of each class
 //clas1
-app.get('/http://127.0.0.1:5500/dist-page1.html', (req, res) => {
-  res.render('dist-page/dist-page1', { title: 'Node.js App with HBS' });
-});
+// app.get('/http://127.0.0.1:5500/dist-page1.html', (req, res) => {
+//   res.render('dist-page/dist-page1', { title: 'Node.js App with HBS' });
+// });
 //class2
-app.get('/http://127.0.0.1:5500/dist-page2.html', (req, res) => {
-  res.render('dist-page/dist-page2', { title: 'Node.js App with HBS' });
-});
-app.get('/http://127.0.0.1:5500/dist-page3.html', (req, res) => {
-  res.render('dist-page/dist-page3', { title: 'Node.js App with HBS' });
-});
-app.get('/http://127.0.0.1:5500/dist-page4.html', (req, res) => {
-  res.render('dist-page/dist-page4', { title: 'Node.js App with HBS' });
-});
-app.get('/http://127.0.0.1:5500/dist-page5.html', (req, res) => {
-  res.render('dist-page/dist-page5', { title: 'Node.js App with HBS' });
-});
+// app.get('/http://127.0.0.1:5500/dist-page2.html', (req, res) => {
+//   res.render('dist-page/dist-page2', { title: 'Node.js App with HBS' });
+// });
+// app.get('/http://127.0.0.1:5500/dist-page3.html', (req, res) => {
+//   res.render('dist-page/dist-page3', { title: 'Node.js App with HBS' });
+// });
+// app.get('/http://127.0.0.1:5500/dist-page4.html', (req, res) => {
+//   res.render('dist-page/dist-page4', { title: 'Node.js App with HBS' });
+// });
+// app.get('/http://127.0.0.1:5500/dist-page5.html', (req, res) => {
+//   res.render('dist-page/dist-page5', { title: 'Node.js App with HBS' });
+// });
 
 
 
@@ -347,6 +347,88 @@ app.get('/http://127.0.0.1:5500/page5.html', (req, res) => {
     }
   });
 });
+
+
+
+
+
+
+
+
+
+
+// view distributed book info by class
+app.get('/http://127.0.0.1:5500/dist-page1.html', (req, res) => {
+  const requestedClass = req.params.class;
+
+  // Using parameterized query to prevent SQL injection
+  const query = 'SELECT * FROM distributed_books WHERE class = 1';
+  db.query(query, [requestedClass], (err, result) => {
+    if (err) {
+      console.error('Error fetching student information: ', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.render('dist-page/dist-page1', { title: 'Node.js App with HBS', distributed_books: result });
+    }
+  });
+});
+app.get('/http://127.0.0.1:5500/dist-page2.html', (req, res) => {
+  const requestedClass = req.params.class;
+
+  // Using parameterized query to prevent SQL injection
+  const query = 'SELECT * FROM distributed_books WHERE class = 2';
+  db.query(query, [requestedClass], (err, result) => {
+    if (err) {
+      console.error('Error fetching student information: ', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.render('dist-page/dist-page2', { title: 'Node.js App with HBS', distributed_books: result });
+    }
+  });
+});
+app.get('/http://127.0.0.1:5500/dist-page3.html', (req, res) => {
+  const requestedClass = req.params.class;
+
+  // Using parameterized query to prevent SQL injection
+  const query = 'SELECT * FROM distributed_books WHERE class = 3';
+  db.query(query, [requestedClass], (err, result) => {
+    if (err) {
+      console.error('Error fetching student information: ', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.render('dist-page/dist-page3', { title: 'Node.js App with HBS', distributed_books: result });
+    }
+  });
+});
+app.get('/http://127.0.0.1:5500/dist-page4.html', (req, res) => {
+  const requestedClass = req.params.class;
+
+  // Using parameterized query to prevent SQL injection
+  const query = 'SELECT * FROM distributed_books WHERE class = 4';
+  db.query(query, [requestedClass], (err, result) => {
+    if (err) {
+      console.error('Error fetching student information: ', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.render('dist-page/dist-page4', { title: 'Node.js App with HBS', distributed_books: result });
+    }
+  });
+});
+app.get('/http://127.0.0.1:5500/dist-page5.html', (req, res) => {
+  const requestedClass = req.params.class;
+
+  // Using parameterized query to prevent SQL injection
+  const query = 'SELECT * FROM distributed_books WHERE class = 5';
+  db.query(query, [requestedClass], (err, result) => {
+    if (err) {
+      console.error('Error fetching student information: ', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.render('dist-page/dist-page5', { title: 'Node.js App with HBS', distributed_books: result });
+    }
+  });
+});
+
 
 
 
