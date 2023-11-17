@@ -50,6 +50,10 @@ app.get('/distributed-book-entry', (req, res) => {
   res.render('entry/distribution-entry', { title: 'Node.js App with HBS' });
 });
 
+app.get('/distributed-book-entry-class1', (req, res) => {
+  res.render('entry/distribution-entry-class1', { title: 'Node.js App with HBS' });
+});
+
 app.get('/bookfrom-ntcb-entry', (req, res) => {
   res.render('entry/nctb-entry', { title: 'Node.js App with HBS' });
 });
@@ -176,6 +180,30 @@ app.post('/save-student-info', (req, res) => {
     console.log(req.body);
   }
 );
+
+app.post('/save-distributed-book-info-class1', (req, res) => {  
+  try {
+    // Extract data from req.body
+    const { classNo, roll, bangla, english, math, comment } = req.body;
+
+    // Perform the query
+    const query = `
+      INSERT INTO distributed_books 
+      (class, roll, bangla, english, math, science, social_science, religion, comment) 
+      VALUES (?, ?, ?, ?, ?, 0, 0, 0, ?)`;
+    
+    db.query(query, [classNo, roll, bangla, english, math, comment]);
+
+    res.send('Data saved successfully!');
+    res.redirect('/distributed-book-entry');
+
+  } catch (error) {
+    console.error('Error saving data to the database:', error);
+    res.status(500).send('Internal Server Error');
+  }
+  console.log(req.body);
+});
+
 
 // similarlarly jokhon nctb entry er form submit korbo tokhon oi data gula save korbo
 
