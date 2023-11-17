@@ -155,6 +155,7 @@ app.post('/save-student-info', (req, res) => {
   console.log(req.body);
 });
 
+
 // similarlarly jokhon distribution entry er form submit korbo tokhon oi data gula save korbo
  app.post('/save-distributed-book-info', (req, res) => {
     
@@ -213,6 +214,22 @@ app.get('/view-student-info', (req, res) => {
 
 }
 );
+
+app.get('/view-student-info/:class', (req, res) => {
+  const requestedClass = req.params.class;
+
+  // Using parameterized query to prevent SQL injection
+  const query = 'SELECT * FROM students WHERE class = ?';
+  db.query(query, [requestedClass], (err, result) => {
+    if (err) {
+      console.error('Error fetching student information: ', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.render('allstudentinfo/all-student-info', { title: 'Node.js App with HBS', students: result });
+    }
+  });
+});
+
 
 
 // Start the server
