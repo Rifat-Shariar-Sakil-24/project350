@@ -160,6 +160,40 @@ app.post('/save-student-info', (req, res) => {
   console.log(req.body);
 });
 
+// app.post('/save-student-info', async (req, res) => {
+//   try {
+//     // Extract data from req.body
+//     const { classNo, roll } = req.body;
+
+//     // Check if a record with the same class and roll already exists
+//     const checkQuery = 'SELECT * FROM students WHERE class = ? AND roll = ?';
+//     const existingRecord = await db.query(checkQuery, [classNo, roll]);
+
+//     if (existingRecord.length > 0) {
+//       // Record already exists, handle accordingly (e.g., send an error response)
+//       res.status(400).send('Record with the same class and roll already exists');
+//     } else {
+//       // Record doesn't exist, proceed with the insertion
+//       const { first_name, last_name, father_name, mother_name, phone, address, comment } = req.body;
+
+//       // Perform the query
+//       const insertQuery = `
+//         INSERT INTO students 
+//         (class, first_name, last_name, roll, father_name, mother_name, phone, address, comment) 
+//         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+//       `;
+//       await db.query(insertQuery, [classNo, first_name, last_name, roll, father_name, mother_name, phone, address, comment]);
+
+//       // Redirect to the success page
+//       res.redirect('/std-entry');
+//     }
+//   } catch (error) {
+//     console.error('Error saving data to the database:', error);
+//     res.status(500).send('Internal Server Error');
+//   }
+// });
+
+
 
 // similarlarly jokhon distribution entry er form submit korbo tokhon oi data gula save korbo
  app.post('/save-distributed-book-info', (req, res) => {  
@@ -170,7 +204,7 @@ app.post('/save-student-info', (req, res) => {
       // Perform the query
       const query = `INSERT INTO distributed_books (class, roll, bangla, english, math, science, social_science, religion, comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
       db.query(query, [classNo, roll, bangla, english, math, science, social_science, religion, comment]);
-    alert("successfully data entered");
+    //alert("successfully data entered");
       // res.send('Data saved successfully!');
       res.redirect('/distributed-book-entry');
 
@@ -212,11 +246,17 @@ app.post('/save-bookfrom-ntcb-info', (req, res) => {
       
     try {
       // Extract data from req.body
-      const {classNo, roll, bangla, english, math, science, social_science, religion, comment } = req.body;
+      const {date,classNo,subject,booknumber } = req.body;
   
-      // Perform the query
-      const query = `INSERT INTO nctb_books (class, roll, bangla, english, math, science, social_science, religion, comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-      db.query(query, [classNo, roll, bangla, english, math, science, social_science, religion, comment]);
+    //   // Perform the query
+    //   book_date DATE NOT NULL,
+    // class VARCHAR(50) NOT NULL,
+    // subject_name VARCHAR(100) NOT NULL,
+    // number_of_books INT NOT NULL
+
+
+      const query = `INSERT INTO books (book_date, class, subject_name, number_of_books) VALUES (?, ?, ?, ?)`;
+      db.query(query, [date,classNo,subject,booknumber]);
   
      // res.send('Data saved successfully!');
       res.redirect('/bookfrom-ntcb-entry');
