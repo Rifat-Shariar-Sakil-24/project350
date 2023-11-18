@@ -195,8 +195,8 @@ app.post('/save-distributed-book-info-class1', (req, res) => {
     
     db.query(query, [classNo, roll, bangla, english, math, comment]);
 
-    //res.send('Data saved successfully!');
-    res.redirect('/distributed-book-entry');
+ //   res.send('Data saved successfully!');
+    res.redirect('/distributed-book-entry-class1');
 
   } catch (error) {
     console.error('Error saving data to the database:', error);
@@ -218,7 +218,7 @@ app.post('/save-bookfrom-ntcb-info', (req, res) => {
       const query = `INSERT INTO nctb_books (class, roll, bangla, english, math, science, social_science, religion, comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
       db.query(query, [classNo, roll, bangla, english, math, science, social_science, religion, comment]);
   
-      res.send('Data saved successfully!');
+     // res.send('Data saved successfully!');
       res.redirect('/bookfrom-ntcb-entry');
   
   } catch (error) {
