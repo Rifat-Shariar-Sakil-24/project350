@@ -88,8 +88,7 @@ ALTER TABLE `distributed_books`
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `roll` (`roll`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -127,6 +126,20 @@ CREATE TABLE `studentsnew` (
   `religion` VARCHAR(255) NOT NULL,
   `address` VARCHAR(255) NOT NULL,
   `comment` VARCHAR(255) NOT NULL,
-  UNIQUE KEY `roll` (`roll`)
+  //UNIQUE KEY `roll` (`roll`)
 );
 
+
+CREATE TABLE users (
+  id int(11) NOT NULL,
+  email varchar(20) NOT NULL,
+  password varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE users (
+  id int(11) NOT NULL,
+  email varchar(20) NOT NULL,
+  password varchar(20) NOT NULL
+);
+INSERT INTO users (id, email, password) VALUES
+(1, 'admin@gmail.com', 'password');

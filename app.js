@@ -150,7 +150,7 @@ app.post('/save-student-info', (req, res) => {
     const query = `INSERT INTO students (class, first_name, last_name, roll, father_name, mother_name, phone, address, comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
     db.query(query, [classNo, first_name, last_name, roll, father_name, mother_name, phone, address, comment]);
 
-    res.send('Data saved successfully!');
+    // res.send('Data saved successfully!');
     
     res.redirect('/std-entry'); 
 } catch (error) {
@@ -195,7 +195,7 @@ app.post('/save-distributed-book-info-class1', (req, res) => {
     
     db.query(query, [classNo, roll, bangla, english, math, comment]);
 
-    res.send('Data saved successfully!');
+    //res.send('Data saved successfully!');
     res.redirect('/distributed-book-entry');
 
   } catch (error) {
@@ -243,6 +243,8 @@ app.get('/view-student-info', (req, res) => {
 
 }
 );
+
+
 
 // app.get('/http://127.0.0.1:5500/page1.html', (req, res) => {
 //   const query = `SELECT * FROM students`;
@@ -354,6 +356,52 @@ app.get('/http://127.0.0.1:5500/page5.html', (req, res) => {
 
 
 
+app.get('/login', (req, res) => {
+  res.render('auth/login');
+});
+
+app.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Check if the user exists
+    const query = 'SELECT * FROM users WHERE email = ? AND password = ?';
+    db.query(query, [email, password], (err, result) => {
+      if (result.length > 0) {
+        // User found, set user ID in the session
+      //  req.session.userId = result[0].id;  
+          console.log("right");
+        res.redirect('/http://127.0.0.1:5500/main-menu.html');
+      } else {
+        console.log("incorrect");
+        res.send('Incorrect email or password');
+      }
+    });
+  } catch (error) {
+    console.log("here");
+    console.error('Error logging in:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
+function authenticate(req, res, next) {
+  if (req.session && req.session.userId) {
+    return next();
+  } else {
+    res.redirect('/login');
+  }
+}
+
+
+app.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error('Error destroying session:', err);
+    }
+    res.redirect('/login');
+  });
+});
 
 
 
