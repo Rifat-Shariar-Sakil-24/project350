@@ -105,7 +105,6 @@ ALTER TABLE `distributed_books`
 --
 ALTER TABLE `students`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-COMMIT;
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
@@ -113,21 +112,6 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
-CREATE TABLE `studentsnew` (
-  `id` INT PRIMARY KEY AUTO_INCREMENT,
-  `class` INT NOT NULL,
-  `student_name` VARCHAR(255) NOT NULL,
-  `roll` INT NOT NULL,
-  `phone` INT NOT NULL,
-  `father_name` VARCHAR(20) NOT NULL,
-  `mother_name` VARCHAR(25) NOT NULL,
-  `year` INT NOT NULL,
-  `birthdate` DATE NOT NULL,
-  `religion` VARCHAR(255) NOT NULL,
-  `address` VARCHAR(255) NOT NULL,
-  `comment` VARCHAR(255) NOT NULL,
-  //UNIQUE KEY `roll` (`roll`)
-);
 
 
 CREATE TABLE users (
@@ -136,10 +120,13 @@ CREATE TABLE users (
   password varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE users (
-  id int(11) NOT NULL,
-  email varchar(20) NOT NULL,
-  password varchar(20) NOT NULL
-);
+
 INSERT INTO users (id, email, password) VALUES
 (1, 'admin@gmail.com', 'password');
+
+CREATE TABLE books (
+    book_date DATE NOT NULL,
+    class VARCHAR(50) NOT NULL,
+    subject_name VARCHAR(100) NOT NULL,
+    number_of_books INT NOT NULL
+);
