@@ -45,20 +45,36 @@
                 <span class="input-group-addon"
                   ><i class="glyphicon glyphicon-user"></i
                 ></span>
-                <input
-                  name="classNo"
-                  placeholder="শ্রেণী নাম"
-                  class="form-control"
-                  type="text"
-                />
+                 <label for="classNoInput"></label>
+        <!-- Existing input field with readonly attribute -->
+        <input
+            id="classNoInput"
+            name="classNo"
+            placeholder="শ্রেণী নম্বর এন্টি করুন"
+            class="form-control"
+            type="text"
+            required
+            readonly
+        >
+
+        <script>
+            // Get the value from the URL parameters
+            var urlParams = new URLSearchParams(window.location.search);
+            var classNoValue = urlParams.get('classNoValue');
+
+            // Set the input field value to the passed value
+            document.getElementById('classNoInput').value = classNoValue;
+        </script>
               </div>
             </div>
+
+      
           </div>
 
 
           <!-- Text input-roll -->
           <div class="form-group">
-            <label class="col-md-4 control-label">Roll</label>
+            <label class="col-md-4 control-label">রোল</label>
             <div class="col-md-4 inputGroupContainer">
               <div class="input-group">
                 <span class="input-group-addon"
@@ -132,15 +148,8 @@
               </div>
             </div>
           </div>
-          <!-- yes/no checks -->
-       
-          <!-- yes/no checks -->
-      
-
-              <!-- yes/no checks -->
+        
           
-
-         
 
           <!-- Text area-description -->
 

@@ -151,6 +151,7 @@ app.post('/save-student-info', (req, res) => {
     db.query(query, [classNo, first_name, last_name, roll, father_name, mother_name, phone, address, comment]);
 
     res.send('Data saved successfully!');
+    
     res.redirect('/std-entry'); 
 } catch (error) {
     console.error('Error saving data to the database:', error);
@@ -169,8 +170,8 @@ app.post('/save-student-info', (req, res) => {
       // Perform the query
       const query = `INSERT INTO distributed_books (class, roll, bangla, english, math, science, social_science, religion, comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
       db.query(query, [classNo, roll, bangla, english, math, science, social_science, religion, comment]);
-  
-      res.send('Data saved successfully!');
+    alert("successfully data entered");
+      // res.send('Data saved successfully!');
       res.redirect('/distributed-book-entry');
 
   } catch (error) {
@@ -368,7 +369,9 @@ app.get('/http://127.0.0.1:5500/dist-page1.html', (req, res) => {
       console.error('Error fetching student information: ', err);
       res.status(500).send('Internal Server Error');
     } else {
+      console.log("hello");
       res.render('dist-page/dist-page1', { title: 'Node.js App with HBS', distributed_books: result });
+     // res.render('allstudentinfo/bookinfo', { title: 'Node.js App with HBS', distributed_books: result });
     }
   });
 });
