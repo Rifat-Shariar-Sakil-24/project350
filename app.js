@@ -5,11 +5,14 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const exphbs = require('hbs');
 const path = require('path');
+const methodOverride = require('method-override');
+const axios = require('axios');
 
 const app = express();
 const port = 4000;
 
 app.use(bodyParser.json());
+app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
 
 app.set('view engine', 'hbs');
@@ -32,6 +35,7 @@ db.connect((err) => {
     console.log('Connected to MySQL database');
   }
 });
+
 
 
 app.get('/', (req, res) => {
@@ -57,6 +61,27 @@ app.get('/distributed-book-entry-class1', (req, res) => {
 app.get('/bookfrom-ntcb-entry', (req, res) => {
   res.render('entry/nctb-entry', { title: 'Node.js App with HBS' });
 });
+
+
+
+// student info entry for each class
+app.get('/std-entry-class1', (req, res) => {
+  res.render('entry/student-entry-class1', { title: 'Node.js App with HBS' });
+});
+app.get('/std-entry-class2', (req, res) => {
+  res.render('entry/student-entry-class2', { title: 'Node.js App with HBS' });
+});
+app.get('/std-entry-class3', (req, res) => {
+  res.render('entry/student-entry-class3', { title: 'Node.js App with HBS' });
+});
+app.get('/std-entry-class4', (req, res) => {
+  res.render('entry/student-entry-class4', { title: 'Node.js App with HBS' });
+});
+app.get('/std-entry-class5', (req, res) => {
+  res.render('entry/student-entry-class5', { title: 'Node.js App with HBS' });
+});
+
+
 
 
 
@@ -140,25 +165,116 @@ app.get('/http://127.0.0.1:5500/std-page5.html', (req, res) => {
 
 
 
+// app.post('/save-student-info', (req, res) => {
+  
+//   try {
+//     // Extract data from req.body
+//     const {classNo, first_name, last_name, roll, father_name, mother_name, phone, address, comment } = req.body;
+
+//     // Perform the query
+//     const query = `INSERT INTO students (class, first_name, last_name, roll, father_name, mother_name, phone, address, comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+//     db.query(query, [classNo, first_name, last_name, roll, father_name, mother_name, phone, address, comment]);
+
+//     // res.send('Data saved successfully!');
+
+    
+//     res.redirect('/std-entry'); 
+// } catch (error) {
+//     console.error('Error saving data to the database:', error);
+//     res.status(500).send('Internal Server Error');
+// }
+//   console.log(req.body);
+// });
+
+
+// save student info for each class updated
 app.post('/save-student-info', (req, res) => {
   
   try {
     // Extract data from req.body
-    const {classNo, first_name, last_name, roll, father_name, mother_name, phone, address, comment } = req.body;
+    const {classNo, first_name, last_name, roll, studyyear, father_name, mother_name, phone, address, comment } = req.body;
 
     // Perform the query
-    const query = `INSERT INTO students (class, first_name, last_name, roll, father_name, mother_name, phone, address, comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-    db.query(query, [classNo, first_name, last_name, roll, father_name, mother_name, phone, address, comment]);
+    const query = `INSERT INTO students (class, first_name, last_name, roll, year, father_name, mother_name, phone, address, comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)`;
+    db.query(query, [classNo, first_name, last_name, roll, studyyear, father_name, mother_name, phone, address, comment]);
 
     // res.send('Data saved successfully!');
+
+    if(classNo==1)res.redirect('/std-entry-class1'); 
+    else if(classNo==2)res.redirect('/std-entry-class2'); 
+    else if(classNo==3)res.redirect('/std-entry-class3'); 
+    else if(classNo==4)res.redirect('/std-entry-class4'); 
+    else if(classNo==5)res.redirect('/std-entry-class5'); 
+
     
-    res.redirect('/std-entry'); 
 } catch (error) {
     console.error('Error saving data to the database:', error);
     res.status(500).send('Internal Server Error');
 }
   console.log(req.body);
 });
+
+// app.post('/update-student-info', (req, res) => {
+//   console.log('hello');
+//   const {
+//     classNo,
+//     roll,
+//     studyyear,
+//     first_name,
+//     last_name,
+//     father_name,
+//     mother_name,
+//     phone,
+//     address,
+//     comment,
+//   } = req.body;
+
+//   const updateQuery = `
+//     UPDATE students
+//     SET
+//       first_name = ?,
+//       last_name = ?,
+//       father_name = ?,
+//       mother_name = ?,
+//       phone = ?,
+//       address = ?,
+//       comment = ?
+//     WHERE
+//       class = ? AND
+//       roll = ? AND
+//       year = ?
+//   `;
+
+//   const values = [
+//     first_name,
+//     last_name,
+//     father_name,
+//     mother_name,
+//     phone,
+//     address,
+//     comment,
+//     classNo,
+//     roll,
+//     studyyear,
+//   ];
+
+//   db.query(updateQuery, values, (error, results) => {
+//     if (error) {
+//       console.error('Error updating record: ' + error.message);
+//       res.status(500).json({ error: 'Error updating record' });
+//       return;
+//     }
+
+
+
+//      // here I want to access the api which is class 1 year submit. selectedyear will be the selected year of this api
+
+
+//   });
+// });
+
+
+
 
 // app.post('/save-student-info', async (req, res) => {
 //   try {
@@ -286,6 +402,10 @@ app.get('/view-student-info', (req, res) => {
 
 
 
+
+
+
+
 // app.get('/http://127.0.0.1:5500/page1.html', (req, res) => {
 //   const query = `SELECT * FROM students`;
 //   db.query(query, (err, result) => {
@@ -317,6 +437,319 @@ app.get('/view-student-info/:class', (req, res) => {
     }
   });
 });
+app.get('/view-student-info/:class/:year', (req, res) => {
+  const requestedClass = req.params.class;
+  const requestedYear = req.params.year;
+
+  // Using parameterized query to prevent SQL injection
+  const query = 'SELECT * FROM students WHERE class = ? AND year = ?';
+  db.query(query, [requestedClass, requestedYear], (err, result) => {
+    if (err) {
+      console.error('Error fetching student information: ', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.render('allstudentinfo/all-student-info', { title: 'Node.js App with HBS', students: result });
+    }
+  });
+});
+// app.get('/http://127.0.0.1:5500/page1.html/:year', (req, res) => {
+//   const requestedYear = req.params.year;
+
+//   const query = 'SELECT * FROM students WHERE year = ';
+//   db.query(query, [requestedYear], (err, result) => {
+//     if (err) {
+//       console.error('Error fetching student information: ', err);
+//       res.status(500).send('Internal Server Error');
+//     } else {
+//       res.render('pages/page1', { title: 'Node.js App with HBS', students: result });
+//     }
+//   });
+// });
+
+// app.get('/http://127.0.0.1:5500/page1.html/:year', (req, res) => {
+//   const requestedClass = 1;
+//   const gg = req.params.year;
+
+//   const requestedYear = parseInt(gg, 10);
+//   console.log( requestedClass);
+//   console.log(requestedYear);
+
+//   // Using parameterized query to prevent SQL injection
+//   const query = 'SELECT * FROM students WHERE class = ? AND year = ?'; // Two placeholders for class and year
+//   db.query(query, [requestedClass, requestedYear], (err, result) => {
+//     if (err) {
+//       console.error('Error fetching student information: ', err);
+//       res.status(500).send('Internal Server Error');
+//     } else {
+//       res.redirect('http://localhost:4000/distributed-book-entry');
+//       // console.log('JSON Response:', result);
+//       // res.redirect('/distributed-book-entry');
+//      // res.render('pages/page1', { title: 'Node.js App with HBS', students: result });
+//       //res.render('allstudentinfo/all-student-info', { title: 'Node.js App with HBS', students: result });
+//       //res.json(result);
+//     }
+//   });
+// });
+
+
+
+
+
+app.get('/class1-year-submit', (req, res) => {
+  // Handle the submitted year
+  const selectedYear = req.query.selectedYear;;
+  const requestedClass = 1;
+
+  const requestedYear = parseInt(selectedYear, 10);
+   console.log(requestedYear);
+  // Using parameterized query to prevent SQL injection
+  const query = 'SELECT * FROM students WHERE class = ? AND year = ?'; // Two placeholders for class and year
+  db.query(query, [requestedClass, requestedYear], (err, result) => {
+    if (err) {
+      console.error('Error fetching student information: ', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+     // res.redirect('http://localhost:4000/distributed-book-entry');
+      res.render('pages/page1', { title: 'Node.js App with HBS', students: result });
+      // console.log('JSON Response:', result);
+      // res.redirect('/distributed-book-entry');
+     // res.render('pages/page1', { title: 'Node.js App with HBS', students: result });
+      //res.render('allstudentinfo/all-student-info', { title: 'Node.js App with HBS', students: result });
+      //res.json(result);
+    }
+  });
+
+
+
+  // You can perform further actions with the selectedYear, for example, send it as a JSON response
+  //res.json({ selectedYear });
+});
+
+
+
+
+app.post('/update-student-info',  (req, res) => {
+  const {
+    classNo,
+    roll,
+    studyyear,
+    first_name,
+    last_name,
+    father_name,
+    mother_name,
+    phone,
+    address,
+    comment,
+  } = req.body;
+
+  const updateQuery = `
+    UPDATE students
+    SET
+      first_name = ?,
+      last_name = ?,
+      father_name = ?,
+      mother_name = ?,
+      phone = ?,
+      address = ?,
+      comment = ?
+    WHERE
+      class = ? AND
+      roll = ? AND
+      year = ?
+  `;
+
+  const values = [
+    first_name,
+    last_name,
+    father_name,
+    mother_name,
+    phone,
+    address,
+    comment,
+    classNo,
+    roll,
+    studyyear,
+  ];
+
+  db.query(updateQuery, values, async (error, results) => {
+    if (error) {
+      console.error('Error updating record: ' + error.message);
+      res.status(500).json({ error: 'Error updating record' });
+      return;
+    }
+
+    const selectedYear = studyyear;
+    if(classNo==1) res.redirect(`/class1-year-submit?selectedYear=${selectedYear}`);
+    else if(classNo==2) res.redirect(`/class2-year-submit?selectedYear=${selectedYear}`);
+    else if(classNo==3) res.redirect(`/class3-year-submit?selectedYear=${selectedYear}`);
+    else if(classNo==4) res.redirect(`/class4-year-submit?selectedYear=${selectedYear}`);
+    else if(classNo==5) res.redirect(`/class5-year-submit?selectedYear=${selectedYear}`);
+    
+  });
+});
+
+app.delete('/delete-student/:class/:roll/:year', async (req, res) => {
+  const { class: classNo, roll, year } = req.params;
+
+  // Delete from distributed_books table first due to foreign key constraint
+  const deleteBooksQuery = 'DELETE FROM distributed_books WHERE class = ? AND roll = ? AND year = ?';
+
+  try {
+    // Delete books
+    await new Promise((resolve, reject) => {
+      db.query(deleteBooksQuery, [classNo, roll, year], (error, results) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+
+    // Now, delete from the students table
+    const deleteStudentQuery = 'DELETE FROM students WHERE class = ? AND roll = ? AND year = ?';
+    await new Promise((resolve, reject) => {
+      db.query(deleteStudentQuery, [classNo, roll, year], (error, results) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+
+    // Send a 204 response indicating successful deletion
+    res.status(204).send();
+
+  } catch (error) {
+    console.error('Error:', error.message);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+app.get('/class2-year-submit', (req, res) => {
+  // Handle the submitted year
+  const selectedYear = req.query.selectedYear;;
+  const requestedClass = 2;
+
+  const requestedYear = parseInt(selectedYear, 10);
+   console.log(requestedYear);
+  // Using parameterized query to prevent SQL injection
+  const query = 'SELECT * FROM students WHERE class = ? AND year = ?'; // Two placeholders for class and year
+  db.query(query, [requestedClass, requestedYear], (err, result) => {
+    if (err) {
+      console.error('Error fetching student information: ', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+     // res.redirect('http://localhost:4000/distributed-book-entry');
+      res.render('pages/page2', { title: 'Node.js App with HBS', students: result });
+      // console.log('JSON Response:', result);
+      // res.redirect('/distributed-book-entry');
+     // res.render('pages/page1', { title: 'Node.js App with HBS', students: result });
+      //res.render('allstudentinfo/all-student-info', { title: 'Node.js App with HBS', students: result });
+      //res.json(result);
+    }
+  });
+
+
+  // You can perform further actions with the selectedYear, for example, send it as a JSON response
+  //res.json({ selectedYear });
+});
+
+app.get('/class3-year-submit', (req, res) => {
+  // Handle the submitted year
+  const selectedYear = req.query.selectedYear;;
+  const requestedClass = 3;
+
+  const requestedYear = parseInt(selectedYear, 10);
+   console.log(requestedYear);
+  // Using parameterized query to prevent SQL injection
+  const query = 'SELECT * FROM students WHERE class = ? AND year = ?'; // Two placeholders for class and year
+  db.query(query, [requestedClass, requestedYear], (err, result) => {
+    if (err) {
+      console.error('Error fetching student information: ', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+     // res.redirect('http://localhost:4000/distributed-book-entry');
+      res.render('pages/page3', { title: 'Node.js App with HBS', students: result });
+      // console.log('JSON Response:', result);
+      // res.redirect('/distributed-book-entry');
+     // res.render('pages/page1', { title: 'Node.js App with HBS', students: result });
+      //res.render('allstudentinfo/all-student-info', { title: 'Node.js App with HBS', students: result });
+      //res.json(result);
+    }
+  });
+
+
+  // You can perform further actions with the selectedYear, for example, send it as a JSON response
+  //res.json({ selectedYear });
+});
+
+
+
+
+app.get('/class4-year-submit', (req, res) => {
+  // Handle the submitted year
+  const selectedYear = req.query.selectedYear;;
+  const requestedClass = 4;
+
+  const requestedYear = parseInt(selectedYear, 10);
+   console.log(requestedYear);
+  // Using parameterized query to prevent SQL injection
+  const query = 'SELECT * FROM students WHERE class = ? AND year = ?'; // Two placeholders for class and year
+  db.query(query, [requestedClass, requestedYear], (err, result) => {
+    if (err) {
+      console.error('Error fetching student information: ', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+     // res.redirect('http://localhost:4000/distributed-book-entry');
+      res.render('pages/page4', { title: 'Node.js App with HBS', students: result });
+      // console.log('JSON Response:', result);
+      // res.redirect('/distributed-book-entry');
+     // res.render('pages/page1', { title: 'Node.js App with HBS', students: result });
+      //res.render('allstudentinfo/all-student-info', { title: 'Node.js App with HBS', students: result });
+      //res.json(result);
+    }
+  });
+
+
+  // You can perform further actions with the selectedYear, for example, send it as a JSON response
+  //res.json({ selectedYear });
+});
+
+
+app.get('/class5-year-submit', (req, res) => {
+  // Handle the submitted year
+  const selectedYear = req.query.selectedYear;;
+  const requestedClass = 5;
+
+  const requestedYear = parseInt(selectedYear, 10);
+   console.log(requestedYear);
+  // Using parameterized query to prevent SQL injection
+  const query = 'SELECT * FROM students WHERE class = ? AND year = ?'; // Two placeholders for class and year
+  db.query(query, [requestedClass, requestedYear], (err, result) => {
+    if (err) {
+      console.error('Error fetching student information: ', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+     // res.redirect('http://localhost:4000/distributed-book-entry');
+      res.render('pages/page5', { title: 'Node.js App with HBS', students: result });
+      // console.log('JSON Response:', result);
+      // res.redirect('/distributed-book-entry');
+     // res.render('pages/page1', { title: 'Node.js App with HBS', students: result });
+      //res.render('allstudentinfo/all-student-info', { title: 'Node.js App with HBS', students: result });
+      //res.json(result);
+    }
+  });
+
+
+  // You can perform further actions with the selectedYear, for example, send it as a JSON response
+  //res.json({ selectedYear });
+});
+
+
+
 
 
 app.get('/http://127.0.0.1:5500/page1.html', (req, res) => {

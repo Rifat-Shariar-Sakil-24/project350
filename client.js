@@ -1,29 +1,24 @@
-// Assume you are using some form of AJAX to submit the form asynchronously
-// Example using Fetch API
-document.getElementById('yourFormId').addEventListener('submit', async function (event) {
-    event.preventDefault();
-  
+document.addEventListener('DOMContentLoaded', () => {
+  const yearDropdown = document.getElementById('yearDropdown');
+
+  // Add event listener for dropdown change event
+  yearDropdown.addEventListener('change', async () => {
+    const selectedYear = yearDropdown.value;
+
     try {
-      const response = await fetch('/save-student-info', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          // Include your form data here
-        }),
-      });
-  
+      // Make an asynchronous request to the server to fetch updated information
+      const response = await fetch(`/api/students/${selectedYear}`);
       const data = await response.json();
-  
-      if (data.success) {
-        alert(data.message);
-        window.location.href = '/std-entry';
+
+      if (response.ok) {
+        // Handle the response data, e.g., update the table or other UI elements
+        console.log('Updated data:', data);
       } else {
-        alert('Error: ' + data.message);
+        console.error('Failed to fetch updated data:', data.error);
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error fetching updated data:', error);
     }
   });
-  
+});
+console.log("gggg");
