@@ -8,7 +8,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link href="https://assets.codepen.io/344846/style.css" rel="stylesheet" />
-  <script src="page1.js"></script>
   <link rel="stylesheet" href="/form.css" />
   <style>
     .edit-box {
@@ -28,7 +27,7 @@
 
 <body>
 
-  <div>
+    <div>
 
     {{!-- <button onclick="showEditBox()">Edit</button> --}}
   </div>
@@ -38,11 +37,10 @@
     {{!-- <label for="editedContent">Edit Content:</label>
     <textarea id="editedContent" rows="4" cols="50"></textarea>
     <br> --}}
-    <button onclick="saveChanges()">Save Changes</button>
     <button onclick="cancelEdit()">Cancel</button>
     <div class="container">
-      <form class="well form-horizontal" action="/update-student-info" method="POST" id="contact_form">
-        <input type="hidden" name="_method" value="PUT">
+      <form class="well form-horizontal" id="contact_form">
+
         <fieldset>
           <!-- Text input-first নাম -->
 
@@ -185,7 +183,7 @@
           <div class="form-group">
             <label class="col-md-4 control-label"></label>
             <div class="col-md-4">
-              <button type="submit" class="btn btn-warning">
+              <button type="button" class="btn btn-warning" onclick="submitForm()">
                 আপডেট করুন
                 <span class="glyphicon glyphicon-send"></span>
               </button>
@@ -198,10 +196,7 @@
   </div>
 
   <script>
-    // function showEditBox() {
-    //  const editBox = document.getElementById('editBox');
-    //  editBox.style.display = 'block';
-    // } 
+
     function showEditBox(class_no, roll, year, first_name, last_name, father_name, mother_name, phone, address, comment) {
       console.log(class_no, roll, year);
       const editBox = document.getElementById('editBox');
@@ -223,67 +218,70 @@
 
       document.getElementById('commentInput').value = comment;
 
-
-
-
-      // Your fetch API call here, for example:
-      // fetch(`/api/edit/${id}`)
-      // .then(response => response.json())
-      // .then(data => {
-      // Do something with the data, e.g., populate the edit box
-      //   console.log(data);
-      // })
-      //.catch(error => {
-      //   console.error('Error:', error);
-      // });
-
       editBox.style.display = 'block';
-    }
-    function showDeleteBox(class_no, roll, year) {
-
-    }
-
-
-    function saveChanges() {
-      const editedContent = document.getElementById('editedContent').value;
-      // Perform actions to save the changes (e.g., update the content on the page)
-
-      // For demonstration purposes, let's just log the edited content
-      console.log('Edited Content:', editedContent);
-
-      // Hide the edit box after saving changes
-      document.getElementById('editBox').style.display = 'none';
     }
 
     function cancelEdit() {
       // Hide the edit box without saving changes
       document.getElementById('editBox').style.display = 'none';
     }
+
+
   </script>
 
+  <script>
+    function submitForm() {
+      document.getElementById('editBox').style.display = 'none';
+      try {
+        // Get data from the form
 
+        const classNo = document.getElementById('classNoInput').value;
+        const firstName = document.getElementById('firstNameInput').value;
+        const lastName = document.getElementById('lastNameInput').value;
+        const rollNo = document.getElementById('rollNoInput').value;
+        const yearNo = document.getElementById('yearNoInput').value;
+        const fatherName = document.getElementById('fatherNameInput').value;
+        const motherName = document.getElementById('motherNameInput').value;
+        const phoneNo = document.getElementById('phoneNoInput').value;
+        const address = document.getElementById('addressInput').value;
+        const comment = document.getElementById('commentInput').value;
 
+        // Create a data object to send to the server
+        const data = {
+          classNo: classNo,
+          firstName: firstName,
+          lastName: lastName,
+          rollNo: rollNo,
+          yearNo: yearNo,
+          fatherName: fatherName,
+          motherName: motherName,
+          phoneNo: phoneNo,
+          address: address,
+          comment: comment
+        };
+        console.log(classNo, rollNo, yearNo);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // Send a PUT request to the server
+        fetch('/update-student-info', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+          .then(response => response.json())
+          .then(result => {
+            console.log('Update successful:', result);
+            updateResults();
+          })
+          .catch(error => {
+            console.error('Error updating data:', error);
+          });
+      } catch (error) {
+        console.error('An error occurred:', error);
+      }
+    }
+  </script>
 
 
 
@@ -496,128 +494,107 @@
           <div class="sm:p-7 p-4">
 
 
-            <form action="/class2-year-submit" method="get" id="yearForm">
-              <label for="yearDropdown">Select Year:</label>
-              <select id="yearDropdown" name="selectedYear" onchange="submitForm()">
-                <option value="2011">2011</option>
-                <option value="2012">2012</option>
-                <option value="2013">2013</option>
-                <option value="2014">2014</option>
-                <option value="2015">2015</option>
-                <option value="2016">2016</option>
-                <option value="2017">2017</option>
-                <option value="2018">2018</option>
-                <option value="2019">2019</option>
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
-              </select>
+            <form>
+            <label for="yearInput">Enter Year:</label>
+            <input type="text" id="yearInput" name="selectedYear" oninput="updateResults()">
+          </form>
 
-              <script>
-                // Function to get URL parameter value by name
-                function getUrlParameter(name) {
-                  const urlParams = new URLSearchParams(window.location.search);
-                  return urlParams.get(name);
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">নাম</th>
+                <th scope="col">বাবার নাম</th>
+                <th scope="col">মায়ের নাম</th>
+                <th scope="col">শিক্ষাবর্ষ</th>
+                <th scope="col">শ্রেণি</th>
+                <th scope="col">রোল</th>
+                <th scope="col">ফোন</th>
+                <th scope="col">ঠিকানা</th>
+                <th scope="col">অ্যাকশন</th>
+              </tr>
+            </thead>
+            <tbody id="studentTableBody">
+              <!-- Table body will be dynamically updated by JavaScript -->
+            </tbody>
+          </table>
+
+          <script>
+            async function updateResults() {
+              const yearInput = document.getElementById('yearInput');
+              const selectedYear = yearInput.value;
+
+              try {
+                const response = await fetch(`http://localhost:4000/class2-year-submit?selectedYear=${selectedYear}`);
+                if (response.ok) {
+                  const data = await response.json();
+                  updateTable(data);
+                } else {
+                  console.error('Error fetching data:', response.statusText);
                 }
+              } catch (error) {
+                console.error('Error:', error.message);
+              }
+            }
 
-                function submitForm() {
-                  // Submit the form when the user selects an option
-                  document.getElementById('yearForm').submit();
+            function updateTable(data) {
+              const tableBody = document.getElementById('studentTableBody');
+              tableBody.innerHTML = ''; // Clear existing content
+
+              data.forEach(student => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+        <td>${student.first_name} ${student.last_name}</td>
+        <td>${student.father_name}</td>
+        <td>${student.mother_name}</td>
+        <td>${student.year}</td>
+        <td>${student.class}</td>
+        <td>${student.roll}</td>
+        <td>${student.phone}</td>
+        <td>${student.address}</td>
+        <td>
+          <button onclick="showEditBox('${student.class}','${student.roll}', '${student.year}', 
+          '${student.first_name}', '${student.last_name}', '${student.father_name}', 
+          '${student.mother_name}', '${student.phone}', '${student.address}', '${student.comment}')">
+            Edit
+          </button>
+          <button onclick="deleteData('${student.class}','${student.roll}', '${student.year}')">
+            Delete Student
+          </button>
+        </td>
+      `;
+                tableBody.appendChild(row);
+              });
+            }
+
+            async function deleteData(classNo, roll, year) {
+              const confirmed = window.confirm('Are you sure you want to delete this student record?');
+
+              if (!confirmed) {
+                return;
+              }
+
+              try {
+                const response = await fetch(`http://localhost:4000/delete-student/${classNo}/${roll}/${year}`, {
+                  method: 'DELETE',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                });
+
+                if (response.ok) {
+                  console.log('Student record deleted successfully');
+                  // Update the table without refreshing the page
+                  updateResults();
+                } else {
+                  const data = await response.json();
+                  console.error(data.error);
                 }
+              } catch (error) {
+                console.error('Error:', error.message);
+              }
+            }
+          </script>
 
-                // Set the selected attribute based on the URL parameter
-                const selectedYearFromURL = getUrlParameter('selectedYear');
-                if (selectedYearFromURL) {
-                  const yearDropdown = document.getElementById('yearDropdown');
-                  const optionToSelect = yearDropdown.querySelector(`option[value="${selectedYearFromURL}"]`);
-                  if (optionToSelect) {
-                    optionToSelect.selected = true;
-                  }
-                }
-              </script>
-            </form>
-
-
-
-            <table class="table">
-              <thead>
-                <tr>
-
-                  <th scope="col">নাম</th>
-                  <th scope="col">বাবার নাম</th>
-                  <th scope="col">মায়ের নাম</th>
-                  <th scope="col">শিক্ষাবর্ষ</th>
-                  <th scope="col">শ্রেণি</th>
-                  <th scope="col">রোল</th>
-                  <th scope="col">ফোন</th>
-                  <th scope="col">ঠিকানা</th>
-                  <th scope="col">অতিরিক্ত</th>
-
-                  <th scope="col">অ্যাকশন</th>
-
-
-                </tr>
-              </thead>
-              <tbody>
-
-                {{#each students}}
-                <tr>
-                  {{!-- <th scope="row">{{ id }}</th> --}}
-                  <td>{{first_name}} {{last_name}}</td>
-                  <td> {{ father_name }}</td>
-                  <td>{{ mother_name }}</td>
-                  <td>{{ year }}</td>
-                  <td>{{ class }}</td>
-                  <td>{{ roll }}</td>
-                  <td>{{ phone }}</td>
-                  <td>{{ comment }}</td>
-                  <td>{{ address }}</td>
-                  <td>
-                    <button
-                      onclick="showEditBox('{{class}}','{{roll}}', '{{year}}', 
-                      '{{first_name}}', '{{last_name}}', '{{father_name}}', '{{mother_name}}', '{{phone}}', '{{address}}', '{{comment}}' )">Edit</button>
-                    {{!-- <a href="/edit-student/{{ id }}">Edit</a> --}}
-                    {{!-- <a href="/delete-student/{{ id }}">Delete</a> --}}
-                    {{!-- <button onclick="showDeleteBox('{{class}}','{{roll}}', '{{year}}'">Delete</button> --}}
-                    <button id="deleteButton" onclick="deleteData('{{class}}','{{roll}}', '{{year}}')">Delete
-                      Student</button>
-                    <script>
-                      async function deleteData(classNo, roll, year) {
-                        try {
-                          console.log('clicked');
-                          const response = await fetch(`http://localhost:4000/delete-student/${classNo}/${roll}/${year}`, {
-                            method: 'DELETE',
-                            headers: {
-                              'Content-Type': 'application/json',
-                              // Add any additional headers if needed
-                            },
-                          });
-
-                          if (response.ok) {
-                            // The request was successful
-                            console.log('Student record deleted successfully');
-                            // Redirect the user to another page using JavaScript
-                            window.location.href = `/class${classNo}-year-submit?selectedYear=${year}&message=Student record deleted successfully`;
-                          } else {
-                            // The request was not successful, handle the error
-                            const data = await response.json();
-                            console.error(data.error);
-                          }
-                        } catch (error) {
-                          console.error('Error:', error.message);
-                        }
-                      }
-                    </script>
-
-                  </td>
-
-                </tr>
-
-                {{/each}}
-
-              </tbody>
-            </table>
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
               integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

@@ -706,126 +706,78 @@ app.delete('/delete-student/:class/:roll/:year', async (req, res) => {
 
 
 app.get('/class2-year-submit', (req, res) => {
-  // Handle the submitted year
-  const selectedYear = req.query.selectedYear;;
+  const selectedYear = req.query.selectedYear;
   const requestedClass = 2;
 
   const requestedYear = parseInt(selectedYear, 10);
-   console.log(requestedYear);
-  // Using parameterized query to prevent SQL injection
-  const query = 'SELECT * FROM students WHERE class = ? AND year = ?'; // Two placeholders for class and year
+  
+  const query = 'SELECT * FROM students WHERE class = ? AND year = ?';
+
   db.query(query, [requestedClass, requestedYear], (err, result) => {
     if (err) {
       console.error('Error fetching student information: ', err);
-      res.status(500).send('Internal Server Error');
+      res.status(500).json({ error: 'Internal Server Error' });
     } else {
-     // res.redirect('http://localhost:4000/distributed-book-entry');
-      res.render('pages/page2', { title: 'Node.js App with HBS', students: result });
-      // console.log('JSON Response:', result);
-      // res.redirect('/distributed-book-entry');
-     // res.render('pages/page1', { title: 'Node.js App with HBS', students: result });
-      //res.render('allstudentinfo/all-student-info', { title: 'Node.js App with HBS', students: result });
-      //res.json(result);
+      res.json(result);
     }
   });
-
-
-  // You can perform further actions with the selectedYear, for example, send it as a JSON response
-  //res.json({ selectedYear });
 });
 
 app.get('/class3-year-submit', (req, res) => {
-  // Handle the submitted year
-  const selectedYear = req.query.selectedYear;;
+  const selectedYear = req.query.selectedYear;
   const requestedClass = 3;
 
   const requestedYear = parseInt(selectedYear, 10);
-   console.log(requestedYear);
-  // Using parameterized query to prevent SQL injection
-  const query = 'SELECT * FROM students WHERE class = ? AND year = ?'; // Two placeholders for class and year
+  
+  const query = 'SELECT * FROM students WHERE class = ? AND year = ?';
+
   db.query(query, [requestedClass, requestedYear], (err, result) => {
     if (err) {
       console.error('Error fetching student information: ', err);
-      res.status(500).send('Internal Server Error');
+      res.status(500).json({ error: 'Internal Server Error' });
     } else {
-     // res.redirect('http://localhost:4000/distributed-book-entry');
-      res.render('pages/page3', { title: 'Node.js App with HBS', students: result });
-      // console.log('JSON Response:', result);
-      // res.redirect('/distributed-book-entry');
-     // res.render('pages/page1', { title: 'Node.js App with HBS', students: result });
-      //res.render('allstudentinfo/all-student-info', { title: 'Node.js App with HBS', students: result });
-      //res.json(result);
+      res.json(result);
     }
   });
-
-
-  // You can perform further actions with the selectedYear, for example, send it as a JSON response
-  //res.json({ selectedYear });
 });
-
 
 
 
 app.get('/class4-year-submit', (req, res) => {
-  // Handle the submitted year
-  const selectedYear = req.query.selectedYear;;
+  const selectedYear = req.query.selectedYear;
   const requestedClass = 4;
 
   const requestedYear = parseInt(selectedYear, 10);
-   console.log(requestedYear);
-  // Using parameterized query to prevent SQL injection
-  const query = 'SELECT * FROM students WHERE class = ? AND year = ?'; // Two placeholders for class and year
+  
+  const query = 'SELECT * FROM students WHERE class = ? AND year = ?';
+
   db.query(query, [requestedClass, requestedYear], (err, result) => {
     if (err) {
       console.error('Error fetching student information: ', err);
-      res.status(500).send('Internal Server Error');
+      res.status(500).json({ error: 'Internal Server Error' });
     } else {
-     // res.redirect('http://localhost:4000/distributed-book-entry');
-      res.render('pages/page4', { title: 'Node.js App with HBS', students: result });
-      // console.log('JSON Response:', result);
-      // res.redirect('/distributed-book-entry');
-     // res.render('pages/page1', { title: 'Node.js App with HBS', students: result });
-      //res.render('allstudentinfo/all-student-info', { title: 'Node.js App with HBS', students: result });
-      //res.json(result);
+      res.json(result);
     }
   });
-
-
-  // You can perform further actions with the selectedYear, for example, send it as a JSON response
-  //res.json({ selectedYear });
 });
 
-
 app.get('/class5-year-submit', (req, res) => {
-  // Handle the submitted year
-  const selectedYear = req.query.selectedYear;;
+  const selectedYear = req.query.selectedYear;
   const requestedClass = 5;
 
   const requestedYear = parseInt(selectedYear, 10);
-   console.log(requestedYear);
-  // Using parameterized query to prevent SQL injection
-  const query = 'SELECT * FROM students WHERE class = ? AND year = ?'; // Two placeholders for class and year
+  
+  const query = 'SELECT * FROM students WHERE class = ? AND year = ?';
+
   db.query(query, [requestedClass, requestedYear], (err, result) => {
     if (err) {
       console.error('Error fetching student information: ', err);
-      res.status(500).send('Internal Server Error');
+      res.status(500).json({ error: 'Internal Server Error' });
     } else {
-     // res.redirect('http://localhost:4000/distributed-book-entry');
-      res.render('pages/page5', { title: 'Node.js App with HBS', students: result });
-      // console.log('JSON Response:', result);
-      // res.redirect('/distributed-book-entry');
-     // res.render('pages/page1', { title: 'Node.js App with HBS', students: result });
-      //res.render('allstudentinfo/all-student-info', { title: 'Node.js App with HBS', students: result });
-      //res.json(result);
+      res.json(result);
     }
   });
-
-
-  // You can perform further actions with the selectedYear, for example, send it as a JSON response
-  //res.json({ selectedYear });
 });
-
-
 
 
 
