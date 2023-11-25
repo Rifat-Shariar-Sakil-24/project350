@@ -8,9 +8,271 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link href="https://assets.codepen.io/344846/style.css" rel="stylesheet" />
+  <script src="page1.js"></script>
+  <link rel="stylesheet" href="/form.css" />
+  <style>
+    .edit-box {
+      width: 400px;
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
 </head>
 
 <body>
+
+  <div>
+
+    {{!-- <button onclick="showEditBox()">Edit</button> --}}
+  </div>
+
+  <!-- Edit Box -->
+  <div id="editBox" class="edit-box">
+    {{!-- <label for="editedContent">Edit Content:</label>
+    <textarea id="editedContent" rows="4" cols="50"></textarea>
+    <br> --}}
+    <button onclick="saveChanges()">Save Changes</button>
+    <button onclick="cancelEdit()">Cancel</button>
+    <div class="container">
+      <form class="well form-horizontal" action="/update-student-info" method="POST" id="contact_form">
+        <input type="hidden" name="_method" value="PUT">
+        <fieldset>
+          <!-- Text input-first নাম -->
+
+          <div class="form-group">
+            <label class="col-md-4 control-label">শ্রেণি</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <label for="classNoInput"></label>
+                <!-- Existing input field with readonly attribute -->
+                {{!-- <select id="classNoInput" name="classNo" class="form-control" required>
+                  <option value="1">প্রথম শ্রেণি</option>
+                </select> --}}
+                <input type="text" id="classNoInput" name="classNo" class="form-control" readonly>
+
+
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-4 control-label">প্রথম নাম</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input name="first_name" id="firstNameInput" class="form-control" type="text" required />
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input-last নাম
+       -->
+
+          <div class="form-group">
+            <label class="col-md-4 control-label">শেষ নাম</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input name="last_name" id="lastNameInput" class="form-control" type="text" required />
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input-roll -->
+
+
+          <div class="form-group">
+            <label class="col-md-4 control-label">রোল</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+
+                {{!-- <input name="roll" placeholder="ছাত্র/ছাত্রীর রোল নম্বর এন্ট্রি করুন" class="form-control"
+                  type="number" step="1" required />
+                <input type="text" id="classNoInput" name="classNo" class="form-control" readonly> --}}
+                <input step="1" type="number" id="rollNoInput" name="roll" class="form-control" readonly>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-4 control-label">শিক্ষাবর্ষ</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                {{!-- <input name="studyyear" placeholder="ছাত্র/ছাত্রীর শিক্ষাবর্ষ এন্ট্রি করুন" class="form-control"
+                  type="number" step="1" required /> --}}
+
+                <input type="number" id="yearNoInput" step="1" name="studyyear" class="form-control" readonly>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Text input-father's নাম
+       -->
+          <div class="form-group">
+            <label class="col-md-4 control-label">পিতার নাম</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input name="father_name" id="fatherNameInput" class="form-control" type="text" required />
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input-father's নাম
+       -->
+          <div class="form-group">
+            <label class="col-md-4 control-label">মায়ের নাম</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input name="mother_name" id="motherNameInput" class="form-control" type="text" required />
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input-phone -->
+          <div class="form-group">
+            <label class="col-md-4 control-label">ফোন নম্বর</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                <input name="phone" id="phoneNoInput" class="form-control" type="text" required />
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input-address-->
+          <div class="form-group">
+            <label class="col-md-4 control-label">ঠিকানা</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-হোমপেজ"></i></span>
+                <input name="address" id="addressInput" class="form-control" type="text" required />
+              </div>
+            </div>
+          </div>
+
+          <!-- Text area-description -->
+          <div class="form-group">
+            <label class="col-md-4 control-label">ছাত্র/ছাত্রীর বর্ণনা</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                <textarea class="form-control" id="commentInput" name="comment" required></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Success message -->
+          {{!-- <div class="alert alert-success" role="alert" id="success_message">
+            Success
+            <i class="glyphicon glyphicon-thumbs-up"></i>
+            Thanks for contacting us, we will get back to you shortly.
+          </div> --}}
+
+          <!-- Submit Button -->
+          <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+              <button type="submit" class="btn btn-warning">
+                আপডেট করুন
+                <span class="glyphicon glyphicon-send"></span>
+              </button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
+  </div>
+
+  <script>
+    // function showEditBox() {
+    //  const editBox = document.getElementById('editBox');
+    //  editBox.style.display = 'block';
+    // } 
+    function showEditBox(class_no, roll, year, first_name, last_name, father_name, mother_name, phone, address, comment) {
+      console.log(class_no, roll, year);
+      const editBox = document.getElementById('editBox');
+
+
+      document.getElementById('classNoInput').value = class_no;
+      document.getElementById('rollNoInput').value = roll;
+      document.getElementById('yearNoInput').value = year;
+
+
+      document.getElementById('firstNameInput').value = first_name;
+      document.getElementById('lastNameInput').value = last_name;
+      document.getElementById('fatherNameInput').value = father_name;
+
+      document.getElementById('motherNameInput').value = mother_name;
+      document.getElementById('phoneNoInput').value = phone;
+      document.getElementById('addressInput').value = address;
+
+
+      document.getElementById('commentInput').value = comment;
+
+
+
+
+      // Your fetch API call here, for example:
+      // fetch(`/api/edit/${id}`)
+      // .then(response => response.json())
+      // .then(data => {
+      // Do something with the data, e.g., populate the edit box
+      //   console.log(data);
+      // })
+      //.catch(error => {
+      //   console.error('Error:', error);
+      // });
+
+      editBox.style.display = 'block';
+    }
+    function showDeleteBox(class_no, roll, year) {
+
+    }
+
+
+    function saveChanges() {
+      const editedContent = document.getElementById('editedContent').value;
+      // Perform actions to save the changes (e.g., update the content on the page)
+
+      // For demonstration purposes, let's just log the edited content
+      console.log('Edited Content:', editedContent);
+
+      // Hide the edit box after saving changes
+      document.getElementById('editBox').style.display = 'none';
+    }
+
+    function cancelEdit() {
+      // Hide the edit box without saving changes
+      document.getElementById('editBox').style.display = 'none';
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <div class="bg-white  dark:text-gray-900 text-gray-700 h-screen flex overflow-hidden text-sm"
     style="background-color: rgb(255, 255, 255);">
@@ -295,8 +557,42 @@
                   <td>{{ comment }}</td>
                   <td>{{ address }}</td>
                   <td>
-                    <a href="/edit-student/{{ id }}">Edit</a>
-                    <a href="/delete-student/{{ id }}">Delete</a>
+                    <button
+                      onclick="showEditBox('{{class}}','{{roll}}', '{{year}}', 
+                      '{{first_name}}', '{{last_name}}', '{{father_name}}', '{{mother_name}}', '{{phone}}', '{{address}}', '{{comment}}' )">Edit</button>
+                    {{!-- <a href="/edit-student/{{ id }}">Edit</a> --}}
+                    {{!-- <a href="/delete-student/{{ id }}">Delete</a> --}}
+                    {{!-- <button onclick="showDeleteBox('{{class}}','{{roll}}', '{{year}}'">Delete</button> --}}
+                    <button id="deleteButton" onclick="deleteData('{{class}}','{{roll}}', '{{year}}')">Delete
+                      Student</button>
+                    <script>
+                      async function deleteData(classNo, roll, year) {
+                        try {
+                          console.log('clicked');
+                          const response = await fetch(`http://localhost:4000/delete-student/${classNo}/${roll}/${year}`, {
+                            method: 'DELETE',
+                            headers: {
+                              'Content-Type': 'application/json',
+                              // Add any additional headers if needed
+                            },
+                          });
+
+                          if (response.ok) {
+                            // The request was successful
+                            console.log('Student record deleted successfully');
+                            // Redirect the user to another page using JavaScript
+                            window.location.href = `/class${classNo}-year-submit?selectedYear=${year}&message=Student record deleted successfully`;
+                          } else {
+                            // The request was not successful, handle the error
+                            const data = await response.json();
+                            console.error(data.error);
+                          }
+                        } catch (error) {
+                          console.error('Error:', error.message);
+                        }
+                      }
+                    </script>
+
                   </td>
 
                 </tr>
