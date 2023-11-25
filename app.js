@@ -333,29 +333,83 @@ app.post('/save-student-info', (req, res) => {
   }
 );
 
-app.post('/save-distributed-book-info-class1', (req, res) => {  
-  try {
-    // Extract data from req.body
-    const { classNo, roll, bangla, english, math, comment } = req.body;
+// app.post('/save-distributed-book-info-class1', (req, res) => {  
+//   try {
+//     // Extract data from req.body
+//     const { classNo, roll, bangla, english, math, comment } = req.body;
 
-    // Perform the query
-    const query = `
-      INSERT INTO distributed_books 
-      (class, roll, bangla, english, math, science, social_science, religion, comment) 
-      VALUES (?, ?, ?, ?, ?, 0, 0, 0, ?)`;
+//     // Perform the query
+//     const query = `
+//       INSERT INTO distributed_books 
+//       (class, roll, bangla, english, math, science, social_science, religion, comment) 
+//       VALUES (?, ?, ?, ?, ?, 0, 0, 0, ?)`;
     
-    db.query(query, [classNo, roll, bangla, english, math, comment]);
+//     db.query(query, [classNo, roll, bangla, english, math, comment]);
 
- //   res.send('Data saved successfully!');
-    res.redirect('/distributed-book-entry-class1');
+//  //   res.send('Data saved successfully!');
+//     res.redirect('/distributed-book-entry-class1');
 
-  } catch (error) {
-    console.error('Error saving data to the database:', error);
-    res.status(500).send('Internal Server Error');
+//   } catch (error) {
+//     console.error('Error saving data to the database:', error);
+//     res.status(500).send('Internal Server Error');
+//   }
+//   console.log(req.body);
+// });
+// app.post('/save-distributed-book-info-class1', (req, res) => {
+//   console.log('ashche');
+//   const { classNo, roll, year, subjects, comment } = req.body;
+
+//   // Validate the received data (you can customize this based on your requirements)
+//   if (!classNo || !roll || !year || !subjects || !Array.isArray(subjects) || subjects.length !== 3) {
+//     return res.status(400).json({ error: 'Invalid data received' });
+//   }
+
+//   // Your database insertion logic here
+//   const insertQuery = `
+//     INSERT INTO distributed_books (class, roll, year, subjects, comment)
+//     VALUES (?, ?, ?, ?, ?)
+//   `;
+
+//   const values = [classNo, roll, year, JSON.stringify(subjects), comment];
+
+//   db.query(insertQuery, values, (error, results) => {
+//     if (error) {
+//       console.error('Error inserting distributed book information: ' + error.message);
+//       return res.status(500).json({ error: 'Internal Server Error' });
+//     }
+
+//     // Respond with a success message
+//     res.status(200).json({ message: 'Distributed book information saved successfully.' });
+//   });
+// });
+app.post('/save-distributed-book-info-class1', (req, res) => {
+  const { classNo, roll, year, subjects, comment } = req.body;
+
+  console.log('Received Data:', req.body); // Log the received data
+
+  // Validate the received data (you can customize this based on your requirements)
+  if (!classNo || !roll || !year || !Array.isArray(subjects) || subjects.length !== 3) {
+    return res.status(400).json({ error: 'Invalid data received' });
   }
-  console.log(req.body);
-});
 
+  // Your database insertion logic here
+  const insertQuery = `
+    INSERT INTO distributed_books (class, roll, year, subjects, comment)
+    VALUES (?, ?, ?, ?, ?)
+  `;
+
+  const values = [classNo, roll, year, JSON.stringify(subjects), comment];
+
+  db.query(insertQuery, values, (error, results) => {
+    if (error) {
+      console.error('Error inserting distributed book information: ' + error.message);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    // Respond with a success message
+    res.status(200).json({ message: 'Distributed book information saved successfully.' });
+  });
+});
 
 // similarlarly jokhon nctb entry er form submit korbo tokhon oi data gula save korbo
 
@@ -778,6 +832,49 @@ app.get('/class5-year-submit', (req, res) => {
     }
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// books of each classes to student
+app.get('/class1-year-submit-books-distributed-to-students', (req, res) => {
+  const selectedYear = req.query.selectedYear;
+  const requestedClass = 1;
+
+  const requestedYear = parseInt(selectedYear, 10);
+  
+  const query = 'SELECT * FROM distributed_books WHERE class = ? AND year = ?';
+
+  db.query(query, [requestedClass, requestedYear], (err, result) => {
+    if (err) {
+      console.error('Error fetching student information: ', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+
+
+
+
+
+
+
+
 
 
 

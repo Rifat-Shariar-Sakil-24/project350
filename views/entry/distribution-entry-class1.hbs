@@ -20,7 +20,7 @@
 
 <body>
   <div class="container">
-    <form class="well form-horizontal" action="/save-distributed-book-info-class1" method="post" id="contact_form">
+    <form class="well form-horizontal" id="contact_form">
       <fieldset>
         <!-- Text input-first name -->
 
@@ -29,9 +29,9 @@
           <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-              <label for="classNoInput"></label>
+              <label for="classNo"></label>
               <!-- Existing input field with readonly attribute -->
-              <select id="classNoInput" name="classNo" class="form-control" required>
+              <select id="classNo" name="classNo" class="form-control" required>
                 <option value="1">প্রথম শ্রেণি</option>
               </select>
 
@@ -47,62 +47,68 @@
           <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-              <input name="roll" placeholder="Enter student's interger roll" class="form-control" type="number" step="1"
-                required />
+              <input id="roll" name="roll" placeholder="Enter student's interger roll" class="form-control"
+                type="number" step="1" required />
             </div>
           </div>
         </div>
 
 
+        <!-- number year-roll -->
+        <div class="form-group">
+          <label class="col-md-4 control-label">শিক্ষাবর্ষ</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+              <input id="year" name="year" placeholder="Enter student's study year" class="form-control" type="number"
+                step="1" required />
+            </div>
+          </div>
+        </div>
 
-        <!-- yes/no checks -->
-        <div class="form-group">
-          <label class="col-md-4 control-label">Has this student received Bangla Textbook?</label>
-          <div class="col-md-4">
-            <div class="radio">
-              <label>
-                <input type="radio" name="bangla" value="1" /> Yes
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="bangla" value="0" /> No
-              </label>
+        {{!-- <div class="form-group">
+          <label class="col-md-4 control-label">শিক্ষার্থীর নাম</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+              <input name="name" placeholder="" class="form-control" type="text" />
             </div>
           </div>
-        </div>
-        <!-- yes/no checks -->
-        <div class="form-group">
-          <label class="col-md-4 control-label">Has this student received English Textbook?</label>
-          <div class="col-md-4">
-            <div class="radio">
-              <label>
-                <input type="radio" name="english" value="1" /> Yes
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="english" value="0" /> No
-              </label>
-            </div>
-          </div>
-        </div>
-        <!-- yes/no checks -->
-        <div class="form-group">
-          <label class="col-md-4 control-label">Has this student received Math Textbook?</label>
-          <div class="col-md-4">
-            <div class="radio">
-              <label>
-                <input type="radio" name="math" value="1" /> Yes
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="math" value="0" /> No
-              </label>
-            </div>
-          </div>
-        </div>
+        </div> --}}
+
+
+
+
+        <!-- Checkbox checks -->
+        <!-- Checkbox checks -->
+        <!-- Checkbox checks -->
+<div class="form-group">
+  <label class="col-md-4 control-label">Has this student received Bangla Textbook?</label>
+  <div class="col-md-4">
+    <input type="checkbox" id="bangla" name="subjects" value="0" />
+    <label for="bangla">Yes</label>
+  </div>
+</div>
+
+<!-- Checkbox checks -->
+<div class="form-group">
+  <label class="col-md-4 control-label">Has this student received English Textbook?</label>
+  <div class="col-md-4">
+    <input type="checkbox" id="english" name="subjects" value="0" />
+    <label for="english">Yes</label>
+  </div>
+</div>
+
+<!-- Checkbox checks -->
+<div class="form-group">
+  <label class="col-md-4 control-label">Has this student received Math Textbook?</label>
+  <div class="col-md-4">
+    <input type="checkbox" id="math" name="subjects" value="0" />
+    <label for="math">Yes</label>
+  </div>
+</div>
+
+
 
 
 
@@ -113,7 +119,7 @@
           <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-              <textarea class="form-control" name="comment" placeholder="Student Description"></textarea>
+              <textarea id="comment" class="form-control" name="comment" placeholder="Student Description"></textarea>
             </div>
           </div>
         </div>
@@ -128,13 +134,70 @@
         <div class="form-group">
           <label class="col-md-4 control-label"></label>
           <div class="col-md-4">
-            <button type="submit" class="btn btn-warning">
+            <button type="button" class="btn btn-warning" onclick="submitForm()">
               Submit <span class="glyphicon glyphicon-send"></span>
             </button>
           </div>
         </div>
       </fieldset>
     </form>
+
+   <script>
+  function submitForm() {
+    const form = document.getElementById('contact_form');
+    const formData = new FormData(form);
+  //  console.log(document.getElementById('bangla').checked);
+
+    console.log(document.getElementById('bangla').checked);
+      console.log(document.getElementById('english').checked);
+        console.log(document.getElementById('math').checked);
+    
+
+    // Convert FormData to JSON object
+    const jsonObject = {};
+    let co = 0;
+    formData.forEach((value, key) => {
+      if (key === 'subjects') {
+        if (!jsonObject[key]) {
+         
+           jsonObject[key] = ['0', '0', '0'];
+        } 
+      } else {
+        jsonObject[key] = value;
+      }
+    });
+    jsonObject['subjects'][0] = document.getElementById('bangla').checked;
+     jsonObject['subjects'][1] = document.getElementById('english').checked;
+      jsonObject['subjects'][2] = document.getElementById('math').checked;
+
+
+     
+
+    // Make a POST request to your server with the JSON data
+    fetch('/save-distributed-book-info-class1', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(jsonObject),
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data && data.message) {
+        alert(data.message);
+        // You can perform additional actions based on the server response
+      } else {
+        alert('Server response is undefined or missing message.');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error.message);
+      alert('An error occurred while submitting the form.');
+    });
+  }
+</script>
+
+
 
     <a href="http://localhost:4000/http://127.0.0.1:5500/main-menu.html">
       <button class="back-btn">Back</button>
