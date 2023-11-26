@@ -22,6 +22,7 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
   </style>
+  
   </head>
 
   <body>
@@ -60,28 +61,6 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <label class="col-md-4 control-label">প্রথম নাম</label>
-            <div class="col-md-4 inputGroupContainer">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input name="first_name" id="firstNameInput" class="form-control" type="text" required />
-              </div>
-            </div>
-          </div>
-
-          <!-- Text input-last নাম
-       -->
-
-          <div class="form-group">
-            <label class="col-md-4 control-label">শেষ নাম</label>
-            <div class="col-md-4 inputGroupContainer">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input name="last_name" id="lastNameInput" class="form-control" type="text" required />
-              </div>
-            </div>
-          </div>
 
           <!-- Text input-roll -->
 
@@ -114,51 +93,38 @@
           </div>
 
 
-          <!-- Text input-father's নাম
-       -->
-          <div class="form-group">
-            <label class="col-md-4 control-label">পিতার নাম</label>
-            <div class="col-md-4 inputGroupContainer">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input name="father_name" id="fatherNameInput" class="form-control" type="text" required />
-              </div>
-            </div>
-          </div>
+    
 
-          <!-- Text input-father's নাম
-       -->
-          <div class="form-group">
-            <label class="col-md-4 control-label">মায়ের নাম</label>
-            <div class="col-md-4 inputGroupContainer">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input name="mother_name" id="motherNameInput" class="form-control" type="text" required />
-              </div>
-            </div>
-          </div>
+        <!-- Checkbox checks -->
+        <!-- Checkbox checks -->
+        <!-- Checkbox checks -->
+<div class="form-group">
+  <label class="col-md-4 control-label">Has this student received Bangla Textbook?</label>
+  <div class="col-md-4">
+    <input type="checkbox" id="bangla" name="subjects" value="0" />
+    <label for="bangla">Yes</label>
+  </div>
+</div>
 
-          <!-- Text input-phone -->
-          <div class="form-group">
-            <label class="col-md-4 control-label">ফোন নম্বর</label>
-            <div class="col-md-4 inputGroupContainer">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                <input name="phone" id="phoneNoInput" class="form-control" type="text" required />
-              </div>
-            </div>
-          </div>
+<!-- Checkbox checks -->
+<div class="form-group">
+  <label class="col-md-4 control-label">Has this student received English Textbook?</label>
+  <div class="col-md-4">
+    <input type="checkbox" id="english" name="subjects" value="0" />
+    <label for="english">Yes</label>
+  </div>
+</div>
 
-          <!-- Text input-address-->
-          <div class="form-group">
-            <label class="col-md-4 control-label">ঠিকানা</label>
-            <div class="col-md-4 inputGroupContainer">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-হোমপেজ"></i></span>
-                <input name="address" id="addressInput" class="form-control" type="text" required />
-              </div>
-            </div>
-          </div>
+<!-- Checkbox checks -->
+<div class="form-group">
+  <label class="col-md-4 control-label">Has this student received Math Textbook?</label>
+  <div class="col-md-4">
+    <input type="checkbox" id="math" name="subjects" value="0" />
+    <label for="math">Yes</label>
+  </div>
+</div>
+
+
 
           <!-- Text area-description -->
           <div class="form-group">
@@ -196,7 +162,7 @@
 
   <script>
 
-    function showEditBox(class_no, roll, year, first_name, last_name, father_name, mother_name, phone, address, comment) {
+    function showEditBox(class_no, roll, year, comment) {
       console.log(class_no, roll, year);
       const editBox = document.getElementById('editBox');
 
@@ -206,13 +172,13 @@
       document.getElementById('yearNoInput').value = year;
 
 
-      document.getElementById('firstNameInput').value = first_name;
-      document.getElementById('lastNameInput').value = last_name;
-      document.getElementById('fatherNameInput').value = father_name;
+    //  document.getElementById('firstNameInput').value = first_name;
+     // document.getElementById('lastNameInput').value = last_name;
+     // document.getElementById('fatherNameInput').value = father_name;
 
-      document.getElementById('motherNameInput').value = mother_name;
-      document.getElementById('phoneNoInput').value = phone;
-      document.getElementById('addressInput').value = address;
+     // document.getElementById('motherNameInput').value = mother_name;
+     // document.getElementById('phoneNoInput').value = phone;
+     // document.getElementById('addressInput').value = address;
 
 
       document.getElementById('commentInput').value = comment;
@@ -235,14 +201,8 @@
         // Get data from the form
 
         const classNo = document.getElementById('classNoInput').value;
-        const firstName = document.getElementById('firstNameInput').value;
-        const lastName = document.getElementById('lastNameInput').value;
         const rollNo = document.getElementById('rollNoInput').value;
         const yearNo = document.getElementById('yearNoInput').value;
-        const fatherName = document.getElementById('fatherNameInput').value;
-        const motherName = document.getElementById('motherNameInput').value;
-        const phoneNo = document.getElementById('phoneNoInput').value;
-        const address = document.getElementById('addressInput').value;
         const comment = document.getElementById('commentInput').value;
 
         // Create a data object to send to the server
@@ -705,6 +665,7 @@ function updateTable(data) {
   });
 }
 
+
 function renderSubjects(bookInfo) {
   if (!bookInfo || !bookInfo.subjects) {
     return '<td></td><td></td><td></td>'; // Return empty tds if no book info
@@ -714,13 +675,21 @@ function renderSubjects(bookInfo) {
 
   // Assuming subjects is an array of three elements
   const [bangla, english, math] = subjects;
+  console.log(bangla);
+  console.log(english);
+  console.log(math);
 
   return `
-    <td>${bangla}</td>
-    <td>${english}</td>
-    <td>${math}</td>
+    ${generateCheckbox(bangla)}
+    ${generateCheckbox(english)}
+    ${generateCheckbox(math)}
   `;
 }
+
+const generateCheckbox = (value) => `<td><input type="checkbox" ${value ? 'checked' : ''} disabled></td>`;
+
+
+
 
           </script>
                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
