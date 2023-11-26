@@ -144,57 +144,46 @@
 
    <script>
   function submitForm() {
-    const form = document.getElementById('contact_form');
-    const formData = new FormData(form);
-  //  console.log(document.getElementById('bangla').checked);
+  const form = document.getElementById('contact_form');
+  const formData = new FormData(form);
 
-    console.log(document.getElementById('bangla').checked);
-      console.log(document.getElementById('english').checked);
-        console.log(document.getElementById('math').checked);
-    
+  // Convert FormData to JSON object
+  const jsonObject = {};
+  jsonObject['subjects'] = [false, false, false]; // Initialize with boolean values
 
-    // Convert FormData to JSON object
-    const jsonObject = {};
-    let co = 0;
-    formData.forEach((value, key) => {
-      if (key === 'subjects') {
-        if (!jsonObject[key]) {
-         
-           jsonObject[key] = ['0', '0', '0'];
-        } 
-      } else {
-        jsonObject[key] = value;
-      }
-    });
-    jsonObject['subjects'][0] = document.getElementById('bangla').checked;
-     jsonObject['subjects'][1] = document.getElementById('english').checked;
-      jsonObject['subjects'][2] = document.getElementById('math').checked;
+  formData.forEach((value, key) => {
+    if (key !== 'subjects') {
+      jsonObject[key] = value;
+    }
+  });
 
+  // Update the subjects array based on checkbox states
+  jsonObject['subjects'][0] = document.getElementById('bangla').checked;
+  jsonObject['subjects'][1] = document.getElementById('english').checked;
+  jsonObject['subjects'][2] = document.getElementById('math').checked;
 
-     
-
-    // Make a POST request to your server with the JSON data
-    fetch('/save-distributed-book-info-class1', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(jsonObject),
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data && data.message) {
-        alert(data.message);
-        // You can perform additional actions based on the server response
-      } else {
-        alert('Server response is undefined or missing message.');
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error.message);
-      alert('An error occurred while submitting the form.');
-    });
-  }
+  // Make a POST request to your server with the JSON data
+  fetch('/save-distributed-book-info-class1', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(jsonObject),
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data && data.message) {
+      alert(data.message);
+      // You can perform additional actions based on the server response
+    } else {
+      alert('Server response is undefined or missing message.');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error.message);
+    alert('An error occurred while submitting the form.');
+  });
+}
 </script>
 
 
