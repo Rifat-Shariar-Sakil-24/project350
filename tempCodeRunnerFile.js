@@ -1,1 +1,1 @@
-/update-student-info
+/update-book-distribution-to-students

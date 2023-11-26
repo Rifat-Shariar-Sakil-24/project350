@@ -443,13 +443,16 @@ app.put('/update-student-info', (req, res) => {
     res.json({ success: true, message: 'Record updated successfully', yearNo });
   });
 });
+
+
 app.put('/update-book-distribution-to-students', (req, res) => {
-  const { classNo, roll, year, subjects, comment } = req.body;
+  
+  const { classNo, roll, studyyear, subjects, comment } = req.body;
 
   console.log('Received Data:', req.body); // Log the received data
 
   // Validate the received data (you can customize this based on your requirements)
-  if (!classNo || !roll || !year || !Array.isArray(subjects) || subjects.length !== 3) {
+  if (!classNo || !roll || !studyyear || !Array.isArray(subjects) || subjects.length !== 3) {
     return res.status(400).json({ error: 'Invalid data received' });
   }
 
@@ -460,7 +463,7 @@ app.put('/update-book-distribution-to-students', (req, res) => {
     WHERE class = ? AND roll = ? AND year = ?
   `;
 
-  const values = [JSON.stringify(subjects), comment, classNo, roll, year];
+  const values = [JSON.stringify(subjects), comment, classNo, roll, studyyear];
 
   db.query(updateQuery, values, (error, results) => {
     if (error) {

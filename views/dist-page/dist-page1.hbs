@@ -162,14 +162,44 @@
 
   <script>
 
-    function showEditBox(class_no, roll, year, comment) {
-      console.log(class_no, roll, year);
+   function showEditBox(class_no, roll, year, bangla, english, math, comment) {
+     
       const editBox = document.getElementById('editBox');
+
+
+      console.log(bangla,english,math);
 
 
       document.getElementById('classNoInput').value = class_no;
       document.getElementById('rollNoInput').value = roll;
       document.getElementById('yearNoInput').value = year;
+
+          if(bangla==='true')
+          {
+            var checkbox = document.getElementById("bangla");
+            checkbox.checked = bangla;
+            document.getElementById("bangla").value=bangla;
+          }
+            
+          if(english==='true')
+          {
+            var checkbox2 = document.getElementById("english");
+            checkbox2.checked = english;
+            document.getElementById("english").value = english;
+          }
+            
+          if(math==='true')
+          {
+            var checkbox3 = document.getElementById("math");
+            checkbox3.checked = math;
+            document.getElementById("math").value = english;
+          }
+
+        
+
+        // Call the function to check the checkbox
+  
+  
 
 
     //  document.getElementById('firstNameInput').value = first_name;
@@ -185,7 +215,6 @@
 
       editBox.style.display = 'block';
     }
-
     function cancelEdit() {
       // Hide the edit box without saving changes
       document.getElementById('editBox').style.display = 'none';
@@ -197,49 +226,54 @@
   <script>
     function submitForm() {
       document.getElementById('editBox').style.display = 'none';
-      try {
-        // Get data from the form
+    const form = document.getElementById('contact_form');
+    const formData = new FormData(form);
+  //  console.log(document.getElementById('bangla').checked);
 
-        const classNo = document.getElementById('classNoInput').value;
-        const rollNo = document.getElementById('rollNoInput').value;
-        const yearNo = document.getElementById('yearNoInput').value;
-        const comment = document.getElementById('commentInput').value;
-
-        // Create a data object to send to the server
-        const data = {
-          classNo: classNo,
-          firstName: firstName,
-          lastName: lastName,
-          rollNo: rollNo,
-          yearNo: yearNo,
-          fatherName: fatherName,
-          motherName: motherName,
-          phoneNo: phoneNo,
-          address: address,
-          comment: comment
-        };
-        console.log(classNo, rollNo, yearNo);
-
-        // Send a PUT request to the server
-        fetch('/update-student-info', {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-        })
-          .then(response => response.json())
-          .then(result => {
-            console.log('Update successful:', result);
-            updateResults();
-          })
-          .catch(error => {
-            console.error('Error updating data:', error);
-          });
-      } catch (error) {
-        console.error('An error occurred:', error);
+   
+    // Convert FormData to JSON object
+    const jsonObject = {};
+    let co = 0;
+    formData.forEach((value, key) => {
+      if (key === 'subjects') {
+        if (!jsonObject[key]) {
+         
+           jsonObject[key] = ['0', '0', '0'];
+        } 
+      } else {
+        jsonObject[key] = value;
       }
-    }
+    });
+    jsonObject['subjects'][0] = document.getElementById('bangla').checked;
+     jsonObject['subjects'][1] = document.getElementById('english').checked;
+      jsonObject['subjects'][2] = document.getElementById('math').checked;
+
+
+     
+
+    // Make a POST request to your server with the JSON data
+    fetch('/update-book-distribution-to-students', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(jsonObject),
+    })
+    .then(response => response.json())
+    .then(data => { console.log("here");
+      if (data && data.message) {
+       // alert(data.message);
+         updateResults();
+        // You can perform additional actions based on the server response
+      } else {
+        alert('Server response is undefined or missing message.');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error.message);
+      alert('An error occurred while submitting the form.');
+    });
+  }
   </script>
 
 
@@ -639,6 +673,7 @@ function updateTable(data) {
   tableBody.innerHTML = ''; // Clear existing content
 
   data.forEach(student => {
+    
     const row = document.createElement('tr');
     row.innerHTML = `
       <td>${student.first_name} ${student.last_name}</td>
@@ -649,11 +684,16 @@ function updateTable(data) {
      
    
       ${renderSubjects(student.bookInfo)}
+    
+      
       <!-- Add other columns from the books table as needed -->
       <td>
-        <button onclick="showEditBox('${student.class}','${student.roll}', '${student.year}', 
-        '${student.first_name}', '${student.last_name}', '${student.father_name}', 
-        '${student.mother_name}', '${student.phone}', '${student.address}', '${student.comment}')">
+        
+   <button onclick="showEditBox('${student.class}','${student.roll}', '${student.year}', 
+
+'${JSON.parse(student.bookInfo.subjects)[0]}', '${JSON.parse(student.bookInfo.subjects)[1]}', '${JSON.parse(student.bookInfo.subjects)[2]}'
+, '${student.bookInfo.comment}')">
+
           Edit
         </button>
         <button onclick="deleteData('${student.class}','${student.roll}', '${student.year}')">
@@ -672,12 +712,11 @@ function renderSubjects(bookInfo) {
   }
 
   const subjects = JSON.parse(bookInfo.subjects);
+ // console.log(subjects[0]);
 
   // Assuming subjects is an array of three elements
   const [bangla, english, math] = subjects;
-  console.log(bangla);
-  console.log(english);
-  console.log(math);
+
 
   return `
     ${generateCheckbox(bangla)}
