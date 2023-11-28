@@ -24,89 +24,83 @@
       <fieldset>
         <!-- Text input-first name -->
 
-        <div class="form-group">
-          <label class="col-md-4 control-label">শ্রেণি</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-              <label for="classNo"></label>
-              <!-- Existing input field with readonly attribute -->
-              <select id="classNo" name="classNo" class="form-control" required>
-                <option value="1">প্রথম শ্রেণি</option>
-              </select>
-
-
-            </div>
-          </div>
-        </div>
-
-
-        <!-- Text input-roll -->
-        <div class="form-group">
-          <label class="col-md-4 control-label">রোল</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-              <input id="roll" name="roll" placeholder="Enter student's interger roll" class="form-control"
-                type="number" step="1" required />
-            </div>
-          </div>
-        </div>
-
-
-        <!-- number year-roll -->
-        <div class="form-group">
-          <label class="col-md-4 control-label">শিক্ষাবর্ষ</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-              <input id="year" name="year" placeholder="Enter student's study year" class="form-control" type="number"
-                step="1" required />
-            </div>
-          </div>
-        </div>
-
-        {{!-- <div class="form-group">
-          <label class="col-md-4 control-label">শিক্ষার্থীর নাম</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-              <input name="name" placeholder="" class="form-control" type="text" />
-            </div>
-          </div>
-        </div> --}}
-
-
-
-
-        <!-- Checkbox checks -->
-        <!-- Checkbox checks -->
-        <!-- Checkbox checks -->
+        <!-- Text input-first name -->
 <div class="form-group">
-  <label class="col-md-4 control-label">Has this student received Bangla Textbook?</label>
-  <div class="col-md-4">
-    <input type="checkbox" id="bangla" name="subjects" value="0" />
-    <label for="bangla">Yes</label>
+  <label class="col-md-4 control-label">শ্রেণি</label>
+  <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <label for="classNo"></label>
+      <!-- Existing input field with readonly attribute -->
+      <select id="classNo" name="classNo" class="form-control" required>
+        <option value="1">প্রথম শ্রেণি</option>
+        <!-- Add more options as needed -->
+      </select>
+    </div>
   </div>
 </div>
 
-<!-- Checkbox checks -->
+<!-- Text input-roll -->
 <div class="form-group">
-  <label class="col-md-4 control-label">Has this student received English Textbook?</label>
-  <div class="col-md-4">
-    <input type="checkbox" id="english" name="subjects" value="0" />
-    <label for="english">Yes</label>
+  <label class="col-md-4 control-label">রোল</label>
+  <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+      <input id="roll" name="roll" placeholder="Enter student's integer roll" class="form-control"
+        type="number" step="1" required />
+    </div>
   </div>
 </div>
 
-<!-- Checkbox checks -->
+<!-- Number input for year -->
 <div class="form-group">
-  <label class="col-md-4 control-label">Has this student received Math Textbook?</label>
-  <div class="col-md-4">
-    <input type="checkbox" id="math" name="subjects" value="0" />
-    <label for="math">Yes</label>
+  <label class="col-md-4 control-label">শিক্ষাবর্ষ</label>
+  <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+      <input id="year" name="year" placeholder="Enter student's study year" class="form-control" type="number"
+        step="1" required />
+    </div>
   </div>
 </div>
+
+
+ <div class="form-group" >
+  <label class="col-md-4 control-label">Student Name</label>
+  <div class="col-md-4 inputGroupContainer">
+    <div class="input-group" >
+      <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+      <span id="showbox" class="form-control"></span>
+    </div>
+  </div>
+</div>
+
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Has this student received Bangla Textbook?</label>
+          <div class="col-md-4">
+            <input type="checkbox" id="bangla" name="subjects" value="0" />
+            <label for="bangla">Yes</label>
+          </div>
+        </div>
+
+        <!-- Checkbox checks -->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Has this student received English Textbook?</label>
+          <div class="col-md-4">
+            <input type="checkbox" id="english" name="subjects" value="0" />
+            <label for="english">Yes</label>
+          </div>
+        </div>
+
+        <!-- Checkbox checks -->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Has this student received Math Textbook?</label>
+          <div class="col-md-4">
+            <input type="checkbox" id="math" name="subjects" value="0" />
+            <label for="math">Yes</label>
+          </div>
+        </div>
 
 
 
@@ -114,77 +108,106 @@
 
         <!-- Text area-description -->
 
-        <div class="form-group">
-          <label class="col-md-4 control-label">Student Description</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-              <textarea id="comment" class="form-control" name="comment" placeholder="Student Description"></textarea>
-            </div>
-          </div>
-        </div>
+      
 
-        <!-- Success message -->
-        {{!-- <div class="alert alert-success" role="alert" id="success_message">
-          Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for
-          contacting us, we will get back to you shortly.
-        </div> --}}
-
-        <!-- Submit Button -->
-        <div class="form-group">
-          <label class="col-md-4 control-label"></label>
-          <div class="col-md-4">
-            <button type="button" class="btn btn-warning" onclick="submitForm()">
-              Submit <span class="glyphicon glyphicon-send"></span>
-            </button>
-          </div>
+      <!-- Your existing Submit Button -->
+      <div class="form-group">
+        <label class="col-md-4 control-label"></label>
+        <div class="col-md-4">
+          <button type="button" class="btn btn-warning" onclick="submitForm()">
+            Submit <span class="glyphicon glyphicon-send"></span>
+          </button>
         </div>
+      </div>
+  
       </fieldset>
     </form>
 
-   <script>
-  function submitForm() {
-  const form = document.getElementById('contact_form');
-  const formData = new FormData(form);
+    <script>
 
-  // Convert FormData to JSON object
-  const jsonObject = {};
-  jsonObject['subjects'] = [false, false, false]; // Initialize with boolean values
+      
+      const classNoInput = document.getElementById('classNo');
+      const rollInput = document.getElementById('roll');
+      const yearInput = document.getElementById('year');
+      const showbox = document.getElementById('showbox');
 
-  formData.forEach((value, key) => {
-    if (key !== 'subjects') {
-      jsonObject[key] = value;
-    }
-  });
+      classNoInput.addEventListener('input', updateStudentInfo);
+      rollInput.addEventListener('input', updateStudentInfo);
+      yearInput.addEventListener('input', updateStudentInfo);
 
-  // Update the subjects array based on checkbox states
-  jsonObject['subjects'][0] = document.getElementById('bangla').checked;
-  jsonObject['subjects'][1] = document.getElementById('english').checked;
-  jsonObject['subjects'][2] = document.getElementById('math').checked;
+      function updateStudentInfo() {
+        const classNo = classNoInput.value;
+        const roll = rollInput.value;
+        const year = yearInput.value;
 
-  // Make a POST request to your server with the JSON data
-  fetch('/save-distributed-book-info-class1', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(jsonObject),
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data && data.message) {
-      alert(data.message);
-      // You can perform additional actions based on the server response
-    } else {
-      alert('Server response is undefined or missing message.');
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error.message);
-    alert('An error occurred while submitting the form.');
-  });
-}
-</script>
+        // Call the API to fetch student data using the GET method
+        fetch(`/getStudentData?classNo=${classNo}&roll=${roll}&year=${year}`)
+          .then(response => response.json())
+          .then(data => {
+            if (data && data.data && data.data.length > 0) {
+              // Update the showbox field with fetched data
+              const studentData = data.data[0];
+              showbox.innerText = `${studentData.first_name} ${studentData.last_name}`;
+            } else {
+              // Clear the showbox field if no data is found
+              showbox.innerText = 'No such student found';
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching student data:', error.message);
+           // alert('An error occurred while fetching student data.');
+          });
+      }
+      function submitForm() {
+        const form = document.getElementById('contact_form');
+        const formData = new FormData(form);
+
+        // Convert FormData to JSON object
+        const jsonObject = {};
+        jsonObject['subjects'] = [false, false, false]; // Initialize with boolean values
+
+        formData.forEach((value, key) => {
+          if (key !== 'subjects') {
+            jsonObject[key] = value;
+          }
+        });
+
+        // Update the subjects array based on checkbox states
+        jsonObject['subjects'][0] = document.getElementById('bangla').checked;
+        jsonObject['subjects'][1] = document.getElementById('english').checked;
+        jsonObject['subjects'][2] = document.getElementById('math').checked;
+
+        // Make a POST request to your server with the JSON data
+        fetch('/save-distributed-book-info-class1&2', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(jsonObject),
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data && data.message) {
+              alert(data.message);
+              // You can perform additional actions based on the server response
+            } else {
+              alert('Server response is undefined or missing message.');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error.message);
+            alert('An error occurred while submitting the form.');
+          });
+        
+      }
+
+
+
+
+
+
+
+    </script>
 
 
 
