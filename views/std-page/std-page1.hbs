@@ -1,2236 +1,392 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta নাম
-="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link href="https://assets.codepen.io/344846/style.css" rel="stylesheet" />
-  </head>
 
-  <body>
-    <div
-      class="bg-white  dark:text-gray-900 text-gray-700 h-screen flex overflow-hidden text-sm"
-      style="background-color: rgb(255, 255, 255);" 
-    >
-      <!-- side navigation section -->
-      <div
-        class="bg-white     w-20 flex-shrink-0 border-r    flex-col hidden sm:flex"
-      >
-        <div class="h-16 text-blue-500 flex items-center justify-center">
-          <img
-            src="http://localhost:4000/assets/images/annada.jpeg"
-            style="width: 35px; height: 35px; border-radius: 50%"
-            alt=""
-            srcset=""
-          />
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://assets.codepen.io/344846/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/data-show-style.css">
+</head>
 
-        <div
-          class="flex mx-auto flex-grow mt-4 flex-col text-gray-900 space-y-4"
-        >
-          <a href="/">
-            <button3.9632+
-              class="h-10 w-12 dark:text-gray-900 rounded-md flex items-center justify-center"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                class="h-5"
-                stroke="currentColor"
-                stroke-width="2"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                <polyline points="9 22 9 12 15 12 15 22"></polyline>
-              </svg>
-            </button>
-          </a>
+<body>
 
-          <a href="/http://127.0.0.1:5500/main-menu.html">
-            <button
-              class="h-10 w-12 dark:text-gray-900 rounded-md flex items-center justify-center"
-            p[*852096453453]>
-              <svg
-                viewBox="0 0 24 24"
-                class="h-5"
-                stroke="currentColor"
-                stroke-width="2"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-              </svg>
-            </button>
-          </a>
 
-          <a href="/std-entry">
-            <button
-              class="h-10 w-12 dark:text-gray-900 rounded-md flex items-center justify-center"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                class="h-5"
-                stroke="currentColor"
-                stroke-width="2"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
-                ></path>
-                <line x1="12" y1="11" x2="12" y2="17"></line>
-                <line x1="9" y1="14" x2="15" y2="14"></line>
-              </svg>
-            </button>
-          </a>
 
-          <button
-            class="h-10 w-12 dark:text-gray-900 rounded-md flex items-center justify-center"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              class="h-5"
-              stroke="currentColor"
-              stroke-width="2"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M18 12l-4-4v3H6v2h8v3z"></path>
-              <path d="M20 6h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2"></path>
-            </svg>
-          </button>
-        </div>
+  <div class="bg-white  dark:text-gray-900 text-gray-700 h-screen flex overflow-hidden text-sm"
+    style="background-color: rgb(255, 255, 255);">
+    <!-- side navigation section -->
+    <div class="bg-white w-20 flex-shrink-0 border-r    flex-col hidden sm:flex">
+      <div class="h-16 text-blue-500 flex items-center justify-center">
+        <img src="http://localhost:4000/assets/images/annada.jpeg" style="width: 35px; height: 35px; border-radius: 50%"
+          alt="" srcset="" />
       </div>
 
-      <!-- main-center section -->
-      <div class="flex-grow overflow-hidden h-full flex flex-col">
-        <div
-          class="h-16 lg:flex w-full border-b       hidden px-10"
-        >
-          <div class="flex h-full text-gray-600 dark:text-gray-900">
-            <a
-              href="/"
-              class="cursor-pointer h-full border-b-2 border-blue-500 text-blue-500 dark:text-gray-900 dark:border-white inline-flex mr-8 items-center" style="color: black; font-weight: 600;border-bottom: 2px solid gray;"
-              >হোমপেজ</a
-            >
-            <a
-              href="/http://127.0.0.1:5500/main-menu.html"
-              class="cursor-pointer h-full border-b-2 border-blue-500 text-blue-500 dark:text-gray-900 dark:border-white inline-flex mr-8 items-center" style="color: black; font-weight: 600; border-bottom: 2px solid gray;"
-              >এন্ট্রি মেনু</a            >
-       
-            <a
-              href="/http://127.0.0.1:5500/dist-page1.html"
-              class="cursor-pointer h-full border-b-2 border-blue-500 text-blue-500 dark:text-gray-900 dark:border-white inline-flex mr-8 items-center" style="color: black; font-weight: 600;border-bottom: 2px solid gray;"
-              >বই বিতরণী তথ্য</a
-            >
-          </div>
-          <div class="ml-auto flex items-center space-x-7">
+      <div class="flex mx-auto flex-grow mt-4 flex-col text-gray-900 space-y-4">
+        <a href="/">
+          <button3.9632+ class="h-10 w-12 dark:text-gray-900 rounded-md flex items-center justify-center">
+            <svg viewBox="0 0 24 24" class="h-5" stroke="currentColor" stroke-width="2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            </button>
+        </a>
 
-            <a href="/http://127.0.0.1:5500/profile.html">
-              
+        <a href="http://localhost:4000/http://127.0.0.1:5500/main-menu.html">
+          <button class="h-10 w-12 dark:text-gray-900 rounded-md flex items-center justify-center">
+            <svg viewBox="0 0 24 24" class="h-5" stroke="currentColor" stroke-width="2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+          </button>
+        </a>
+
+        <a href="/std-entry">
+          <button class="h-10 w-12 dark:text-gray-900 rounded-md flex items-center justify-center">
+            <svg viewBox="0 0 24 24" class="h-5" stroke="currentColor" stroke-width="2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+              <line x1="12" y1="11" x2="12" y2="17"></line>
+              <line x1="9" y1="14" x2="15" y2="14"></line>
+            </svg>
+          </button>
+        </a>
+
+        <button class="h-10 w-12 dark:text-gray-900 rounded-md flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5" stroke="currentColor" stroke-width="2"
+            fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 12l-4-4v3H6v2h8v3z"></path>
+            <path d="M20 6h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- main-center section -->
+    <div class="flex-grow overflow-hidden h-full flex flex-col">
+
+      <!-- top-nav-links -->
+      <div class="h-16 lg:flex w-full border-b hidden px-10">
+        <div class="flex h-full text-gray-600 dark:text-gray-900">
+          <a href="/"
+            class="cursor-pointer h-full border-b-2 border-blue-500 text-blue-500 dark:text-gray-900 dark:border-white inline-flex mr-8 items-center"
+            style="color: black; font-weight: 600;border-bottom: 2px solid gray;">হোমপেজ</a>
+          <a href="/http://127.0.0.1:5500/main-menu.html"
+            class="cursor-pointer h-full border-b-2 border-blue-500 text-blue-500 dark:text-gray-900 dark:border-white inline-flex mr-8 items-center"
+            style="color: black; font-weight: 600; border-bottom: 2px solid gray;">এন্ট্রি মেনু</a>
+          <a href="/http://127.0.0.1:5500/dist-page1.html"
+            class="cursor-pointer h-full border-b-2 dark:text-gray-900 dark:border-white inline-flex mr-8 items-center "
+            style="padding: 3px; color: black; font-weight: 600; border-bottom: 2px solid gray;">বই বিতরণী তথ্য</a>
+          <a href="/http://127.0.0.1:5500/page1.html"
+            class="cursor-pointer h-full border-b-2 dark:text-gray-900 dark:border-white inline-flex mr-8 items-center"
+            style="padding: 3px; color: black; font-weight: 600; border-bottom: 2px solid gray;">শিক্ষার্থীদের তথ্য</a>
+
+          <a href="/http://127.0.0.1:5500/std-page1.html"
+            class="cursor-pointer h-full border-b-2 dark:text-gray-900 dark:border-white inline-flex mr-8 items-center"
+            style="color: black; font-weight: 600;border-bottom: 2px solid rgb(30, 105, 180);">প্রাপ্ত বইয়ের তথ্য</a>
+
+
+        </div>
+
+        <div class="ml-auto flex items-center space-x-7">
+
+          <a href="http://127.0.0.1:5500/profile.html">
+
             <button class="flex items-center">
               <span class="relative flex-shrink-0">
-                <img
-                  class="w-7 h-7 rounded-full"
-                  src="http://localhost:4000/assets/images/profile_pic.jpg"
-                  alt="profile"
-                />
+                <img class="w-7 h-7 rounded-full" src="http://localhost:4000/assets/images/profile_pic.jpg"
+                  alt="profile" />
                 <span
-                  class="absolute right-0 -mb-0.5 bottom-0 w-2 h-2 rounded-full bg-green-500 border border-white dark:border-gray-900"
-                ></span>
+                  class="absolute right-0 -mb-0.5 bottom-0 w-2 h-2 rounded-full bg-green-500 border border-white dark:border-gray-900"></span>
               </span>
               <span class="ml-2">এডমিন</span>
-              <svg
-                viewBox="0 0 24 24"
-                class="w-4 ml-1 flex-shrink-0"
-                stroke="currentColor"
-                stroke-width="2"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
+              <svg viewBox="0 0 24 24" class="w-4 ml-1 flex-shrink-0" stroke="currentColor" stroke-width="2" fill="none"
+                stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </button>
+          </a>
+        </div>
+      </div>
+
+      <div class="flex-grow flex overflow-x-hidden">
+
+        <!-- 2nd-sidebar-class list -->
+        <div class="xl:w-72 w-48 flex-shrink-0 border-r border-gray-20 h-full overflow-y-auto lg:block hidden p-5">
+
+          <div class="space-y-4 mt-3">
+            <!-- প্রথম শ্রেণি -->
+            <a href="/http://127.0.0.1:5500/std-page1.html"
+              class="bg-white p-3 w-full flex flex-col rounded-md  shadow-lg relative ring-2 ring-blue-500 focus:outline-none"
+              style="border: 2px solid rgb(103, 103, 216);">
+              <button class="bg-white p-3 w-full flex flex-col rounded-md  shadow">
+                <div
+                  class="flex xl:flex-row flex-col items-center font-medium text-gray-900 dark:text-gray-900 pb-2 mb-2 xl:border-b    border-opacity-75 dark:border-gray-700 w-full">
+                  <img src="http://localhost:4000/assets/images/1.png" class="w-7 h-7 mr-2 rounded-full"
+                    alt="profile" />
+                  প্রথম শ্রেণি
+                </div>
+                <div class="flex items-center w-full">
+                  <div class="text-xs py-1 px-2 leading-none  bg-blue-100 text-blue-500 rounded-md">
+                    প্রাথমিক
+                  </div>
+                </div>
+              </button>
+            </a>
+
+            <!-- দ্বিতীয় শ্রেণি -->
+            <a href="/http://127.0.0.1:5500/std-page2.html"
+              class="bg-white p-3 w-full flex flex-col rounded-md  shadow">
+              <button class="bg-white p-3 w-full flex flex-col rounded-md  shadow">
+                <div
+                  class="flex xl:flex-row flex-col items-center font-medium text-gray-900 dark:text-gray-900 pb-2 mb-2 xl:border-b    border-opacity-75 dark:border-gray-700 w-full">
+                  <img src="http://localhost:4000/assets/images/2.png" class="w-7 h-7 mr-2 rounded-full"
+                    alt="profile" />
+                  দ্বিতীয় শ্রেণি
+                </div>
+                <div class="flex items-center w-full">
+                  <div class="text-xs py-1 px-2 leading-none  bg-green-100 text-green-600 rounded-md">
+                    প্রাথমিক
+                  </div>
+                </div>
+              </button>
+            </a>
+
+            <!-- তৃতীয় শ্রেণি -->
+            <a href="/http://127.0.0.1:5500/std-page3.html"
+              class="bg-white p-3 w-full flex flex-col rounded-md  shadow">
+              <button class="bg-white p-3 w-full flex flex-col rounded-md  shadow">
+                <div
+                  class="flex xl:flex-row flex-col items-center font-medium text-gray-900 dark:text-gray-900 pb-2 mb-2 xl:border-b    border-opacity-75 dark:border-gray-700 w-full">
+                  <img src="http://localhost:4000/assets/images/3.png" class="w-7 h-7 mr-2 rounded-full"
+                    alt="profile" />
+                  তৃতীয় শ্রেণি
+                </div>
+                <div class="flex items-center w-full">
+                  <div class="text-xs py-1 px-2 leading-none  bg-yellow-100 text-yellow-600 rounded-md">
+                    প্রাথমিক
+                  </div>
+                </div>
+              </button>
+            </a>
+
+            <!-- চতুর্থ শ্রেণি -->
+            <a href="/http://127.0.0.1:5500/std-page4.html"
+              class="bg-white p-3 w-full flex flex-col rounded-md  shadow">
+              <button class="bg-white p-3 w-full flex flex-col rounded-md  shadow">
+                <div
+                  class="flex xl:flex-row flex-col items-center font-medium text-gray-900 dark:text-gray-900 pb-2 mb-2 xl:border-b    border-opacity-75 dark:border-gray-700 w-full">
+                  <img src="http://localhost:4000/assets/images/4.png" class="w-7 h-7 mr-2 rounded-full"
+                    alt="profile" />
+                  চতুর্থ শ্রেণি
+                </div>
+                <div class="flex items-center w-full">
+                  <div class="text-xs py-1 px-2 leading-none  bg-blue-100 text-blue-500 rounded-md">
+                    প্রাথমিক
+                  </div>
+                </div>
+              </button>
+            </a>
+
+            <!-- পঞ্চম শ্রেণি -->
+            <a href="/http://127.0.0.1:5500/std-page5.html"
+              class="bg-white p-3 w-full flex flex-col rounded-md  shadow">
+              <button class="bg-white p-3 w-full flex flex-col rounded-md  shadow">
+                <div
+                  class="flex xl:flex-row flex-col items-center font-medium text-gray-900 dark:text-gray-900 pb-2 mb-2 xl:border-b    border-opacity-75 dark:border-gray-700 w-full">
+                  <img src="http://localhost:4000/assets/images/5.png" class="w-7 h-7 mr-2 rounded-full"
+                    alt="profile" />
+                  পঞ্চম শ্রেণি
+                </div>
+                <div class="flex items-center w-full">
+                  <div class="text-xs py-1 px-2 leading-none  bg-green-100 text-green-600 rounded-md">
+                    প্রাথমিক
+                  </div>
+                </div>
+              </button>
             </a>
           </div>
         </div>
 
-        <div class="flex-grow flex overflow-x-hidden">
-          <div
-            class="xl:w-72 w-48 flex-shrink-0 border-r       h-full overflow-y-auto lg:block hidden p-5"
-          >
-            <div class="text-xs text-gray-900 tracking-wider">
-              তথ্য সার্চ করুন
-            </div>
-            <div class="relative mt-2">
-              <input
-                type="text"
-                class="pl-8 h-9 bg-transparent border border-gray-300 dark:border-gray-700 dark:text-gray-900 w-full rounded-md text-sm"
-                placeholder="সার্চ"
-              />
-              <svg
-                viewBox="0 0 24 24"
-                class="w-4 absolute text-gray-900 top-1/2 transform translate-x-0.5 -translate-y-1/2 left-2"
-                stroke="currentColor"
-                stroke-width="2"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-            </div>
 
-            <div class="space-y-4 mt-3">
-              <!-- প্রথম শ্রেণি -->
-              <a
-                href="/http://127.0.0.1:5500/page1.html"
-                class="bg-white p-3 w-full flex flex-col rounded-md  shadow-lg relative ring-2 ring-blue-500 focus:outline-none"
-              >
-                <button
-                  class="bg-white p-3 w-full flex flex-col rounded-md  shadow"
-                >
-                  <div
-                    class="flex xl:flex-row flex-col items-center font-medium text-gray-900 dark:text-gray-900 pb-2 mb-2 xl:border-b    border-opacity-75 dark:border-gray-700 w-full"
-                  >
-                    <img
-                      src="http://localhost:4000/assets/images/1.png"
-                      class="w-7 h-7 mr-2 rounded-full"
-                      alt="profile"
-                    />
-                    প্রথম শ্রেণি
-                  </div>
-                  <div class="flex items-center w-full">
-                    <div
-                      class="text-xs py-1 px-2 leading-none  bg-blue-100 text-blue-500 rounded-md"
-                    >
-                     প্রাথমিক
-                    </div>
-                  </div>
-                </button>
-              </a>
 
-              <!-- দ্বিতীয় শ্রেণি -->
-              <a
-                href="/http://127.0.0.1:5500/page2.html"
-                class="bg-white p-3 w-full flex flex-col rounded-md  shadow"
-              >
-                <button
-                  class="bg-white p-3 w-full flex flex-col rounded-md  shadow"
-                >
-                  <div
-                    class="flex xl:flex-row flex-col items-center font-medium text-gray-900 dark:text-gray-900 pb-2 mb-2 xl:border-b    border-opacity-75 dark:border-gray-700 w-full"
-                  >
-                    <img
-                      src="http://localhost:4000/assets/images/2.png"
-                      class="w-7 h-7 mr-2 rounded-full"
-                      alt="profile"
-                    />
-                    দ্বিতীয় শ্রেণি
-                  </div>
-                  <div class="flex items-center w-full">
-                    <div
-                      class="text-xs py-1 px-2 leading-none  bg-green-100 text-green-600 rounded-md"
-                    >
-                     প্রাথমিক
-                    </div>
-                  </div>
-                </button>
-              </a>
 
-              <!-- তৃতীয় শ্রেণি -->
-              <a
-                href="/http://127.0.0.1:5500/page3.html"
-                class="bg-white p-3 w-full flex flex-col rounded-md  shadow"
-              >
-                <button
-                  class="bg-white p-3 w-full flex flex-col rounded-md  shadow"
-                >
-                  <div
-                    class="flex xl:flex-row flex-col items-center font-medium text-gray-900 dark:text-gray-900 pb-2 mb-2 xl:border-b    border-opacity-75 dark:border-gray-700 w-full"
-                  >
-                    <img
-                      src="http://localhost:4000/assets/images/3.png"
-                      class="w-7 h-7 mr-2 rounded-full"
-                      alt="profile"
-                    />
-                    তৃতীয় শ্রেণি
-                  </div>
-                  <div class="flex items-center w-full">
-                    <div
-                      class="text-xs py-1 px-2 leading-none  bg-yellow-100 text-yellow-600 rounded-md"
-                    >
-                     প্রাথমিক
-                    </div>
-                  </div>
-                </button>
-              </a>
 
-              <!-- চতুর্থ শ্রেণি -->
-              <a
-                href="/http://127.0.0.1:5500/page4.html"
-                class="bg-white p-3 w-full flex flex-col rounded-md  shadow"
-              >
-                <button
-                  class="bg-white p-3 w-full flex flex-col rounded-md  shadow"
-                >
-                  <div
-                    class="flex xl:flex-row flex-col items-center font-medium text-gray-900 dark:text-gray-900 pb-2 mb-2 xl:border-b    border-opacity-75 dark:border-gray-700 w-full"
-                  >
-                    <img
-                      src="http://localhost:4000/assets/images/4.png"
-                      class="w-7 h-7 mr-2 rounded-full"
-                      alt="profile"
-                    />
-                    চতুর্থ শ্রেণি
-                  </div>
-                  <div class="flex items-center w-full">
-                    <div
-                      class="text-xs py-1 px-2 leading-none  bg-blue-100 text-blue-500 rounded-md"
-                    >
-                     প্রাথমিক
-                    </div>
-                  </div>
-                </button>
-              </a>
+        <div class="flex-grow bg-white  overflow-y-auto">
 
-              <!-- পঞ্চম শ্রেণি -->
-              <a
-                href="/http://127.0.0.1:5500/page5.html"
-                class="bg-white p-3 w-full flex flex-col rounded-md  shadow"
-              >
-                <button
-                  class="bg-white p-3 w-full flex flex-col rounded-md  shadow"
-                >
-                  <div
-                    class="flex xl:flex-row flex-col items-center font-medium text-gray-900 dark:text-gray-900 pb-2 mb-2 xl:border-b    border-opacity-75 dark:border-gray-700 w-full"
-                  >
-                    <img
-                      src="http://localhost:4000/assets/images/5.png"
-                      class="w-7 h-7 mr-2 rounded-full"
-                      alt="profile"
-                    />
-                    পঞ্চম শ্রেণি
-                  </div>
-                  <div class="flex items-center w-full">
-                    <div
-                      class="text-xs py-1 px-2 leading-none  bg-green-100 text-green-600 rounded-md"
-                    >
-                     প্রাথমিক
-                    </div>
-                  </div>
-                </button>
-              </a>
-            </div>
-          </div>
 
-          <div class="flex-grow bg-white  overflow-y-auto">
-         
-
-            <div class="sm:p-7 p-4">
-              <div class="flex w-full items-center mb-7">
-                <button
-                  class="inline-flex mr-3 items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700 dark:text-gray-900    border    leading-none py-0"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    class="w-4 mr-2 text-gray-900 dark:text-gray-600"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <rect
-                      x="3"
-                      y="4"
-                      width="18"
-                      height="18"
-                      rx="2"
-                      ry="2"
-                    ></rect>
-                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                  </svg>
-                  তারিখ
-                  <svg
-                    viewBox="0 0 24 24"
-                    class="w-4 ml-1.5 text-gray-900 dark:text-gray-600"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-                <button
-                  class="inline-flex items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700 dark:text-gray-900    border    leading-none py-0"
-                >
-                  বাছাই করুন
-                  <svg
-                    viewBox="0 0 24 24"
-                    class="w-4 ml-1.5 text-gray-900 dark:text-gray-600"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-                <div
-                  class="ml-auto text-gray-500 text-xs sm:inline-flex hidden items-center"
-                >
-                  <span class="mr-3">পেজ 1 of 5</span>
-                  <a href="/http://127.0.0.1:5500/page5.html">
-                    <button
-                      class="inline-flex mr-2 items-center h-8 w-8 justify-center text-gray-900 rounded-md shadow border       leading-none py-0"
-                    >
-                      <svg
-                        class="w-4"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                      </svg>
-                    </button>
-                  </a>
-                  <a href="/http://127.0.0.1:5500/page2.html">
-                    <button
-                      class="inline-flex items-center h-8 w-8 justify-center text-gray-900 rounded-md shadow border       leading-none py-0"
-                    >
-                      <svg
-                        class="w-4"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                      </svg>
-                    </button>
-                  </a>
-                </div>
+          <div class="sm:p-7 p-4">
+            <form class="my-form">
+              <div class="form-group">
+                <label for="yearInput">Enter Year:</label>
+                <input type="text" id="yearInput" name="selectedYear" oninput="updateResults()">
               </div>
 
-              <table class="w-full text-left">
-                <!-- this section consists the class নাম
-s -->
-                <thead>
-                  <tr class="text-gray-900">
-                    <th
-                      class="font-normal px-3 pt-0 pb-3 border-b      "
-                    >
-                      নাম
-
-                    </th>
-                    <th
-                      class="font-normal px-3 pt-0 pb-3 border-b      "
-                    >
-                    রোল নাম্বার
-                    
-                    </th>
-            
-                    <th
-                      class="font-normal px-3 pt-0 pb-3 border-b      "
-                    >
-                    তারিখ
-
-                    </th>
-                    <th
-                      class="font-normal px-3 pt-0 pb-3 border-b      "
-                    >
-                    তথ্য দেখুন
-
-                    </th>
-                    <th
-                      class="font-normal px-3 pt-0 pb-3 border-b      "
-                    >
-                    তথ্য আপডেট করুন
+              <div class="form-group">
+                <label for="bookInput">Select Book Name:</label>
+                <select id="bookInput" name="selectedBook" onchange="updateResults()">
+                  <option value="1"> আমার বাংলা বই</option>
+                  <option value="2">English for Today</option>
+                  <option value="3">প্রাথমিক গণিত</option>
+                </select>
+              </div>
+            </form>
 
 
-                    </th>
-                  </tr>
-                </thead>
 
-                <!-- this section is consists data entry rows -->
-                <tbody class="text-gray-900 dark:text-gray-900">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">শিক্ষাবর্ষ</th>
+                  <th scope="col">শ্রেণি</th>
+                  <th scope="col">বিষয়</th>
+                  <th scope="col">বইয়ের সংখ্যা</th>
+                  <th scope="col">তারিখ</th>
+                </tr>
+                <tr id="totalsRow">
+                  <th colspan="3"></th>
+                  <th id="totalBooks">0</th>
+                  <th></th>
+                </tr>
+              </thead>
 
-                  <!-- 1st row -->
-                  <tr>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-yellow-500"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <line x1="12" y1="8" x2="12" y2="12"></line>
-                          <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                        </svg>
+              <tbody id="bookTableBody">
+                <!-- Table body will be dynamically updated by JavaScript -->
+              </tbody>
+            </table>
 
-                        Anabil
-                      </div>
-                    </td>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-gray-900"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <rect
-                            x="1"
-                            y="4"
-                            width="22"
-                            height="16"
-                            rx="2"
-                            ry="2"
-                          ></rect>
-                          <line x1="1" y1="10" x2="23" y2="10"></line>
-                        </svg>
-                        1
-                      </div>
-                    </td>
-                
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <div class="sm:flex hidden flex-col">
-                          24.12.2020
-                          <div class="text-gray-900 text-xs">11:16 AM</div>
-                        </div>
+            <script>
+              async function updateResults() {
+                const yearInput = document.getElementById('yearInput');
+                const bookInput = document.getElementById('bookInput');
+                const selectedYear = yearInput.value;
+                const selectedBook = bookInput.value;
 
-                        <button
-                        class="w-8 h-8 inline-flex items-center justify-center text-gray-900 ml-auto"
-                      >
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-5"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <circle cx="12" cy="12" r="1"></circle>
-                          <circle cx="19" cy="12" r="1"></circle>
-                          <circle cx="5" cy="12" r="1"></circle>
-                        </svg>
-                      </button>
-                    
-                      </div>
-                    </td>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                     
-                        <button
-                          style="display: flex; align-items: flex-end;"
-                        >
-                          <label>See Info</label>
-                        </button>
-                     
-                    </td>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                     
-                        <button
-                          style="display: flex; align-items: flex-end;"
-                        >
-                          <label>Update Info</label>
-                        </button>
-                     
-                    </td>
-             
-                  </tr>
+                try {
+                  const response = await fetch(`http://localhost:4000/class1-year-book-submit?selectedYear=${selectedYear}&selectedBook=${selectedBook}`);
+                  if (response.ok) {
+                    const data = await response.json();
+                    updateTable(data);
+                  } else {
+                    console.error('Error fetching data:', response.statusText);
+                  }
+                } catch (error) {
+                  console.error('Error:', error.message);
+                }
+              }
 
-                  <!-- 2nd row -->
-                  <tr>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-yellow-500"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <line x1="12" y1="8" x2="12" y2="12"></line>
-                          <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                        </svg>
-                        Shihab
-                      </div>
-                    </td>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-gray-900"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <rect
-                            x="1"
-                            y="4"
-                            width="22"
-                            height="16"
-                            rx="2"
-                            ry="2"
-                          ></rect>
-                          <line x1="1" y1="10" x2="23" y2="10"></line>
-                        </svg>
-                        2
-                      </div>
-                    </td>
-                
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <div class="sm:flex hidden flex-col">
-                          24.12.2020
-                          <div class="text-gray-900 text-xs">07:16 AM</div>
-                        </div>
-                        <button
-                          class="w-8 h-8 inline-flex items-center justify-center text-gray-900 ml-auto"
-                        >
-                          <svg
-                            viewBox="0 0 24 24"
-                            class="w-5"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-                        </button>
-                      </div>
-                    </td>
-             
-             
-             
-                    <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>See Info</label>
-                      </button>
-                   
-                  </td>
-                  <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>Update Info</label>
-                      </button>
-                   
-                  </td>
-             
-             
-                  </tr>
 
-                  <!-- 3rd row -->
-                  <tr>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-green-500"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
+              function mapSubjectName(subjectValue) {
+                // Map integer values to corresponding strings
+                const subjectMap = {
+                  1: 'আমার বাংলা বই',
+                  2: 'English for Today',
+                  3: 'প্রাথমিক গণিত', // Add more mappings as needed
+                };
 
-                        Sanjida
-                      </div>
-                    </td>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-gray-900"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <rect
-                            x="1"
-                            y="4"
-                            width="22"
-                            height="16"
-                            rx="2"
-                            ry="2"
-                          ></rect>
-                          <line x1="1" y1="10" x2="23" y2="10"></line>
-                        </svg>
-                        3
-                      </div>
-                    </td>
-                
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <div class="sm:flex hidden flex-col">
-                          24.12.2020
-                          <div class="text-gray-900 text-xs">11:03 AM</div>
-                        </div>
-                        <button
-                          class="w-8 h-8 inline-flex items-center justify-center text-gray-900 ml-auto"
-                        >
-                          <svg
-                            viewBox="0 0 24 24"
-                            class="w-5"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-                        </button>
-                      </div>
-                    </td>
-             
-             
-                    <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>See Info</label>
-                      </button>
-                   
-                  </td>
-                  <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>Update Info</label>
-                      </button>
-                   
-                  </td>
-             
-             
-             
-                  </tr>
+                // Return the mapped string or the original value if not found in the map
+                return subjectMap[subjectValue] || subjectValue;
+              }
 
-                  <!-- 4th row -->
-                  <tr>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-green-500"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
+              function updateTable(data) {
+                const tableBody = document.getElementById('bookTableBody');
+                const totalBooksElement = document.getElementById('totalBooks');
+                let totalBooks = 0;
 
-                        Shahriar
-                      </div>
-                    </td>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-gray-900"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <rect
-                            x="1"
-                            y="4"
-                            width="22"
-                            height="16"
-                            rx="2"
-                            ry="2"
-                          ></rect>
-                          <line x1="1" y1="10" x2="23" y2="10"></line>
-                        </svg>
-                        4
-                      </div>
-                    </td>
-                
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <div class="sm:flex hidden flex-col">
-                          13.11.2020
-                          <div class="text-gray-900 text-xs">09:45 AM</div>
-                        </div>
-                        <button
-                          class="w-8 h-8 inline-flex items-center justify-center text-gray-900 ml-auto"
-                        >
-                          <svg
-                            viewBox="0 0 24 24"
-                            class="w-5"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-                        </button>
-                      </div>
-                    </td>
-             
-             
-             
-                    <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>See Info</label>
-                      </button>
-                   
-                  </td>
-                  <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>Update Info</label>
-                      </button>
-                   
-                  </td>
-             
-             
-                 
-                  </tr>
+                tableBody.innerHTML = ''; // Clear existing content
 
-                  <!-- 5th row -->
-                  <tr>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-green-500"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
+                data.forEach(book => {
+                  const row = document.createElement('tr');
+                  row.innerHTML = `
+      <td>${book.year}</td>
+      <td>${book.class}</td>
+       <td>${mapSubjectName(book.subject_name)}</td>
+      <td>${book.number_of_books}</td>
+      <td>${book.book_date}</td>
+    `;
+                  tableBody.appendChild(row);
 
-                        Majid
-                      </div>
-                    </td>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-gray-900"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <rect
-                            x="1"
-                            y="4"
-                            width="22"
-                            height="16"
-                            rx="2"
-                            ry="2"
-                          ></rect>
-                          <line x1="1" y1="10" x2="23" y2="10"></line>
-                        </svg>
-                        5
-                      </div>
-                    </td>
-                
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b       text-green-500"
-                    >
-                      <div class="flex items-center">
-                        <div class="sm:flex hidden flex-col">
-                          10.03.2020
-                          <div class="text-gray-900 text-xs">10:29 AM</div>
-                        </div>
-                        <button
-                          class="w-8 h-8 inline-flex items-center justify-center text-gray-900 ml-auto"
-                        >
-                          <svg
-                            viewBox="0 0 24 24"
-                            class="w-5"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-                        </button>
-                      </div>
-                    </td>
-             
-                    <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>See Info</label>
-                      </button>
-                   
-                  </td>
-                  <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>Update Info</label>
-                      </button>
-                   
-                  </td>
-                    </td>
-                 
-                  </tr>
+                  // Update total
+                  totalBooks += parseInt(book.number_of_books);
+                });
 
-                  <!-- 6th row -->
-                  <tr>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-green-500"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
+                // Update the totalBooksElement
+                totalBooksElement.textContent = totalBooks.toString();
+                console.log(totalBooks);
+              }
 
-                        Tomal
-                      </div>
-                    </td>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-gray-900"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <rect
-                            x="1"
-                            y="4"
-                            width="22"
-                            height="16"
-                            rx="2"
-                            ry="2"
-                          ></rect>
-                          <line x1="1" y1="10" x2="23" y2="10"></line>
-                        </svg>
-                        6
-                      </div>
-                    </td>
-                
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <div class="sm:flex hidden flex-col">
-                          02.04.2020
-                          <div class="text-gray-900 text-xs">10:29 AM</div>
-                        </div>
-                        <button
-                          class="w-8 h-8 inline-flex items-center justify-center text-gray-900 ml-auto"
-                        >
-                          <svg
-                            viewBox="0 0 24 24"
-                            class="w-5"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-                        </button>
-                      </div>
-                    </td>
-             
-             
-             
-             
-                    <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>See Info</label>
-                      </button>
-                   
-                  </td>
-                  <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>Update Info</label>
-                      </button>
-                   
-                  </td>
-             
-                 
-                  </tr>
 
-                  <!-- 7th row -->
-                  <tr>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-yellow-500"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <line x1="12" y1="8" x2="12" y2="12"></line>
-                          <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                        </svg>
-                        Bijon
-                      </div>
-                    </td>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-gray-900"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <rect
-                            x="1"
-                            y="4"
-                            width="22"
-                            height="16"
-                            rx="2"
-                            ry="2"
-                          ></rect>
-                          <line x1="1" y1="10" x2="23" y2="10"></line>
-                        </svg>
-                        7
-                      </div>
-                    </td>
-                
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <div class="sm:flex hidden flex-col">
-                          08.09.2020
-                          <div class="text-gray-900 text-xs">11:00 AM</div>
-                        </div>
-                        <button
-                          class="w-8 h-8 inline-flex items-center justify-center text-gray-900 ml-auto"
-                        >
-                          <svg
-                            viewBox="0 0 24 24"
-                            class="w-5"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-                        </button>
-                      </div>
-                    </td>
-             
-             
-             
-             
-             
-                    <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>See Info</label>
-                      </button>
-                   
-                  </td>
-                  <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>Update Info</label>
-                      </button>
-                   
-                  </td>
-                 
-                  </tr>
+            </script>
 
-                  <!-- 8th row -->
-                  <tr>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-green-500"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                        Shattika
-                      </div>
-                    </td>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-gray-900"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <rect
-                            x="1"
-                            y="4"
-                            width="22"
-                            height="16"
-                            rx="2"
-                            ry="2"
-                          ></rect>
-                          <line x1="1" y1="10" x2="23" y2="10"></line>
-                        </svg>
-                        8
-                      </div>
-                    </td>
-                
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <div class="sm:flex hidden flex-col">
-                          01.04.2020
-                          <div class="text-gray-900 text-xs">09:45 AM</div>
-                        </div>
-                        <button
-                          class="w-8 h-8 inline-flex items-center justify-center text-gray-900 ml-auto"
-                        >
-                          <svg
-                            viewBox="0 0 24 24"
-                            class="w-5"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-                        </button>
-                      </div>
-                    </td>
-             
-             
-                    <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>See Info</label>
-                      </button>
-                   
-                  </td>
-                  <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>Update Info</label>
-                      </button>
-                   
-                  </td>
-             
-             
-             
-                 
-                  </tr>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+              integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+              crossorigin="anonymous"></script>
 
-                  <!-- 9th row -->
-                  <tr>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-yellow-500"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <line x1="12" y1="8" x2="12" y2="12"></line>
-                          <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                        </svg>
-                        Sajib
-                      </div>
-                    </td>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-gray-900"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <rect
-                            x="1"
-                            y="4"
-                            width="22"
-                            height="16"
-                            rx="2"
-                            ry="2"
-                          ></rect>
-                          <line x1="1" y1="10" x2="23" y2="10"></line>
-                        </svg>
-                        9
-                      </div>
-                    </td>
-                
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <div class="sm:flex hidden flex-col">
-                          24.12.2020
-                          <div class="text-gray-900 text-xs">11:16 AM</div>
-                        </div>
-                        <button
-                          class="w-8 h-8 inline-flex items-center justify-center text-gray-900 ml-auto"
-                        >
-                          <svg
-                            viewBox="0 0 24 24"
-                            class="w-5"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-                        </button>
-                      </div>
-                    </td>
-             
-             
-             
-                    <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>See Info</label>
-                      </button>
-                   
-                  </td>
-                  <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>Update Info</label>
-                      </button>
-                   
-                  </td>
-             
-             
-                 
-                  </tr>
-
-                  <!-- 10th row -->
-                  <tr>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-green-500"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                        Meme
-                      </div>
-                    </td>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-gray-900"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <rect
-                            x="1"
-                            y="4"
-                            width="22"
-                            height="16"
-                            rx="2"
-                            ry="2"
-                          ></rect>
-                          <line x1="1" y1="10" x2="23" y2="10"></line>
-                        </svg>
-                        10
-                      </div>
-                    </td>
-                
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <div class="sm:flex hidden flex-col">
-                          24.12.2020
-                          <div class="text-gray-900 text-xs">07:16 AM</div>
-                        </div>
-                        <button
-                          class="w-8 h-8 inline-flex items-center justify-center text-gray-900 ml-auto"
-                        >
-                          <svg
-                            viewBox="0 0 24 24"
-                            class="w-5"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-                        </button>
-                      </div>
-                    </td>
-             
-             
-             
-             
-                    <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>See Info</label>
-                      </button>
-                   
-                  </td>
-                  <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>Update Info</label>
-                      </button>
-                   
-                  </td>
-             
-                 
-                  </tr>
-
-                  <!-- 11th row -->
-                  <tr>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-green-500"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                        Sabbir
-                      </div>
-                    </td>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-gray-900"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <rect
-                            x="1"
-                            y="4"
-                            width="22"
-                            height="16"
-                            rx="2"
-                            ry="2"
-                          ></rect>
-                          <line x1="1" y1="10" x2="23" y2="10"></line>
-                        </svg>
-                        11
-                      </div>
-                    </td>
-                
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <div class="sm:flex hidden flex-col">
-                          24.12.2020
-                          <div class="text-gray-900 text-xs">11:03 AM</div>
-                        </div>
-                        <button
-                          class="w-8 h-8 inline-flex items-center justify-center text-gray-900 ml-auto"
-                        >
-                          <svg
-                            viewBox="0 0 24 24"
-                            class="w-5"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-                        </button>
-                      </div>
-                    </td>
-             
-             
-             
-             
-                    <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>See Info</label>
-                      </button>
-                   
-                  </td>
-                  <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>Update Info</label>
-                      </button>
-                   
-                  </td>
-             
-                 
-                  </tr>
-
-                  <!-- 12th row -->
-                  <tr>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-green-500"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                        Fahad
-                      </div>
-                    </td>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-gray-900"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <rect
-                            x="1"
-                            y="4"
-                            width="22"
-                            height="16"
-                            rx="2"
-                            ry="2"
-                          ></rect>
-                          <line x1="1" y1="10" x2="23" y2="10"></line>
-                        </svg>
-                        12
-                      </div>
-                    </td>
-                
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <div class="sm:flex hidden flex-col">
-                          13.11.2020
-                          <div class="text-gray-900 text-xs">09:45 AM</div>
-                        </div>
-                        <button
-                          class="w-8 h-8 inline-flex items-center justify-center text-gray-900 ml-auto"
-                        >
-                          <svg
-                            viewBox="0 0 24 24"
-                            class="w-5"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-                        </button>
-                      </div>
-                    </td>
-             
-             
-             
-                    <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>See Info</label>
-                      </button>
-                   
-                  </td>
-                  <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>Update Info</label>
-                      </button>
-                   
-                  </td>
-             
-             
-                 
-                  </tr>
-
-                  <!-- 13th row -->
-                  <tr>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-green-500"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                        Hafiz
-                      </div>
-                    </td>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-gray-900"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <rect
-                            x="1"
-                            y="4"
-                            width="22"
-                            height="16"
-                            rx="2"
-                            ry="2"
-                          ></rect>
-                          <line x1="1" y1="10" x2="23" y2="10"></line>
-                        </svg>
-                        13
-                      </div>
-                    </td>
-                
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <div class="sm:flex hidden flex-col">
-                          10.03.2020
-                          <div class="text-gray-900 text-xs">10:29 AM</div>
-                        </div>
-                        <button
-                          class="w-8 h-8 inline-flex items-center justify-center text-gray-900 ml-auto"
-                        >
-                          <svg
-                            viewBox="0 0 24 24"
-                            class="w-5"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-                        </button>
-                      </div>
-                    </td>
-             
-             
-             
-                    <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>See Info</label>
-                      </button>
-                   
-                  </td>
-                  <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>Update Info</label>
-                      </button>
-                   
-                  </td>
-             
-             
-                 
-                  </tr>
-
-                  <!-- 14th row -->
-                  <tr>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-yellow-500"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <line x1="12" y1="8" x2="12" y2="12"></line>
-                          <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                        </svg>
-                        Sanjana
-                      </div>
-                    </td>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-gray-900"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <rect
-                            x="1"
-                            y="4"
-                            width="22"
-                            height="16"
-                            rx="2"
-                            ry="2"
-                          ></rect>
-                          <line x1="1" y1="10" x2="23" y2="10"></line>
-                        </svg>
-                        14
-                      </div>
-                    </td>
-                
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b       text-red-500"
-                    >
-                      <div class="flex items-center">
-                        <div class="sm:flex hidden flex-col">
-                          02.04.2020
-                          <div class="text-gray-900 text-xs">10:29 AM</div>
-                        </div>
-                        <button
-                          class="w-8 h-8 inline-flex items-center justify-center text-gray-900 ml-auto"
-                        >
-                          <svg
-                            viewBox="0 0 24 24"
-                            class="w-5"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-                        </button>
-                      </div>
-                    </td>
-             
-             
-             
-                    <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>See Info</label>
-                      </button>
-                   
-                  </td>
-                  <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>Update Info</label>
-                      </button>
-                   
-                  </td>
-             
-             
-                 
-                  </tr>
-
-                  <!-- 15th row -->
-                  <tr>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-green-500"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                        Shoptodipa
-                      </div>
-                    </td>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-gray-900"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <rect
-                            x="1"
-                            y="4"
-                            width="22"
-                            height="16"
-                            rx="2"
-                            ry="2"
-                          ></rect>
-                          <line x1="1" y1="10" x2="23" y2="10"></line>
-                        </svg>
-                        15
-                      </div>
-                    </td>
-                
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b       text-red-500"
-                    >
-                      <div class="flex items-center">
-                        <div class="sm:flex hidden flex-col">
-                          08.09.2020
-                          <div class="text-gray-900 text-xs">11:00 AM</div>
-                        </div>
-                        <button
-                          class="w-8 h-8 inline-flex items-center justify-center text-gray-900 ml-auto"
-                        >
-                          <svg
-                            viewBox="0 0 24 24"
-                            class="w-5"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-                        </button>
-                      </div>
-                    </td>
-             
-             
-             
-                    <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>See Info</label>
-                      </button>
-                   
-                  </td>
-                  <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>Update Info</label>
-                      </button>
-                   
-                  </td>
-             
-             
-                 
-                  </tr>
-
-                  <!-- 16th row -->
-                  <tr>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                    
-
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-green-500"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-
-                        Mahir
-                      </div>
-                    </td>
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="w-4 mr-5 text-gray-900"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <rect
-                            x="1"
-                            y="4"
-                            width="22"
-                            height="16"
-                            rx="2"
-                            ry="2"
-                          ></rect>
-                          <line x1="1" y1="10" x2="23" y2="10"></line>
-                        </svg>
-                        16
-                      </div>
-                    </td>
-                
-                    <td
-                      class="sm:p-3 py-2 px-1 border-b      "
-                    >
-                      <div class="flex items-center">
-                        <div class="sm:flex hidden flex-col">
-                          01.04.2020
-                          <div class="text-gray-900 text-xs">09:45 AM</div>
-                        </div>
-                        <button
-                          class="w-8 h-8 inline-flex items-center justify-center text-gray-900 ml-auto"
-                        >
-                          <svg
-                            viewBox="0 0 24 24"
-                            class="w-5"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-                        </button>
-                      </div>
-                    </td>
-             
-             
-             
-                    <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>See Info</label>
-                      </button>
-                   
-                  </td>
-                  <td
-                    class="sm:p-3 py-2 px-1 border-b      "
-                  >
-                   
-                      <button
-                        style="display: flex; align-items: flex-end;"
-                      >
-                        <label>Update Info</label>
-                      </button>
-                   
-                  </td>
-             
-             
-                 
-                  </tr>
-                </tbody>
-              </table> 
-
-              <!-- this section is the page number navigation at the bottom of the website -->
-              <div class="flex w-full mt-5 space-x-2 justify-end">
-                <a href="/http://127.0.0.1:5500/page5.html">
-                     <button
-                   class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border       leading-none"
-                >
-                  <svg
-                    class="w-4"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
+            <!-- this section is the page number navigation at the bottom of the website -->
+            <div class="flex w-full mt-5 space-x-2 justify-end">
+              <a href="/http://127.0.0.1:5500/page5.html">
+                <button
+                  class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-20 leading-none">
+                  <svg class="w-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="15 18 9 12 15 6"></polyline>
                   </svg>
                 </button>
-                </a>
-                <a href="/http://127.0.0.1:5500/page1.html">
-                  <button
-                   class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border       bg-white  dark:text-gray-900 leading-none"
-                  >
-                    1
-                  </button>
-                </a>
-                <a href="/http://127.0.0.1:5500/page2.html">
-                  <button
-                   class="inline-flex items-center h-8 w-8 justify-center text-gray-900 rounded-md shadow border       leading-none"
-                  >
-                    2
-                  </button>
-                </a>
-                <a href="/http://127.0.0.1:5500/page3.html">
-                  <button
-                    class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border       leading-none"
-                  >
-                    3
-                  </button>
-                </a>
-                <a href="/http://127.0.0.1:5500/page4.html">
-                     <button
-                  class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border       leading-none"
-                >
+              </a>
+              <a href="/http://127.0.0.1:5500/page1.html">
+                <button
+                  class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-20 bg-white  dark:text-gray-900 leading-none">
+                  1
+                </button>
+              </a>
+              <a href="/http://127.0.0.1:5500/page2.html">
+                <button
+                  class="inline-flex items-center h-8 w-8 justify-center text-gray-900 rounded-md shadow border border-gray-20 leading-none">
+                  2
+                </button>
+              </a>
+              <a href="/http://127.0.0.1:5500/page3.html">
+                <button
+                  class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-20 leading-none">
+                  3
+                </button>
+              </a>
+              <a href="/http://127.0.0.1:5500/page4.html">
+                <button
+                  class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-20 leading-none">
                   4
                 </button>
-                </a>
-                <a href="/http://127.0.0.1:5500/page5.html">
-                  
+              </a>
+              <a href="/http://127.0.0.1:5500/page5.html">
+
                 <button
-                  class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border       leading-none"
-                >
+                  class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-20 leading-none">
                   5
                 </button>
-                </a>
-                <a href="/http://127.0.0.1:5500/page2.html">
-                  <button
-                  class="inline-flex items-center h-8 w-8 justify-center text-gray-900 rounded-md shadow border       leading-none"
-                >
-                  <svg
-                    class="w-4"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
+              </a>
+              <a href="/http://127.0.0.1:5500/page2.html">
+                <button
+                  class="inline-flex items-center h-8 w-8 justify-center text-gray-900 rounded-md shadow border border-gray-20 leading-none">
+                  <svg class="w-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="9 18 15 12 9 6"></polyline>
                   </svg>
                 </button>
-                </a>
-              </div>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+</body>
+
 </html>

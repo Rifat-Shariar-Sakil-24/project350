@@ -76,6 +76,21 @@ app.get('/distributed-book-entry-class5', (req, res) => {
 app.get('/bookfrom-ntcb-entry', (req, res) => {
   res.render('entry/nctb-entry', { title: 'Node.js App with HBS' });
 });
+app.get('/bookfrom-ntcb-entry-class1', (req, res) => {
+  res.render('entry/nctb-entry-class1', { title: 'Node.js App with HBS' });
+});
+app.get('/bookfrom-ntcb-entry-class2', (req, res) => {
+  res.render('entry/nctb-entry-class2', { title: 'Node.js App with HBS' });
+});
+app.get('/bookfrom-ntcb-entry-class3', (req, res) => {
+  res.render('entry/nctb-entry-class3', { title: 'Node.js App with HBS' });
+});
+app.get('/bookfrom-ntcb-entry-class4', (req, res) => {
+  res.render('entry/nctb-entry-class4', { title: 'Node.js App with HBS' });
+});
+app.get('/bookfrom-ntcb-entry-class5', (req, res) => {
+  res.render('entry/nctb-entry-class5', { title: 'Node.js App with HBS' });
+});
 
 
 
@@ -127,7 +142,7 @@ app.get('/http://127.0.0.1:5500/std-page2.html', (req, res) => {
   res.render('std-page/std-page2', { title: 'Node.js App with HBS' });
 });
 app.get('/http://127.0.0.1:5500/std-page3.html', (req, res) => {
-  res.render('std-page/std-page4', { title: 'Node.js App with HBS' });
+  res.render('std-page/std-page3', { title: 'Node.js App with HBS' });
 });
 app.get('/http://127.0.0.1:5500/std-page4.html', (req, res) => {
   res.render('std-page/std-page4', { title: 'Node.js App with HBS' });
@@ -381,6 +396,45 @@ app.get('/class5-year-submit-books-distributed-to-students', (req, res) => {
 });
 
 
+
+// // nctb book info
+// app.get('/class1-year-submit-book', (req, res) => {
+//   const selectedYear = req.query.selectedYear;
+//   const requestedClass = 1;
+
+//   const requestedYear = parseInt(selectedYear, 10);
+  
+//   const query = 'SELECT * FROM books WHERE class = ? AND year = ?';
+
+//   db.query(query, [requestedClass, requestedYear], (err, result) => {
+//     if (err) {
+//       console.error('Error fetching student information: ', err);
+//       res.status(500).json({ error: 'Internal Server Error' });
+//     } else {
+//       res.json(result);
+//     }
+//   });
+// });
+// nctb book info
+app.get('/class1-year-book-submit', (req, res) => {
+  const selectedYear = req.query.selectedYear;
+  const selectedBook = req.query.selectedBook;
+  const requestedClass = 1;
+
+  const requestedYear = parseInt(selectedYear, 10);
+  
+  // Modify the SQL query to include the book name
+  const query = 'SELECT * FROM books WHERE class = ? AND year = ? AND subject_name = ?';
+
+  db.query(query, [requestedClass, requestedYear, selectedBook], (err, result) => {
+    if (err) {
+      console.error('Error fetching book information: ', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      res.json(result);
+    }
+  });
+});
 
 
 
@@ -704,25 +758,47 @@ app.post('/save-distributed-book-info-class1&2', (req, res) => {
 
 // similarlarly jokhon nctb entry er form submit korbo tokhon oi data gula save korbo
 
-app.post('/save-bookfrom-ntcb-info', (req, res) => {
+// app.post('/save-bookfrom-ntcb-info', (req, res) => {
       
-    try {
+//     try {
      
-      const {date,classNo,subject,booknumber } = req.body;
+//       const {date,classNo,subject,booknumber } = req.body;
   
    
-      const query = `INSERT INTO books (book_date, class, subject_name, number_of_books) VALUES (?, ?, ?, ?)`;
-      db.query(query, [date,classNo,subject,booknumber]);
-      res.redirect('/bookfrom-ntcb-entry');
+//       const query = `INSERT INTO books2 (book_date, class, subject_name, number_of_books) VALUES (?, ?, ?, ?)`;
+//       db.query(query, [date,classNo,subject,booknumber]);
+//       res.redirect('/bookfrom-ntcb-entry');
   
-  } catch (error) {
-      console.error('Error saving data to the database:', error);
-      res.status(500).send('Internal Server Error');
-  }
-    console.log(req.body);
-  }
-);
+//   } catch (error) {
+//       console.error('Error saving data to the database:', error);
+//       res.status(500).send('Internal Server Error');
+//   }
+//     console.log(req.body);
+//   }
+// );
 
+app.post('/save-bookfrom-ntcb-info', (req, res) => {
+      
+  try {
+   
+    const {date,studyyear,classNo,subject,booknumber } = req.body;
+
+ 
+    const query = `INSERT INTO books (book_date, year, class, subject_name, number_of_books) VALUES (?, ?, ?, ?, ?)`;
+    db.query(query, [date,studyyear,classNo,subject,booknumber]);
+    if(classNo==1) res.redirect('/bookfrom-ntcb-entry-class1');
+    else if (classNo==2) res.redirect('/bookfrom-nctb-entry-class2');
+    else if (classNo==3) res.redirect('/bookfrom-nctb-entry-class3');
+    else if (classNo==4) res.redirect('/bookfrom-nctb-entry-class4');
+    else if (classNo==5) res.redirect('/bookfrom-nctb-entry-class5');
+
+} catch (error) {
+    console.error('Error saving data to the database:', error);
+    res.status(500).send('Internal Server Error');
+}
+  console.log(req.body);
+}
+);
 
 
 

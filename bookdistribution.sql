@@ -10,9 +10,19 @@ CREATE TABLE users (
 INSERT INTO users (id, email, password) VALUES
 (1, 'admin@gmail.com', 'password');
 
+-- CREATE TABLE books (
+--     book_date DATE NOT NULL,
+--     class VARCHAR(50) NOT NULL,
+--     `year` int(4) NOT NULL,
+--     subject_name VARCHAR(100) NOT NULL,
+--     number_of_books INT NOT NULL
+-- );
 CREATE TABLE books (
+    id INT AUTO_INCREMENT PRIMARY KEY,
     book_date DATE NOT NULL,
+    `year` INT(4) NOT NULL,
     class VARCHAR(50) NOT NULL,
+    
     subject_name VARCHAR(100) NOT NULL,
     number_of_books INT NOT NULL
 );
