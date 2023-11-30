@@ -753,31 +753,31 @@ app.get('/getStudentData', (req, res) => {
 
 //submit
 // student information save
-app.post('/save-student-info', (req, res) => {
+// app.post('/save-student-info', (req, res) => {
   
-  try {
-    // Extract data from req.body
-    const {classNo, first_name, last_name, roll, studyyear, father_name, mother_name, phone, address, comment } = req.body;
+//   try {
+//     // Extract data from req.body
+//     const {classNo, first_name, last_name, roll, studyyear, father_name, mother_name, phone, address, comment } = req.body;
 
-    // Perform the query
-    const query = `INSERT INTO students (class, first_name, last_name, roll, year, father_name, mother_name, phone, address, comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)`;
-    db.query(query, [classNo, first_name, last_name, roll, studyyear, father_name, mother_name, phone, address, comment]);
+//     // Perform the query
+//     const query = `INSERT INTO students (class, first_name, last_name, roll, year, father_name, mother_name, phone, address, comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)`;
+//     db.query(query, [classNo, first_name, last_name, roll, studyyear, father_name, mother_name, phone, address, comment]);
 
-    // res.send('Data saved successfully!');
+//     // res.send('Data saved successfully!');
 
-    if(classNo==1)res.redirect('/std-entry-class1'); 
-    else if(classNo==2)res.redirect('/std-entry-class2'); 
-    else if(classNo==3)res.redirect('/std-entry-class3'); 
-    else if(classNo==4)res.redirect('/std-entry-class4'); 
-    else if(classNo==5)res.redirect('/std-entry-class5'); 
+//     if(classNo==1)res.redirect('/std-entry-class1'); 
+//     else if(classNo==2)res.redirect('/std-entry-class2'); 
+//     else if(classNo==3)res.redirect('/std-entry-class3'); 
+//     else if(classNo==4)res.redirect('/std-entry-class4'); 
+//     else if(classNo==5)res.redirect('/std-entry-class5'); 
 
     
-} catch (error) {
-    console.error('Error saving data to the database:', error);
-    res.status(500).send('Internal Server Error');
-}
-  console.log(req.body);
-});
+// } catch (error) {
+//     console.error('Error saving data to the database:', error);
+//     res.status(500).send('Internal Server Error');
+// }
+//   console.log(req.body);
+// });
 
 
 
@@ -805,6 +805,61 @@ app.post('/save-student-info', (req, res) => {
 //     console.log(req.body);
 //   }
 // );
+
+
+
+
+// app.post('/save-student-info', (req, res) => {
+  
+//   try {
+//     // Extract data from req.body
+//     const {classNo, first_name, last_name, roll, studyyear, father_name, mother_name, phone, address, comment } = req.body;
+
+//     // Perform the query
+//     const query = `INSERT INTO students (class, first_name, last_name, roll, year, father_name, mother_name, phone, address, comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)`;
+//     db.query(query, [classNo, first_name, last_name, roll, studyyear, father_name, mother_name, phone, address, comment]);
+
+//     // res.send('Data saved successfully!');
+//     res.status(200).json({ message: 'student information saved successfully.' });
+    
+// } catch (error) {
+//     console.error('Error saving data to the database:', error);
+//     res.status(500).send('Internal Server Error');
+// }
+//   console.log(req.body);
+// });
+
+
+
+
+app.post('/save-student-info', (req, res) => {
+  try {
+      // Extract data from req.body
+      const { classNo, first_name, last_name, roll, studyyear, father_name, mother_name, phone, address, comment } = req.body;
+
+      // Perform the query
+      const query = `INSERT INTO students (class, first_name, last_name, roll, year, father_name, mother_name, phone, address, comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+      db.query(query, [classNo, first_name, last_name, roll, studyyear, father_name, mother_name, phone, address, comment], (error, results) => {
+          if (error) {
+              // Check for duplicate entry error
+              if (error.code === 'ER_DUP_ENTRY') {
+                  return res.status(400).json({ message: 'Student already exists' });
+              } else {
+                  console.error('Error saving data to the database:', error);
+                  return res.status(500).json({ message: 'Internal Server Error' });
+              }
+          }
+
+          // Successfully saved data to the database
+          console.log('Data saved successfully!');
+          return res.status(200).json({ message: 'Student information saved successfully.' });
+      });
+  } catch (error) {
+      console.error('Error handling form submission:', error);
+      return res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
 
 
 

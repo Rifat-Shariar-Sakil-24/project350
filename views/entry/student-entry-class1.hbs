@@ -21,7 +21,7 @@
 
 <body>
     <div class="container">
-        <form class="well form-horizontal" action="/save-student-info" method="post" id="contact_form">
+        <form class="well form-horizontal" id="contact_form">
             <fieldset>
                 <!-- Text input-first নাম -->
 
@@ -49,6 +49,7 @@
                             <input name="first_name" placeholder="প্রথম নাম" class="form-control" type="text"
                                 required />
                         </div>
+                        
                     </div>
                 </div>
 
@@ -73,8 +74,8 @@
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                            <input name="roll" placeholder="ছাত্র/ছাত্রীর রোল নম্বর এন্ট্রি করুন" class="form-control"
-                                type="number" step="1" required />
+                            <input id="rollNoInput" name="roll" placeholder="ছাত্র/ছাত্রীর রোল নম্বর এন্ট্রি করুন"
+                                class="form-control" type="number" step="1" required />
                         </div>
                     </div>
                 </div>
@@ -83,7 +84,7 @@
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                            <input name="studyyear" placeholder="ছাত্র/ছাত্রীর শিক্ষাবর্ষ এন্ট্রি করুন"
+                            <input id="yearNoInput" name="studyyear" placeholder="ছাত্র/ছাত্রীর শিক্ষাবর্ষ এন্ট্রি করুন"
                                 class="form-control" type="number" step="1" required />
                         </div>
                     </div>
@@ -158,9 +159,18 @@
 
                 <!-- Submit Button -->
                 <div class="form-group">
+                    <label class="col-md-4 control-label">Student already exists?</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+                            <span id="showbox" class="form-control">No Such Student Found</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-md-4 control-label"></label>
                     <div class="col-md-4">
-                        <button type="submit" class="btn btn-warning">
+                        <button type="submit" class="btn btn-warning" onclick="submitForm()">
                             সাবমিট
                             <span class="glyphicon glyphicon-send"></span>
                         </button>
@@ -172,6 +182,8 @@
             <button class="back-btn">Back</button>
         </a>
     </div>
+
+    <script src="assets/js/studentInfoEntry.js"></script>
 </body>
 
 </html>
