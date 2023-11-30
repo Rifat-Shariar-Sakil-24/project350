@@ -66,6 +66,16 @@
           </div>
         </div>
 
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Student Name</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+              <span id="showbox" class="form-control"></span>
+            </div>
+          </div>
+        </div>
         {{!-- <div class="form-group">
           <label class="col-md-4 control-label">শিক্ষার্থীর নাম</label>
           <div class="col-md-4 inputGroupContainer">
@@ -161,7 +171,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label"></label>
           <div class="col-md-4">
-            <button type="button" class="btn btn-warning" onclick="submitForm()">
+            <button type="submit" class="btn btn-warning" onclick="submitForm()">
               Submit <span class="glyphicon glyphicon-send"></span>
             </button>
           </div>
@@ -169,52 +179,6 @@
       </fieldset>
     </form>
 
-    <script>
-      function submitForm() {
-        const form = document.getElementById('contact_form');
-        const formData = new FormData(form);
-
-        // Convert FormData to JSON object
-        const jsonObject = {};
-        jsonObject['subjects'] = [false, false, false, false, false, false]; // Initialize with boolean values
-
-        formData.forEach((value, key) => {
-          if (key !== 'subjects') {
-            jsonObject[key] = value;
-          }
-        });
-
-        // Update the subjects array based on checkbox states
-        jsonObject['subjects'][0] = document.getElementById('bangla').checked;
-        jsonObject['subjects'][1] = document.getElementById('english').checked;
-        jsonObject['subjects'][2] = document.getElementById('math').checked;
-        jsonObject['subjects'][3] = document.getElementById('science').checked;
-        jsonObject['subjects'][4] = document.getElementById('socialscience').checked;
-        jsonObject['subjects'][5] = document.getElementById('religion').checked;
-
-        // Make a POST request to your server with the JSON data
-        fetch('/save-distributed-book-info-class1&2', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(jsonObject),
-        })
-          .then(response => response.json())
-          .then(data => {
-            if (data && data.message) {
-              alert(data.message);
-              // You can perform additional actions based on the server response
-            } else {
-              alert('Server response is undefined or missing message.');
-            }
-          })
-          .catch(error => {
-            console.error('Error:', error.message);
-            alert('An error occurred while submitting the form.');
-          });
-      }
-    </script>
 
 
 
@@ -223,6 +187,7 @@
     </a>
 
   </div>
+  <script src="assets/js/distributionEntry.js"></script>
 </body>
 
 </html>

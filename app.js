@@ -865,33 +865,149 @@ app.post('/save-student-info', (req, res) => {
 
 
 
+// app.post('/save-distributed-book-info-class1&2', (req, res) => {
+//   const { classNo, roll, year, subjects, comment } = req.body;
+
+//   console.log('Received Data:', req.body); // Log the received data
+
+//   // Validate the received data (you can customize this based on your requirements)
+//   if (!classNo || !roll || !year || !Array.isArray(subjects) ) {
+//     return res.status(400).json({ error: 'Invalid data received' });
+//   }
+
+//   // Your database insertion logic here
+//   const insertQuery = `
+//     INSERT INTO distributed_books (class, roll, year, subjects, comment)
+//     VALUES (?, ?, ?, ?, ?)
+//   `;
+
+//   const values = [classNo, roll, year, JSON.stringify(subjects), comment];
+
+//   db.query(insertQuery, values, (error, results) => {
+//     if (error) {
+//       console.error('Error inserting distributed book information: ' + error.message);
+//       return res.status(500).json({ error: 'Internal Server Error' });
+//     }
+
+//     res.status(200).json({ message: 'Distributed book information saved successfully.' });
+//   });
+// });
+
+// app.post('/save-distributed-book-info-class1&2', (req, res) => {
+//   const { classNo, roll, year, subjects, comment } = req.body;
+
+//   console.log('Received Data:', req.body); // Log the received data
+
+//   // Validate the received data (you can customize this based on your requirements)
+//   if (!classNo || !roll || !year || !Array.isArray(subjects)) {
+//     return res.status(400).json({ error: 'Invalid data received' });
+//   }
+
+//   // Check if the student already exists in the database
+//   const checkQuery = `
+//     SELECT * FROM distributed_books
+//     WHERE class = ? AND roll = ? AND year = ?
+//   `;
+
+//   const checkValues = [classNo, roll, year];
+
+//   db.query(checkQuery, checkValues, (checkError, checkResults) => {
+//     if (checkError) {
+//       console.error('Error checking student existence: ' + checkError.message);
+//       return res.status(500).json({ error: 'Internal Server Error' });
+//     }
+
+//     if (checkResults.length > 0) {
+//       // Student already exists, books may have already been distributed
+//       return res.status(409).json({ error: 'Already books are distributed.' });
+//     }
+
+//     // Student doesn't exist, proceed with insertion
+//     const insertQuery = `
+//       INSERT INTO distributed_books (class, roll, year, subjects, comment)
+//       VALUES (?, ?, ?, ?, ?)
+//     `;
+
+//     const values = [classNo, roll, year, JSON.stringify(subjects), comment];
+
+//     db.query(insertQuery, values, (insertError, insertResults) => {
+//       if (insertError) {
+//         console.error('Error inserting distributed book information: ' + insertError.message);
+//         return res.status(500).json({ error: 'Internal Server Error' });
+//       }
+
+//       res.status(200).json({ message: 'Distributed book information saved successfully.' });
+//     });
+//   });
+// });
 app.post('/save-distributed-book-info-class1&2', (req, res) => {
   const { classNo, roll, year, subjects, comment } = req.body;
 
   console.log('Received Data:', req.body); // Log the received data
 
   // Validate the received data (you can customize this based on your requirements)
-  if (!classNo || !roll || !year || !Array.isArray(subjects) ) {
+  if (!classNo || !roll || !year || !Array.isArray(subjects)) {
     return res.status(400).json({ error: 'Invalid data received' });
   }
 
-  // Your database insertion logic here
-  const insertQuery = `
-    INSERT INTO distributed_books (class, roll, year, subjects, comment)
-    VALUES (?, ?, ?, ?, ?)
+  // Check if the student already exists in the students table
+  const checkStudentQuery = `
+    SELECT * FROM students
+    WHERE class = ? AND roll = ? AND year = ?
   `;
 
-  const values = [classNo, roll, year, JSON.stringify(subjects), comment];
+  const checkStudentValues = [classNo, roll, year];
 
-  db.query(insertQuery, values, (error, results) => {
-    if (error) {
-      console.error('Error inserting distributed book information: ' + error.message);
+  db.query(checkStudentQuery, checkStudentValues, (checkStudentError, checkStudentResults) => {
+    if (checkStudentError) {
+      console.error('Error checking student existence: ' + checkStudentError.message);
       return res.status(500).json({ error: 'Internal Server Error' });
     }
 
-    res.status(200).json({ message: 'Distributed book information saved successfully.' });
+    if (checkStudentResults.length === 0) {
+      // Student doesn't exist in the students table
+      return res.status(404).json({ error: 'No such student exists.' });
+    }
+
+    // Student exists, proceed with checking distributed_books table
+    const checkDistributedBooksQuery = `
+      SELECT * FROM distributed_books
+      WHERE class = ? AND roll = ? AND year = ?
+    `;
+
+    const checkDistributedBooksValues = [classNo, roll, year];
+
+    db.query(checkDistributedBooksQuery, checkDistributedBooksValues, (checkBooksError, checkBooksResults) => {
+      if (checkBooksError) {
+        console.error('Error checking distributed books: ' + checkBooksError.message);
+        return res.status(500).json({ error: 'Internal Server Error' });
+      }
+
+      if (checkBooksResults.length > 0) {
+        // Books may have already been distributed
+        return res.status(409).json({ error: 'Already books are distributed.' });
+      }
+
+      // Student exists and books haven't been distributed, proceed with insertion
+      const insertQuery = `
+        INSERT INTO distributed_books (class, roll, year, subjects, comment)
+        VALUES (?, ?, ?, ?, ?)
+      `;
+
+      const insertValues = [classNo, roll, year, JSON.stringify(subjects), comment];
+
+      db.query(insertQuery, insertValues, (insertError, insertResults) => {
+        if (insertError) {
+          console.error('Error inserting distributed book information: ' + insertError.message);
+          return res.status(500).json({ error: 'Internal Server Error' });
+        }
+
+        res.status(200).json({ message: 'Distributed book information saved successfully.' });
+      });
+    });
   });
 });
+
 
 // similarlarly jokhon nctb entry er form submit korbo tokhon oi data gula save korbo
 
