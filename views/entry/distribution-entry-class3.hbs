@@ -82,59 +82,59 @@
         <!-- Checkbox checks -->
         <!-- Checkbox checks -->
         <!-- Checkbox checks -->
-<div class="form-group">
-  <label class="col-md-4 control-label">Has this student received Bangla Textbook?</label>
-  <div class="col-md-4">
-    <input type="checkbox" id="bangla" name="subjects" value="0" />
-    <label for="bangla">Yes</label>
-  </div>
-</div>
+        <div class="form-group">
+          <label class="col-md-4 control-label">Has this student received Bangla Textbook?</label>
+          <div class="col-md-4">
+            <input type="checkbox" id="bangla" name="subjects" value="0" />
+            <label for="bangla">Yes</label>
+          </div>
+        </div>
 
-<!-- Checkbox checks -->
-<div class="form-group">
-  <label class="col-md-4 control-label">Has this student received English Textbook?</label>
-  <div class="col-md-4">
-    <input type="checkbox" id="english" name="subjects" value="0" />
-    <label for="english">Yes</label>
-  </div>
-</div>
+        <!-- Checkbox checks -->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Has this student received English Textbook?</label>
+          <div class="col-md-4">
+            <input type="checkbox" id="english" name="subjects" value="0" />
+            <label for="english">Yes</label>
+          </div>
+        </div>
 
-<!-- Checkbox checks -->
-<div class="form-group">
-  <label class="col-md-4 control-label">Has this student received Math Textbook?</label>
-  <div class="col-md-4">
-    <input type="checkbox" id="math" name="subjects" value="0" />
-    <label for="math">Yes</label>
-  </div>
-</div>
+        <!-- Checkbox checks -->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Has this student received Math Textbook?</label>
+          <div class="col-md-4">
+            <input type="checkbox" id="math" name="subjects" value="0" />
+            <label for="math">Yes</label>
+          </div>
+        </div>
 
-<!-- Checkbox checks -->
-<div class="form-group">
-  <label class="col-md-4 control-label">Has this student received Science Textbook?</label>
-  <div class="col-md-4">
-    <input type="checkbox" id="science" name="subjects" value="0" />
-    <label for="science">Yes</label>
-  </div>
-</div>
+        <!-- Checkbox checks -->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Has this student received Science Textbook?</label>
+          <div class="col-md-4">
+            <input type="checkbox" id="science" name="subjects" value="0" />
+            <label for="science">Yes</label>
+          </div>
+        </div>
 
 
-<!-- Checkbox checks -->
-<div class="form-group">
-  <label class="col-md-4 control-label">Has this student received Social Science Textbook?</label>
-  <div class="col-md-4">
-    <input type="checkbox" id="socialscience" name="subjects" value="0" />
-    <label for="socialscience">Yes</label>
-  </div>
-</div>
+        <!-- Checkbox checks -->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Has this student received Social Science Textbook?</label>
+          <div class="col-md-4">
+            <input type="checkbox" id="socialscience" name="subjects" value="0" />
+            <label for="socialscience">Yes</label>
+          </div>
+        </div>
 
-<!-- Checkbox checks -->
-<div class="form-group">
-  <label class="col-md-4 control-label">Has this student received Religion Textbook?</label>
-  <div class="col-md-4">
-    <input type="checkbox" id="religion" name="subjects" value="0" />
-    <label for="religion">Yes</label>
-  </div>
-</div>
+        <!-- Checkbox checks -->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Has this student received Religion Textbook?</label>
+          <div class="col-md-4">
+            <input type="checkbox" id="religion" name="subjects" value="0" />
+            <label for="religion">Yes</label>
+          </div>
+        </div>
 
 
 
@@ -169,52 +169,52 @@
       </fieldset>
     </form>
 
-   <script>
-  function submitForm() {
-  const form = document.getElementById('contact_form');
-  const formData = new FormData(form);
+    <script>
+      function submitForm() {
+        const form = document.getElementById('contact_form');
+        const formData = new FormData(form);
 
-  // Convert FormData to JSON object
-  const jsonObject = {};
-  jsonObject['subjects'] = [false, false, false,false,false,false]; // Initialize with boolean values
+        // Convert FormData to JSON object
+        const jsonObject = {};
+        jsonObject['subjects'] = [false, false, false, false, false, false]; // Initialize with boolean values
 
-  formData.forEach((value, key) => {
-    if (key !== 'subjects') {
-      jsonObject[key] = value;
-    }
-  });
+        formData.forEach((value, key) => {
+          if (key !== 'subjects') {
+            jsonObject[key] = value;
+          }
+        });
 
-  // Update the subjects array based on checkbox states
-  jsonObject['subjects'][0] = document.getElementById('bangla').checked;
-  jsonObject['subjects'][1] = document.getElementById('english').checked;
-  jsonObject['subjects'][2] = document.getElementById('math').checked;
-    jsonObject['subjects'][3] = document.getElementById('science').checked;
-      jsonObject['subjects'][4] = document.getElementById('socialscience').checked;
+        // Update the subjects array based on checkbox states
+        jsonObject['subjects'][0] = document.getElementById('bangla').checked;
+        jsonObject['subjects'][1] = document.getElementById('english').checked;
+        jsonObject['subjects'][2] = document.getElementById('math').checked;
+        jsonObject['subjects'][3] = document.getElementById('science').checked;
+        jsonObject['subjects'][4] = document.getElementById('socialscience').checked;
         jsonObject['subjects'][5] = document.getElementById('religion').checked;
 
-  // Make a POST request to your server with the JSON data
-  fetch('/save-distributed-book-info-class1&2', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(jsonObject),
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data && data.message) {
-      alert(data.message);
-      // You can perform additional actions based on the server response
-    } else {
-      alert('Server response is undefined or missing message.');
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error.message);
-    alert('An error occurred while submitting the form.');
-  });
-}
-</script>
+        // Make a POST request to your server with the JSON data
+        fetch('/save-distributed-book-info-class1&2', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(jsonObject),
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data && data.message) {
+              alert(data.message);
+              // You can perform additional actions based on the server response
+            } else {
+              alert('Server response is undefined or missing message.');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error.message);
+            alert('An error occurred while submitting the form.');
+          });
+      }
+    </script>
 
 
 

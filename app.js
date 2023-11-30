@@ -435,6 +435,88 @@ app.get('/class1-year-book-submit', (req, res) => {
     }
   });
 });
+app.get('/class2-year-book-submit', (req, res) => {
+  const selectedYear = req.query.selectedYear;
+  const selectedBook = req.query.selectedBook;
+  const requestedClass = 2;
+
+  const requestedYear = parseInt(selectedYear, 10);
+  
+  // Modify the SQL query to include the book name
+  const query = 'SELECT * FROM books WHERE class = ? AND year = ? AND subject_name = ?';
+
+  db.query(query, [requestedClass, requestedYear, selectedBook], (err, result) => {
+    if (err) {
+      console.error('Error fetching book information: ', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+app.get('/class3-year-book-submit', (req, res) => {
+  const selectedYear = req.query.selectedYear;
+  const selectedBook = req.query.selectedBook;
+  const requestedClass = 3;
+
+  const requestedYear = parseInt(selectedYear, 10);
+  
+  // Modify the SQL query to include the book name
+  const query = 'SELECT * FROM books WHERE class = ? AND year = ? AND subject_name = ?';
+
+  db.query(query, [requestedClass, requestedYear, selectedBook], (err, result) => {
+    if (err) {
+      console.error('Error fetching book information: ', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+app.get('/class4-year-book-submit', (req, res) => {
+  const selectedYear = req.query.selectedYear;
+  const selectedBook = req.query.selectedBook;
+  const requestedClass = 4;
+
+  const requestedYear = parseInt(selectedYear, 10);
+  
+  // Modify the SQL query to include the book name
+  const query = 'SELECT * FROM books WHERE class = ? AND year = ? AND subject_name = ?';
+
+  db.query(query, [requestedClass, requestedYear, selectedBook], (err, result) => {
+    if (err) {
+      console.error('Error fetching book information: ', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+app.get('/class5-year-book-submit', (req, res) => {
+  const selectedYear = req.query.selectedYear;
+  const selectedBook = req.query.selectedBook;
+  const requestedClass = 5;
+
+  const requestedYear = parseInt(selectedYear, 10);
+  
+  // Modify the SQL query to include the book name
+  const query = 'SELECT * FROM books WHERE class = ? AND year = ? AND subject_name = ?';
+
+  db.query(query, [requestedClass, requestedYear, selectedBook], (err, result) => {
+    if (err) {
+      console.error('Error fetching book information: ', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+
+
 
 
 
@@ -787,10 +869,10 @@ app.post('/save-bookfrom-ntcb-info', (req, res) => {
     const query = `INSERT INTO books (book_date, year, class, subject_name, number_of_books) VALUES (?, ?, ?, ?, ?)`;
     db.query(query, [date,studyyear,classNo,subject,booknumber]);
     if(classNo==1) res.redirect('/bookfrom-ntcb-entry-class1');
-    else if (classNo==2) res.redirect('/bookfrom-nctb-entry-class2');
-    else if (classNo==3) res.redirect('/bookfrom-nctb-entry-class3');
-    else if (classNo==4) res.redirect('/bookfrom-nctb-entry-class4');
-    else if (classNo==5) res.redirect('/bookfrom-nctb-entry-class5');
+    else if (classNo==2) res.redirect('/bookfrom-ntcb-entry-class2');
+    else if (classNo==3) res.redirect('/bookfrom-ntcb-entry-class3');
+    else if (classNo==4) res.redirect('/bookfrom-ntcb-entry-class4');
+    else if (classNo==5) res.redirect('/bookfrom-ntcb-entry-class5');
 
 } catch (error) {
     console.error('Error saving data to the database:', error);

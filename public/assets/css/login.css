@@ -5,6 +5,9 @@ html {
   
   body {
     background: linear-gradient(45deg, rgba(255, 255, 255, 0.836)a(66, 245, 189, 0.4) 100%);
+   
+    background-size: cover
+  
     color: rgba(0, 0, 0, 0.6);
     font-family: "Roboto", sans-serif;
     font-size: 14px;

@@ -9,25 +9,25 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link href="https://assets.codepen.io/344846/style.css" rel="stylesheet" />
   <link rel="stylesheet" href="/form.css" />
+  <link rel="stylesheet" href="/assets/css/data-show-style.css">
   <style>
     .edit-box {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 80%; /* Adjust the width as needed */
-  max-width: 600px; /* Adjust the max-width as needed */
-  height: auto; /* Adjust the height as needed */
-}
-
-   
-    
-  
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      /* Adjust the width as needed */
+      max-width: 600px;
+      /* Adjust the max-width as needed */
+      height: auto;
+      /* Adjust the height as needed */
+    }
   </style>
 
 </head>
@@ -395,7 +395,7 @@
           <a href="/http://127.0.0.1:5500/page1.html"
             class="cursor-pointer h-full border-b-2 dark:text-gray-900 dark:border-white inline-flex mr-8 items-center"
             style="padding: 3px; color: black; font-weight: 600; border-bottom: 2px solid gray;">শিক্ষার্থীদের তথ্য</a>
-       <a href="/http://127.0.0.1:5500/std-page1.html"
+          <a href="/http://127.0.0.1:5500/std-page1.html"
             class="cursor-pointer h-full border-b-2 dark:text-gray-900 dark:border-white inline-flex mr-8 items-center"
             style="padding: 3px; color: black; font-weight: 600; border-bottom: 2px solid gray;">প্রাপ্ত বইয়ের তথ্য</a>
         </div>
@@ -528,7 +528,7 @@
 
 
 
-            <form>
+            <form class="my-form">
               <label for="yearInput">Enter Year:</label>
               <input type="text" id="yearInput" name="selectedYear" oninput="updateResults()">
             </form>

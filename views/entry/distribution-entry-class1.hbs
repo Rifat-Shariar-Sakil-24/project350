@@ -25,55 +25,55 @@
         <!-- Text input-first name -->
 
         <!-- Text input-first name -->
-<div class="form-group">
-  <label class="col-md-4 control-label">শ্রেণি</label>
-  <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <label for="classNo"></label>
-      <!-- Existing input field with readonly attribute -->
-      <select id="classNo" name="classNo" class="form-control" required>
-        <option value="1">প্রথম শ্রেণি</option>
-        <!-- Add more options as needed -->
-      </select>
-    </div>
-  </div>
-</div>
+        <div class="form-group">
+          <label class="col-md-4 control-label">শ্রেণি</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <label for="classNo"></label>
+              <!-- Existing input field with readonly attribute -->
+              <select id="classNo" name="classNo" class="form-control" required>
+                <option value="1">প্রথম শ্রেণি</option>
+                <!-- Add more options as needed -->
+              </select>
+            </div>
+          </div>
+        </div>
 
-<!-- Text input-roll -->
-<div class="form-group">
-  <label class="col-md-4 control-label">রোল</label>
-  <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-      <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-      <input id="roll" name="roll" placeholder="Enter student's integer roll" class="form-control"
-        type="number" step="1" required />
-    </div>
-  </div>
-</div>
+        <!-- Text input-roll -->
+        <div class="form-group">
+          <label class="col-md-4 control-label">রোল</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+              <input id="roll" name="roll" placeholder="Enter student's integer roll" class="form-control" type="number"
+                step="1" required />
+            </div>
+          </div>
+        </div>
 
-<!-- Number input for year -->
-<div class="form-group">
-  <label class="col-md-4 control-label">শিক্ষাবর্ষ</label>
-  <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-      <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-      <input id="year" name="year" placeholder="Enter student's study year" class="form-control" type="number"
-        step="1" required />
-    </div>
-  </div>
-</div>
+        <!-- Number input for year -->
+        <div class="form-group">
+          <label class="col-md-4 control-label">শিক্ষাবর্ষ</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+              <input id="year" name="year" placeholder="Enter student's study year" class="form-control" type="number"
+                step="1" required />
+            </div>
+          </div>
+        </div>
 
 
- <div class="form-group" >
-  <label class="col-md-4 control-label">Student Name</label>
-  <div class="col-md-4 inputGroupContainer">
-    <div class="input-group" >
-      <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
-      <span id="showbox" class="form-control"></span>
-    </div>
-  </div>
-</div>
+        <div class="form-group">
+          <label class="col-md-4 control-label">Student Name</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+              <span id="showbox" class="form-control"></span>
+            </div>
+          </div>
+        </div>
 
 
         <div class="form-group">
@@ -108,24 +108,24 @@
 
         <!-- Text area-description -->
 
-      
 
-      <!-- Your existing Submit Button -->
-      <div class="form-group">
-        <label class="col-md-4 control-label"></label>
-        <div class="col-md-4">
-          <button type="button" class="btn btn-warning" onclick="submitForm()">
-            Submit <span class="glyphicon glyphicon-send"></span>
-          </button>
+
+        <!-- Your existing Submit Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label"></label>
+          <div class="col-md-4">
+            <button type="button" class="btn btn-warning" onclick="submitForm()">
+              Submit <span class="glyphicon glyphicon-send"></span>
+            </button>
+          </div>
         </div>
-      </div>
-  
+
       </fieldset>
     </form>
 
     <script>
 
-      
+
       const classNoInput = document.getElementById('classNo');
       const rollInput = document.getElementById('roll');
       const yearInput = document.getElementById('year');
@@ -155,7 +155,7 @@
           })
           .catch(error => {
             console.error('Error fetching student data:', error.message);
-           // alert('An error occurred while fetching student data.');
+            // alert('An error occurred while fetching student data.');
           });
       }
       function submitForm() {
@@ -198,7 +198,7 @@
             console.error('Error:', error.message);
             alert('An error occurred while submitting the form.');
           });
-        
+
       }
 
 
