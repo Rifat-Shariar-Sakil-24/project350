@@ -85,21 +85,8 @@ function updateStudentInfo() {
 
   // first name error
 
-  const firstNameInput = document.getElementById('first_name');
-  const errorMessage = document.getElementById('error-message');
+ 
 
-  form.addEventListener('submit', function (event) {
-      // Validate the input using a regular expression
-      const nameRegex = /^[a-zA-Z]+$/;
-      const firstName = firstNameInput.value.trim();
+  // ...
 
-      if (!nameRegex.test(firstName)) {
-          // Display an error message and prevent form submission
-          errorMessage.innerText = 'প্রথম নামে কেবল ইংরেজি বর্ণ (a-z বা A-Z) অনুমতি প্রদান করা হয়';
-          event.preventDefault();
-      } else {
-          // Clear the error message if the input is valid
-          errorMessage.innerText = '';
-      }
-  });
-  
+// ...

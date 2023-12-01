@@ -40,42 +40,48 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="form-group">
+   <div class="form-group">
                     <label class="col-md-4 control-label">প্রথম নাম</label>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input name="first_name" placeholder="প্রথম নাম" class="form-control" type="text"
-                                required />
+                            <input id="first_name" name="first_name" placeholder="প্রথম নাম" class="form-control"
+                                type="text" oninput="validateFirstName(this)" required />
                         </div>
+                        <small id="firstNameError" class="text-danger"></small>
                     </div>
                 </div>
 
                 <!-- Text input-last নাম
  -->
-
                 <div class="form-group">
                     <label class="col-md-4 control-label">শেষ নাম</label>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input name="last_name" placeholder="শেষ নাম" class="form-control" type="text" />
+                            <input name="last_name" placeholder="শেষ নাম" class="form-control" type="text"
+                                oninput="validateLastName()" required />
                         </div>
+                        <small id="lastNameError" class="text-danger"></small>
                     </div>
                 </div>
 
                 <!-- Text input-roll -->
+
+
                 <div class="form-group">
                     <label class="col-md-4 control-label">রোল</label>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                            <input id="rollNoInput" name="roll" placeholder="ছাত্র/ছাত্রীর রোল নম্বর এন্ট্রি করুন" class="form-control"
-                                type="number" step="1" required />
+                            <input id="rollNoInput" name="roll" placeholder="ছাত্র/ছাত্রীর রোল নম্বর এন্ট্রি করুন"
+                                class="form-control" type="number" step="1" required />
                         </div>
+                        <small id="rollNumberError" class="text-danger"></small>
+
                     </div>
                 </div>
+
 
                 <div class="form-group">
                     <label class="col-md-4 control-label">শিক্ষাবর্ষ</label>
@@ -85,8 +91,11 @@
                             <input id="yearNoInput" name="studyyear" placeholder="ছাত্র/ছাত্রীর শিক্ষাবর্ষ এন্ট্রি করুন"
                                 class="form-control" type="number" step="1" required />
                         </div>
+                        <small id="studyYearError" class="text-danger"></small>
+
                     </div>
                 </div>
+
 
                 <!-- Text input-father's নাম
  -->
@@ -96,10 +105,12 @@
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                             <input name="father_name" placeholder="পিতার পুরো নাম এন্ট্রি করুন:" class="form-control"
-                                type="text" />
+                                type="text" required />
                         </div>
+                        <small id="fatherNameError" class="text-danger"></small>
                     </div>
                 </div>
+
 
                 <!-- Text input-father's নাম
  -->
@@ -109,19 +120,22 @@
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                             <input name="mother_name" placeholder="মায়ের পুরো নাম এন্ট্রি করুন:" class="form-control"
-                                type="text" />
+                                type="text" required />
                         </div>
+                        <small id="motherNameError" class="text-danger"></small>
                     </div>
                 </div>
 
-                <!-- Text input-phone -->
+
                 <div class="form-group">
                     <label class="col-md-4 control-label">ফোন নম্বর</label>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                            <input name="phone" placeholder="(+৮৮০)১৩১৩৯৫৪৫৯৫" class="form-control" type="text" />
+                            <input name="phone" placeholder="e.g. ০১৩১৩৯৫৪৫৯৫" class="form-control" type="text"
+                                required />
                         </div>
+                        <small id="phoneError" class="text-danger"></small>
                     </div>
                 </div>
 
@@ -131,7 +145,8 @@
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-হোমপেজ"></i></span>
-                            <input name="address" placeholder="ঠিকানা লিখুন" class="form-control" type="text" />
+                            <input name="address" placeholder="ঠিকানা লিখুন" class="form-control" type="text"
+                                required />
                         </div>
                     </div>
                 </div>
@@ -180,6 +195,7 @@
         </a>
     </div>
     <script src="assets/js/studentEntry.js"></script>
+     <script src="assets/js/stuEntryVal.js"></script>
 </body>
 
 </html>
