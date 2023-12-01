@@ -1030,30 +1030,44 @@ app.post('/save-distributed-book-info-class1&2', (req, res) => {
 //   }
 // );
 
-app.post('/save-bookfrom-ntcb-info', (req, res) => {
+// app.post('/save-bookfrom-ntcb-info', (req, res) => {
       
-  try {
+//   try {
    
-    const {date,studyyear,classNo,subject,booknumber } = req.body;
+//     const {date,studyyear,classNo,subject,booknumber } = req.body;
 
  
+//     const query = `INSERT INTO books (book_date, year, class, subject_name, number_of_books) VALUES (?, ?, ?, ?, ?)`;
+//     db.query(query, [date,studyyear,classNo,subject,booknumber]);
+//     if(classNo==1) res.redirect('/bookfrom-ntcb-entry-class1');
+//     else if (classNo==2) res.redirect('/bookfrom-ntcb-entry-class2');
+//     else if (classNo==3) res.redirect('/bookfrom-ntcb-entry-class3');
+//     else if (classNo==4) res.redirect('/bookfrom-ntcb-entry-class4');
+//     else if (classNo==5) res.redirect('/bookfrom-ntcb-entry-class5');
+
+// } catch (error) {
+//     console.error('Error saving data to the database:', error);
+//     res.status(500).send('Internal Server Error');
+// }
+//   console.log(req.body);
+// }
+// );
+
+app.post('/save-bookfrom-ntcb-info', (req, res) => {
+ console.log("herr");
+  try {
+    const { date, studyyear, classNo, subject, booknumber } = req.body;
+
     const query = `INSERT INTO books (book_date, year, class, subject_name, number_of_books) VALUES (?, ?, ?, ?, ?)`;
-    db.query(query, [date,studyyear,classNo,subject,booknumber]);
-    if(classNo==1) res.redirect('/bookfrom-ntcb-entry-class1');
-    else if (classNo==2) res.redirect('/bookfrom-ntcb-entry-class2');
-    else if (classNo==3) res.redirect('/bookfrom-ntcb-entry-class3');
-    else if (classNo==4) res.redirect('/bookfrom-ntcb-entry-class4');
-    else if (classNo==5) res.redirect('/bookfrom-ntcb-entry-class5');
+    db.query(query, [date, studyyear, classNo, subject, booknumber]);
 
-} catch (error) {
+    // Send a JSON response for success
+    res.json({ success: true, message: 'Data saved successfully' });
+  } catch (error) {
     console.error('Error saving data to the database:', error);
-    res.status(500).send('Internal Server Error');
-}
-  console.log(req.body);
-}
-);
-
-
+    res.status(500).json({ success: false, message: 'Internal Server Error' });
+  }
+});
 
 app.post('/login', async (req, res) => {
   try {
