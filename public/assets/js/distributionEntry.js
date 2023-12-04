@@ -62,8 +62,10 @@ jsonObject[key] = value;
 jsonObject['subjects'][0] = document.getElementById('bangla').checked;
 jsonObject['subjects'][1] = document.getElementById('english').checked;
 jsonObject['subjects'][2] = document.getElementById('math').checked;
+console.log(classNoInput.value);
 
-if(classNoInput.value!=1 && classNoInput!=2) {
+if(classNoInput.value>2) {
+  console.log("3");
 jsonObject['subjects'][3] = document.getElementById('science').checked;
 jsonObject['subjects'][4] = document.getElementById('socialscience').checked;
 jsonObject['subjects'][5] = document.getElementById('religion').checked;
