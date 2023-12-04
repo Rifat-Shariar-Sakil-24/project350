@@ -1276,7 +1276,8 @@ app.delete('/delete-student/:class/:roll/:year', async (req, res) => {
 });
 
 app.delete('/delete-studentBookInfo/:class/:roll/:year', async (req, res) => {
-  const { class: classNo, roll, year } = req.params;
+  console.log("ggg");
+    const { class: classNo, roll, year } = req.params;
 
   // Delete from distributed_books table first due to foreign key constraint
   const deleteBooksQuery = 'DELETE FROM distributed_books WHERE class = ? AND roll = ? AND year = ?';

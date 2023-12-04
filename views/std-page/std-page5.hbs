@@ -313,13 +313,14 @@
                 tableBody.innerHTML = ''; // Clear existing content
 
                 data.forEach(book => {
+                   const formattedDate = new Date(book.book_date).toLocaleDateString('en-US'); // Format the date
                   const row = document.createElement('tr');
                   row.innerHTML = `
       <td>${book.year}</td>
       <td>${book.class}</td>
        <td>${mapSubjectName(book.subject_name)}</td>
       <td>${book.number_of_books}</td>
-      <td>${book.book_date}</td>
+      <td>${formattedDate}</td>
     `;
                   tableBody.appendChild(row);
 

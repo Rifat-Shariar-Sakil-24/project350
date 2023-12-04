@@ -15,21 +15,30 @@ function updateStudentInfo() {
 
   // Call the API to fetch student data using the GET method
   fetch(`/getStudentData?classNo=${classNo}&roll=${roll}&year=${year}`)
-    .then(response => response.json())
-    .then(data => {
-      if (data && data.data && data.data.length > 0) {
-        // Update the showbox field with fetched data
-        const studentData = data.data[0];
-        showbox.innerText = `${studentData.first_name} ${studentData.last_name}`;
-      } else {
-        // Clear the showbox field if no data is found
-        showbox.innerText = 'No such student found';
-      }
-    })
-    .catch(error => {
-      console.error('Error fetching student data:', error.message);
-      // alert('An error occurred while fetching student data.');
-    });
+  .then(response => response.json())
+  .then(data => {
+    if (data && data.data && data.data.length > 0) {
+      // Update the showbox field with fetched data
+      const studentData = data.data[0];
+      showbox.innerText = `${studentData.first_name} ${studentData.last_name}`;
+      
+      // Style for found student
+      showbox.style.color = 'green';
+      showbox.style.fontWeight = 'bold';
+    } else {
+      // Clear the showbox field if no data is found
+      showbox.innerText = 'No such student found';
+      
+      // Style for not found student
+      showbox.style.color = 'red';
+      showbox.style.fontWeight = 'bold';
+    }
+  })
+  .catch(error => {
+    console.error('Error fetching student data:', error.message);
+    // alert('An error occurred while fetching student data.');
+  });
+
 }
 function submitForm(event) {
     event.preventDefault(); 

@@ -14,21 +14,30 @@ function updateStudentInfo() {
 
   // Call the API to fetch student data using the GET method
   fetch(`/getStudentData?classNo=${classNo}&roll=${roll}&year=${year}`)
-    .then(response => response.json())
-    .then(data => {
-      if (data && data.data && data.data.length > 0) {
-        // Update the showbox field with fetched data
-        const studentData = data.data[0];
-        showbox.innerText = "This student already exists!";
-      } else {
-        // Clear the showbox field if no data is found
-        showbox.innerText = 'No such student found';
-      }
-    })
-    .catch(error => {
-      console.error('Error fetching student data:', error.message);
-      // alert('An error occurred while fetching student data.');
-    });
+  .then(response => response.json())
+  .then(data => {
+    const showbox = document.getElementById('showbox'); // Assuming you have an element with id 'showbox'
+
+    if (data && data.data && data.data.length > 0) {
+      // Update the showbox field with fetched data
+      const studentData = data.data[0];
+      showbox.innerText = "This student already exists!";
+      showbox.style.color = 'red';   // Set text color to red
+      showbox.style.fontWeight = 'bold';  // Set text to bold
+    } else {
+      // Clear the showbox field if no data is found
+      showbox.innerText = 'No such student found';
+      showbox.style.color = 'green';  // Set text color to green
+      showbox.style.fontWeight = 'bold';  // Set text to bold
+    }
+  })
+  .catch(error => {
+    console.error('Error fetching student data:', error.message);
+    // alert('An error occurred while fetching student data.');
+  });
+
+
+
 }function submitForm(event) {
     event.preventDefault();  // Prevent the default form submission behavior
   
