@@ -1275,6 +1275,35 @@ app.delete('/delete-student/:class/:roll/:year', async (req, res) => {
   }
 });
 
+app.delete('/delete-studentBookInfo/:class/:roll/:year', async (req, res) => {
+  const { class: classNo, roll, year } = req.params;
+
+  // Delete from distributed_books table first due to foreign key constraint
+  const deleteBooksQuery = 'DELETE FROM distributed_books WHERE class = ? AND roll = ? AND year = ?';
+
+  try {
+    // Delete books
+    await new Promise((resolve, reject) => {
+      db.query(deleteBooksQuery, [classNo, roll, year], (error, results) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+
+   
+
+    // Send a 204 response indicating successful deletion
+    res.status(204).send();
+
+  } catch (error) {
+    console.error('Error:', error.message);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 
 
 

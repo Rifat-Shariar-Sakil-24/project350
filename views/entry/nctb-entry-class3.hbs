@@ -43,6 +43,7 @@
                             <input name="studyyear" placeholder="শিক্ষাবর্ষ এন্ট্রি করুন" class="form-control"
                                 type="number" step="1" required />
                         </div>
+                          <div id="studyYearError" style="color: red;"></div>
                     </div>
                 </div>
 
@@ -90,8 +91,9 @@
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
-                            <input name="booknumber" placeholder="বইয়ের সংখ্যা" class="form-control" type="number" />
+                            <input name="booknumber" placeholder="বইয়ের সংখ্যা" class="form-control" type="number" required />
                         </div>
+                         <div id="bookNumberError" style="color: red;"></div>
                     </div>
                 </div>
 
@@ -119,6 +121,7 @@
         </a>
     </div>
      <script src="assets/js/nctbEntry.js"></script>
+     <script src="assets/js/nctbEntryVal.js"></script>
 </body>
 
 </html>
