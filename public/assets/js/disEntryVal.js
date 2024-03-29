@@ -30,6 +30,8 @@ function validateRollNumber() {
     }
   }
   
+
+  
 // Add an event listener to the study year input field
 const yearNoInput = document.getElementById('year');
 yearNoInput.addEventListener('input', validateStudyYear);

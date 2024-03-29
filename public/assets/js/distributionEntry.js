@@ -81,8 +81,14 @@ body: JSON.stringify(jsonObject),
 .then(response => response.json())
 .then(data => {
 if (data && data.message) {
-  alert(data.message);
-  form.reset();
+  alert(data.message);form.reset();
+  showbox.innerText = `No such student found`;
+      
+  // Style for found student
+  showbox.style.color = 'green';
+  showbox.style.fontWeight = 'bold';
+  
+
   // You can perform additional actions based on the server response
 } else if (data && data.error) {
   if (data.error === 'Already books are distributed.') {

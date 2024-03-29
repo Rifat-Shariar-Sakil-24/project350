@@ -10,6 +10,7 @@
   <link href="https://assets.codepen.io/344846/style.css" rel="stylesheet" />
   <link rel="stylesheet" href="/form.css" />
   <link rel="stylesheet" href="/assets/css/data-show-style.css">
+
   <style>
     .edit-box {
       display: none;
@@ -28,7 +29,35 @@
       height: auto;
       /* Adjust the height as needed */
     }
+
+    <style>
+.checkbox-group {
+     
+      flex-direction: row;
+      align-items: center;
+      padding-left: 200px;
+    }
+
+    .radio-group {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding-left: 150px;
+      padding-right: 150px;
+      /* Optional: Add margin to separate from the checkbox group */
+    }
+
+    /* Optional: Add some styling to make it look better */
+    label {
+      margin-right: 5px;
+    }
+
+    input {
+      margin-right: 20px;
+    }
+
   </style>
+
 </head>
 
 
@@ -531,10 +560,65 @@
           <div class="sm:p-7 p-4">
 
 
-            <form class="my-form">
-              <label for="yearInput">Enter Year:</label>
-              <input type="text" id="yearInput" name="selectedYear" oninput="updateResults()">
+             <form class="my-form">
+              <div class="form-group">
+                <label for="yearInput">Enter Year:</label>
+                <input type="text" id="yearInput" name="selectedYear" oninput="updateResults()">
+
+              </div>
+
+
+
+              <div class="form-group">
+                <div class="checkbox-group">
+                  <label for="enableFilter">Enable Filter:</label>
+                  <input type="checkbox" id="enableFilter" onclick="updateRadioButtons()">
+
+                  <div class="radio-group">
+                    <label for="filterBangla">Filter Bangla</label>
+                    <input type="radio" id="filterBangla" name="filterGroup" disabled onclick="updateResults()">
+
+                    <label for="filterEnglish">Filter English</label>
+                    <input type="radio" id="filterEnglish" name="filterGroup" disabled onclick="updateResults()">
+
+                    <label for="filterMath">Filter Math</label>
+                    <input type="radio" id="filterMath" name="filterGroup" disabled onclick="updateResults()">
+
+                    <label for="filterScience">Filter Science</label>
+                    <input type="radio" id="filterScience" name="filterGroup" disabled onclick="updateResults()">
+
+                    <label for="filterSocialScience">Filter Social Science</label>
+                    <input type="radio" id="filterSocialScience" name="filterGroup" disabled
+                      onclick="updateResults()">
+
+                    <label for="filterReligion">Filter Religion</label>
+                    <input type="radio" id="filterReligion" name="filterGroup" disabled onclick="updateResults()">
+                  </div>
+
+                </div>
+              </div>
             </form>
+
+
+            <script>
+              function updateRadioButtons() {
+                updateResults();
+                var enableFilterCheckbox = document.getElementById("enableFilter");
+                var radioButtons = document.getElementsByName("filterGroup");
+
+                for (var i = 0; i < radioButtons.length; i++) {
+                  radioButtons[i].disabled = !enableFilterCheckbox.checked;
+                }
+
+                // Optional: If you want to clear the selection when disabling the radio buttons
+                if (!enableFilterCheckbox.checked) {
+                  for (var i = 0; i < radioButtons.length; i++) {
+                    radioButtons[i].checked = false;
+                  }
+                }
+              }
+            </script>
+
 
             <table class="table">
               <thead>
@@ -632,9 +716,34 @@
         </button>
       </td>
     `;
-                  tableBody.appendChild(row);
+                  if (!filterData(student)) {
+                    tableBody.appendChild(row);
+                  }
                 });
               }
+
+               function filterData(student) {
+                const filterBangla = document.getElementById('filterBangla').checked;
+                const filterEnglish = document.getElementById('filterEnglish').checked;
+                const filterMath = document.getElementById('filterMath').checked;
+                const filterScience = document.getElementById('filterScience').checked;
+                const filterSocialScience = document.getElementById('filterSocialScience').checked;
+                const filterReligion = document.getElementById('filterReligion').checked;
+
+                const subjects = JSON.parse(student.bookInfo.subjects);
+
+                if ((filterBangla && !subjects[0]) ||
+                  (filterEnglish && !subjects[1]) ||
+                  (filterMath && !subjects[2]) ||
+                  (filterScience && !subjects[3]) ||
+                  (filterSocialScience && !subjects[4]) ||
+                  (filterReligion && !subjects[5])) {
+                  return true;
+                }
+
+                return false;
+              }
+
 
 
               function renderSubjects(bookInfo) {
