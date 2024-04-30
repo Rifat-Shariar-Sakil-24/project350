@@ -17,6 +17,30 @@ app.get("/",function(req,res){
     res.render('home');
 })
 
+
+app.get("/changePassword/initiate", function(req,res){
+    res.render('changePasswordInitiate');
+})
+app.post("/changePassword/Initiate", async function(req,res){
+   
+    const data = req.body;
+
+    try {
+        const existingSchool = await School.findOne({ email: data.email });
+        if (!existingSchool) {
+            return res.status(401).send('no such school found');
+        } 
+        res.status(201).send('ok');
+    } catch (error) {
+        
+    }
+})
+
+
+app.get("/changePassword/confirm", function(req,res){
+    res.render('changePasswordConfirm');
+})
+
 //login
 app.get("/login", function(req,res){
     res.render('login');
