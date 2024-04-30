@@ -1,17 +1,35 @@
 const express = require('express');
+const session = require('express-session');
+
+const nodemailer = require('nodemailer');
+// const sendEmail = require('../utils/sendEmails');
 const { School } = require('../models/School');
 const app = express.Router();
 
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true
+}));
 
 const jwt = require('jsonwebtoken');
+const { OTP } = require('../models/OTP');
+const { generateOTP } = require('../services/generateOTP');
+const { sendOTP } = require("../services/sendOTP");
 const secret = process.env.SECRET;
 
 const maxAge = 3*24*60*60;
+
+
+
 const createToken = function(id){
     return jwt.sign({id}, secret, {
         expiresIn: maxAge
     });
 }
+
+
+
 
 app.get("/",function(req,res){
     res.render('home');
@@ -30,16 +48,29 @@ app.post("/changePassword/Initiate", async function(req,res){
         if (!existingSchool) {
             return res.status(401).send('no such school found');
         } 
-        res.status(201).send('ok');
+        req.session.email = data.email;
+        res.status(201).send(req.body);
     } catch (error) {
         
     }
 })
 
+//res.status(200).json({ success: true, message: 'OTP sent successfully' });
 
-app.get("/changePassword/confirm", function(req,res){
-    res.render('changePasswordConfirm');
-})
+
+app.get("/changePassword/confirm", async function(req, res) {
+    const email = req.session.email;
+    console.log(email);
+    try {
+        const otp = generateOTP();
+        const result = await sendOTP(email, otp);
+        res.render('changePasswordConfirm', {email});
+    } catch (error) {
+       
+        res.status(401).send({ error: error.message });
+    }
+});
+
 
 //login
 app.get("/login", function(req,res){

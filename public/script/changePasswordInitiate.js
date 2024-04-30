@@ -28,14 +28,12 @@ form.addEventListener('submit', async function(e) {
             });
             
             if (res.status == 201) {
-                
-               setTimeout(() => {
-                 this.reset();
-                 document.querySelector('.loading').style.display = 'none';
-                  window.location.href = '/changePassword/confirm';
-                
-               }, 2000);
-                 
+                const body = await res.json();
+                const email = body.email;
+                console.log(email);
+                sessionStorage.setItem('email', email);
+                window.location.href = '/changePassword/confirm';
+
             } else {
                 const errorMessage = await res.text(); 
                 setTimeout(() => {
