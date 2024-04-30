@@ -197,6 +197,7 @@ html {
   }
   
   .form-container {
+    width: 500px;
     background-color: #fff;
     padding: 40px;
     border-radius: 10px;

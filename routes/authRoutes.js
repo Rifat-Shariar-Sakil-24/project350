@@ -16,6 +16,7 @@ const jwt = require('jsonwebtoken');
 const { OTP } = require('../models/OTP');
 const { generateOTP } = require('../services/generateOTP');
 const { sendOTP } = require("../services/sendOTP");
+const { storeOTP } = require('../services/storeOTP');
 const secret = process.env.SECRET;
 
 const maxAge = 3*24*60*60;
@@ -63,13 +64,51 @@ app.get("/changePassword/confirm", async function(req, res) {
     console.log(email);
     try {
         const otp = generateOTP();
+        const newStoreOTP = storeOTP(email,otp);
         const result = await sendOTP(email, otp);
+       
         res.render('changePasswordConfirm', {email});
     } catch (error) {
        
         res.status(401).send({ error: error.message });
     }
 });
+
+
+app.post("/changePassword/confirm", async function(req, res) {
+    
+    const email = req.session.email;console.log(email);
+    const schoolOTPInfo = await OTP.findOne({email});
+    console.log(schoolOTPInfo);
+  console.log(req.body);
+    const givenOTP = req.body.OTP;
+    const storedOTP = schoolOTPInfo.otp;
+    console.log(givenOTP);
+    console.log(storedOTP);
+    if(givenOTP!=storedOTP){
+        return res.status(401).send('otp does not match');
+    }
+
+    try {
+        const password = req.body.newPassword;
+        await School.findOneAndUpdate(
+            { email: email },
+            { $set: { password: password} },
+            { new: true }
+        );
+        const existingSchool = await School.findOne({email});
+        const token = createToken(existingSchool._id);
+        res.cookie('jwt', token, {
+            httpOnly: true,
+            maxAge: maxAge * 1000
+        })
+        
+        res.status(201).send('password reset successful')
+    } catch (error) {
+        res.status(401).send('error occurred');
+    }
+});
+
 
 
 //login
