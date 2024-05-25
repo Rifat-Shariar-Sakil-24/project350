@@ -33,6 +33,7 @@ const createToken = function(id){
 
 
 app.get("/",function(req,res){
+
     res.render('home');
 })
 
@@ -126,7 +127,10 @@ app.post('/login',async function(req,res){
         if (!existingSchool) {
             return res.status(401).send('no such school found');
         }
-        if(existingSchool.password!=data.password){
+        // if(existingSchool.password!=data.password){
+        //     return res.status(401).send('wrong password');
+        // }
+         if(!bcrypt.compare(existingSchool.password,data.password)){
             return res.status(401).send('wrong password');
         }
         const token = createToken(existingSchool._id);
@@ -140,6 +144,9 @@ app.post('/login',async function(req,res){
         
     }
 })
+
+const bcrypt = require('bcrypt');
+
 app.post('/register', async function(req, res){
     const data = req.body;
     try {
@@ -149,7 +156,9 @@ app.post('/register', async function(req, res){
            return res.status(401).send('Email address already exists');
        }
        
-       
+       const salt = await bcrypt.genSalt();
+       data.password = await bcrypt.hash(data.password,salt);
+
        const newSchool = new School(data);
        await newSchool.save();
 
