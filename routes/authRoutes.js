@@ -132,7 +132,7 @@ app.post('/login',async function(req,res){
         //     return res.status(401).send('wrong password');
         // }
         
-         if(!(await bcrypt.compare(existingSchool.password,data.password))){
+         if(!(await bcrypt.compare(data.password,existingSchool.password))){
             return res.status(401).send('wrong password');
         }
        // console.log(existingSchool.password);
