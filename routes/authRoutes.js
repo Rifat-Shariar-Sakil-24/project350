@@ -1,5 +1,6 @@
 const express = require('express');
 const session = require('express-session');
+const bcrypt = require('bcrypt');
 
 const nodemailer = require('nodemailer');
 // const sendEmail = require('../utils/sendEmails');
@@ -145,7 +146,6 @@ app.post('/login',async function(req,res){
     }
 })
 
-const bcrypt = require('bcrypt');
 
 app.post('/register', async function(req, res){
     const data = req.body;

@@ -126,6 +126,9 @@ app.get("/bookDistributionInformation", function(req,res){
     const data = req.query; 
     const schoolID = await getUserID(req);
     data.schoolID = schoolID;
+
+    //console.log(data);
+    //data consists schoolId, classNumber, yearNumber
  
    try{
     const distributionInformation = await BookDistribution.find(data).exec();
@@ -148,7 +151,7 @@ app.get("/bookDistributionInformation", function(req,res){
         return rest;
     }));
     
-
+       console.log(transformedData);
        res.status(201).json(transformedData);
    }
    catch(error){
