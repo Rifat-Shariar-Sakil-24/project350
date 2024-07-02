@@ -131,9 +131,12 @@ app.post('/login',async function(req,res){
         // if(existingSchool.password!=data.password){
         //     return res.status(401).send('wrong password');
         // }
-         if(!bcrypt.compare(existingSchool.password,data.password)){
+        
+         if(!(await bcrypt.compare(existingSchool.password,data.password))){
             return res.status(401).send('wrong password');
         }
+       // console.log(existingSchool.password);
+        //console.log(data.password);
         const token = createToken(existingSchool._id);
         res.cookie('jwt', token, {
             httpOnly: true,
@@ -158,6 +161,7 @@ app.post('/register', async function(req, res){
        
        const salt = await bcrypt.genSalt();
        data.password = await bcrypt.hash(data.password,salt);
+       
 
        const newSchool = new School(data);
        await newSchool.save();
